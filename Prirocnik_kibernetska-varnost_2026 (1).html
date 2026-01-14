@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priročnik za kibernetsko varnost podjetij | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-top: 4px solid #50afb0;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            color: #50afb0;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .highlight-box h4 {
+            color: white;
+        }
+
+        .highlight-box p {
+            color: white;
+        }
+
+        .highlight-box ul,
+        .highlight-box ol {
+            color: white;
+        }
+
+        .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding-left: 35px;
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "□";
+            position: absolute;
+            left: 0;
+            color: #50afb0;
+            font-size: 1.5em;
+        }
+
+        .phase-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .phase-card h4 {
+            margin-top: 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .stat-number {
+                font-size: 2.5em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>Priročnik za kibernetsko varnost podjetij</h1>
+        <p class="hero-subtitle">Praktični vodič za zaščito vašega poslovanja</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Zakaj je kibernetska varnost pomembna za vaše podjetje?</h2>
+            <p>Kibernetske grožnje se nenehno razvijajo in lahko resno ogrozijo poslovanje vsakega podjetja. Učinkovita zaščita zahteva sistematičen pristop, ki vključuje tehnične ukrepe, jasne procese in ozaveščene zaposlene. Ta priročnik vam ponuja pregled ključnih elementov, ki jih potrebujete za vzpostavitev robustne kibernetske varnosti.</p>
+        </div>
+
+        <section id="threats">
+            <h2>1. Razumevanje kibernetskih groženj</h2>
+            
+            <h3>Najpogostejše grožnje</h3>
+            
+            <div class="feature-card">
+                <h4>🎣 Phishing napadi</h4>
+                <p>Prevarantski napadi, kjer napadalci z lažnim predstavljanjem pridobijo dostop do občutljivih podatkov. Lahko se pojavljajo v obliki elektronske pošte, sporočil ali telefonskih klicev.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>🔒 Izsiljevalska programska oprema (ransomware)</h4>
+                <p>Zlonamerna programska oprema, ki šifrira podatke podjetja in zahteva odkupnino za njihovo sprostitev. Eden najnevarnejših napadov, ki lahko povzroči popolno zaustavitev poslovanja.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>🚪 Vdori v sistem</h4>
+                <p>Nepooblaščen dostop do informacijskih sistemov z namenom kraje podatkov, sabotaže ali namestitve zlonamerne programske opreme.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>👤 Notranje grožnje</h4>
+                <p>Tveganja, ki izvirajo iz organizacije same – nezadovoljni zaposleni, nekdanji sodelavci ali nepazljivo ravnanje s podatki.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>Zakaj je to pomembno za vaše podjetje?</h4>
+                <ul>
+                    <li>Finančne izgube zaradi prekinitve poslovanja</li>
+                    <li>Izguba ugleda in zaupanja strank</li>
+                    <li>Pravne posledice in globe</li>
+                    <li>Izguba konkurenčnih prednosti</li>
+                    <li>Stroški obnovitve sistemov in podatkov</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 2: Risk Management -->
+        <section id="risk-management">
+            <h2>2. Temelji varnosti: upravljanje tveganj</h2>
+            
+            <h3>Ocena tveganj</h3>
+            <p>Prvi korak k učinkoviti kibernetski varnosti je razumevanje lastnih tveganj.</p>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>1. Identifikacija informacijskih sredstev</h4>
+                    <ul>
+                        <li>Podatki (osebni, poslovni, finančni)</li>
+                        <li>Strojna oprema (strežniki, računalniki)</li>
+                        <li>Programska oprema in aplikacije</li>
+                        <li>Omrežna infrastruktura</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>2. Prepoznavanje groženj</h4>
+                    <ul>
+                        <li>Zunanje grožnje (kibernetski kriminalci)</li>
+                        <li>Notranje grožnje (zaposleni, partnerji)</li>
+                        <li>Naravne nesreče in tehnične okvare</li>
+                        <li>Človeške napake</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>3. Analiza ranljivosti</h4>
+                    <ul>
+                        <li>Slabo zaščitena gesla</li>
+                        <li>Nezakrpane programske vrzeli</li>
+                        <li>Nezadostna varnostna zavestnost</li>
+                        <li>Pomanjkljiva dokumentacija</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>4. Ocena vpliva</h4>
+                    <ul>
+                        <li>Posledice izpada sistema?</li>
+                        <li>Čas delovanja brez storitev?</li>
+                        <li>Finančne posledice?</li>
+                        <li>Vpliv na stranke in ugled?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: white;">Strategije obvladovanja tveganj</h3>
+                <ul style="color: white;">
+                    <li style="color: white;"><strong style="color: white;">Izogibanje tveganju:</strong> opustitev dejavnosti, ki predstavljajo preveliko tveganje</li>
+                    <li style="color: white;"><strong style="color: white;">Zmanjševanje tveganja:</strong> uvedba tehničnih in organizacijskih ukrepov</li>
+                    <li style="color: white;"><strong style="color: white;">Prenos tveganja:</strong> zavarovanje, uporaba zunanjih storitev</li>
+                    <li style="color: white;"><strong style="color: white;">Sprejemanje tveganja:</strong> zavestna odločitev o sprejemanju manjših tveganj</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 3: Technical Measures -->
+        <section id="technical-measures">
+            <h2>3. Tehnični in organizacijski ukrepi</h2>
+
+            <h3>Tehnični ukrepi</h3>
+
+            <div class="info-box">
+                <h4>🛡️ Požarni zidovi in omrežna varnost</h4>
+                <ul>
+                    <li>Postavitev požarnih zidov na vseh vstopnih točkah</li>
+                    <li>Segmentacija omrežja za omejevanje širjenja incidentov</li>
+                    <li>Redna posodobitev omrežne opreme</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>🦠 Protivirusna zaščita</h4>
+                <ul>
+                    <li>Namestitev na vse končne naprave</li>
+                    <li>Avtomatske posodobitve definicij groženj</li>
+                    <li>Redno preverjanje učinkovitosti</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>🔐 Šifriranje podatkov</h4>
+                <ul>
+                    <li>Šifriranje občutljivih podatkov na diskih</li>
+                    <li>Uporaba VPN povezav za oddaljen dostop</li>
+                    <li>Šifrirana komunikacija (HTTPS, SSL/TLS)</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>🔑 Večfaktorska avtentikacija (2FA/MFA)</h4>
+                <ul>
+                    <li>Obvezna uporaba za dostop do kritičnih sistemov</li>
+                    <li>Kombinacija gesel z dodatnimi dejavniki</li>
+                    <li>SMS, aplikacija ali biometrija</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>💾 Varnostno kopiranje</h4>
+                <ul>
+                    <li>Redno avtomatizirano varnostno kopiranje</li>
+                    <li>Shranjevanje kopij na več lokacijah (3-2-1 pravilo)</li>
+                    <li>Redno testiranje obnovitve podatkov</li>
+                </ul>
+            </div>
+
+            <h3>Organizacijski ukrepi</h3>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>📋 Varnostne politike</h4>
+                    <ul>
+                        <li>Politika uporabe gesel</li>
+                        <li>Politika uporabe naprav</li>
+                        <li>Politika dostopa do podatkov</li>
+                        <li>Politika oddaljenega dela</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔐 Upravljanje dostopov</h4>
+                    <ul>
+                        <li>Načelo najmanjših privilegijev</li>
+                        <li>Redni pregled dostopnih pravic</li>
+                        <li>Takojšen odvzem ob prenehanju</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🏢 Fizična varnost</h4>
+                    <ul>
+                        <li>Nadzor dostopa do prostorov</li>
+                        <li>Varovanje strežniških prostorov</li>
+                        <li>Videonadzor in dnevniki</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🤝 Upravljanje dobaviteljev</h4>
+                    <ul>
+                        <li>Ocena varnostnih standardov</li>
+                        <li>Pogodbene zaveze o varnosti</li>
+                        <li>Redni pregledi skladnosti</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Human Factor -->
+        <section id="human-factor">
+            <h2>4. Človeški dejavnik</h2>
+
+            <div class="highlight-box">
+                <h3 style="color: white;">Zaposleni so vaša najmočnejša obramba</h3>
+                <p style="color: white;">Z ustreznim usposabljanjem lahko najšibkejši člen postane najmočnejša zaščita pred kibernetskimi grožnjami.</p>
+            </div>
+
+            <h3>Program izobraževanja zaposlenih</h3>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>📚 Osnovno usposabljanje</h4>
+                    <ul>
+                        <li>Prepoznavanje phishing napadov</li>
+                        <li>Varna uporaba gesel</li>
+                        <li>Ravnanje z občutljivimi podatki</li>
+                        <li>Varno delo na daljavo</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔄 Redna osvežitev znanja</h4>
+                    <ul>
+                        <li>Mesečni varnostni nasveti</li>
+                        <li>Simulacije phishing napadov</li>
+                        <li>Kvartalni webinarji o grožnjah</li>
+                        <li>Praktične vaje</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🏆 Kultura varnosti</h4>
+                    <ul>
+                        <li>Spodbujanje prijavljanja incidentov</li>
+                        <li>Priznanje za varno ravnanje</li>
+                        <li>Jasni postopki</li>
+                        <li>Odprta komunikacija</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>👥 Ključne vloge</h4>
+                    <ul>
+                        <li><strong>Vodstvo:</strong> podpora in sredstva</li>
+                        <li><strong>IT oddelek:</strong> tehnična implementacija</li>
+                        <li><strong>Zaposleni:</strong> upoštevanje politik</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Business Continuity -->
+        <section id="business-continuity">
+            <h2>5. Načrtovanje neprekinjenega poslovanja</h2>
+
+            <div class="info-box">
+                <h3>Zakaj je to pomembno?</h3>
+                <p>V povprečju lahko podjetje zaradi izpada kritičnih sistemov izgubi med 5.000€ in 50.000€ na dan, odvisno od velikosti in sektorja. Načrt neprekinjenega poslovanja zmanjša to tveganje za preko 70%.</p>
+            </div>
+
+            <h3>Ocena vpliva na poslovanje (BIA)</h3>
+            <ul>
+                <li>Kateri procesi so ključni za delovanje?</li>
+                <li>Kateri sistemi podpirajo te procese?</li>
+                <li>Kakšen je maksimalen sprejemljiv čas izpada?</li>
+                <li>Kakšne so prioritete obnovitve?</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>Ključni cilji obnovitve</h3>
+                <div class="grid-2">
+                    <div>
+                        <h4 style="color: white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px;">RTO (Recovery Time Objective)</h4>
+                        <p style="color: white;">Maksimalen sprejemljiv čas za obnovitev sistemov in procesov</p>
+                    </div>
+                    <div>
+                        <h4 style="color: white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px;">RPO (Recovery Point Objective)</h4>
+                        <p style="color: white;">Maksimalna sprejemljiva izguba podatkov (časovno)</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Vsebina načrta obnovitve</h3>
+            <ol>
+                <li>Kontaktne informacije ključnih oseb</li>
+                <li>Seznam kritičnih sistemov in aplikacij</li>
+                <li>Postopki za obnovitev sistemov</li>
+                <li>Lokacije varnostnih kopij</li>
+                <li>Alternativne lokacije za delo</li>
+                <li>Komunikacijski načrt</li>
+            </ol>
+
+            <div class="warning-box">
+                <h4>⚠️ Pomembno: redno testiranje</h4>
+                <ul>
+                    <li>Testiranje postopkov obnovitve vsaj enkrat letno</li>
+                    <li>Vaje simulacije incidentov</li>
+                    <li>Dokumentiranje ugotovitev in izboljšav</li>
+                    <li>Posodabljanje načrta glede na spremembe</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 6: Incident Response -->
+        <section id="incident-response">
+            <h2>6. Odzivanje na incidente</h2>
+
+            <h3>Faze odzivanja</h3>
+
+            <div class="phase-card">
+                <h4>1️⃣ Priprava</h4>
+                <ul>
+                    <li>Tim za odziv na incidente</li>
+                    <li>Opredelitev vlog in odgovornosti</li>
+                    <li>Kontaktni podatki za 24/7 dosegljivost</li>
+                    <li>Orodja in dostopi</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>2️⃣ Zaznavanje</h4>
+                <ul>
+                    <li>Sistemi za spremljanje omrežja (SIEM)</li>
+                    <li>Alarmiranja pri sumljivih aktivnostih</li>
+                    <li>Prijave uporabnikov</li>
+                    <li>Avtomatizirano odkrivanje anomalij</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>3️⃣ Odziv</h4>
+                <ol>
+                    <li><strong>Identifikacija:</strong> kaj se je zgodilo?</li>
+                    <li><strong>Omejitev:</strong> preprečitev širjenja</li>
+                    <li><strong>Izkoreninitev:</strong> odstranitev vzroka</li>
+                    <li><strong>Obnovitev:</strong> vrnitev v normalno stanje</li>
+                    <li><strong>Naučene lekcije:</strong> analiza in izboljšave</li>
+                </ol>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: white;">Komunikacija med incidentom</h3>
+                <div class="grid-2">
+                    <div>
+                        <h4 style="color: white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px;">Notranja komunikacija</h4>
+                        <ul style="color: white;">
+                            <li style="color: white;">Obveščanje vodstva</li>
+                            <li style="color: white;">Informiranje zaposlenih</li>
+                            <li style="color: white;">Koordinacija dejavnosti</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: white; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px;">Zunanja komunikacija</h4>
+                        <ul style="color: white;">
+                            <li style="color: white;">Obveščanje strank (če potrebno)</li>
+                            <li style="color: white;">Komunikacija z mediji</li>
+                            <li style="color: white;">Prijava pristojnim organom</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Implementation Plan - FIXED -->
+        <section id="implementation">
+            <h2>7. Implementacijski načrt</h2>
+
+            <p>Sistematičen pristop k implementaciji kibernetske varnosti v štirih fazah.</p>
+
+            <div class="phase-card">
+                <h4>Faza 1: Temelji (meseci 1-3)</h4>
+                <div style="margin-left: 0;">
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Ocena trenutnega stanja
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Identifikacija kritičnih sistemov in podatkov
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Osnovna varnostna infrastruktura
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Prvi krog izobraževanja zaposlenih
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Osnovne varnostne politike
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <h4>Faza 2: Konsolidacija (meseci 4-6)</h4>
+                <div style="margin-left: 0;">
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Formalna analiza tveganj
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Implementacija dodatnih tehničnih ukrepov
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Vzpostavitev postopkov za incidente
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Testiranje varnostnih kopij
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Pregled dostopnih pravic
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <h4>Faza 3: Optimizacija (meseci 7-12)</h4>
+                <div style="margin-left: 0;">
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Načrt neprekinjenega poslovanja
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Napredni varnostni ukrepi
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Avtomatizacija procesov
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Prvo penetracijsko testiranje
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Vzpostavitev metrik in KPI-jev
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase-card">
+                <h4>Faza 4: Zrelost (mesec 12+)</h4>
+                <div style="margin-left: 0;">
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Kontinuirano izboljševanje
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Prilagajanje novim grožnjam
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Certificiranje (ISO 27001)
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Napredna analitika
+                    </div>
+                    <div style="margin: 10px 0; padding-left: 30px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #50afb0; font-size: 1.3em;">☐</span>
+                        Sodelovanje v varnostni skupnosti
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: By Company Size -->
+        <section id="by-size">
+            <h2>8. Priporočila glede na velikost podjetja</h2>
+
+            <div class="feature-card">
+                <h4>🏢 Mikro in mala podjetja (do 50 zaposlenih)</h4>
+                <p><strong>Prednostne naloge:</strong></p>
+                <ol>
+                    <li>Osnovna protivirusna zaščita</li>
+                    <li>Izobraževanje zaposlenih</li>
+                    <li>Redne varnostne kopije</li>
+                    <li>Močna gesla in 2FA</li>
+                    <li>Požarni zid</li>
+                </ol>
+                <p><strong>Predlagane rešitve:</strong></p>
+                <ul>
+                    <li>Oblačne storitve z vgrajeno varnostjo</li>
+                    <li>Upravljane varnostne storitve</li>
+                    <li>Zunanje varnostno kopiranje</li>
+                    <li>Osnovne politike in postopki</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>🏭 Srednja podjetja (50-250 zaposlenih)</h4>
+                <p><strong>Dodatno k osnovam:</strong></p>
+                <ol>
+                    <li>Formalen sistem upravljanja varnosti</li>
+                    <li>Namenski IT varnostni specialist</li>
+                    <li>Naprednejše omrežno varovanje</li>
+                    <li>Načrt neprekinjenega poslovanja</li>
+                    <li>Dnevniško zapisovanje in analiza</li>
+                </ol>
+                <p><strong>Predlagane rešitve:</strong></p>
+                <ul>
+                    <li>Hibridni pristop (interno + zunanje storitve)</li>
+                    <li>SIEM rešitve</li>
+                    <li>Upravljanje ranljivosti</li>
+                    <li>Redno penetracijsko testiranje</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>🏢 Velika podjetja (nad 250 zaposlenih)</h4>
+                <p><strong>Celovit pristop:</strong></p>
+                <ol>
+                    <li>Varnostni operativni center (SOC)</li>
+                    <li>Tim za informacijsko varnost</li>
+                    <li>Napredne obrambne tehnologije</li>
+                    <li>Formalni procesi in certifikati (ISO 27001)</li>
+                    <li>Program ozaveščanja in usposabljanja</li>
+                    <li>Kontinuirano spremljanje in izboljševanje</li>
+                </ol>
+                <p><strong>Predlagane rešitve:</strong></p>
+                <ul>
+                    <li>Lastni SOC ali SOC kot storitev</li>
+                    <li>Več-plastna obramba</li>
+                    <li>Threat intelligence</li>
+                    <li>Red team / Blue team vaje</li>
+                    <li>Avtomatizacija varnostnih procesov</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 9: Measuring Effectiveness -->
+        <section id="measuring">
+            <h2>9. Merjenje učinkovitosti</h2>
+
+            <h3>Ključni kazalniki uspešnosti (KPI)</h3>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>📊 Tehnični kazalniki</h4>
+                    <ul>
+                        <li>Čas zaznavanja incidentov</li>
+                        <li>Čas odziva na incidente</li>
+                        <li>Število uspešno blokiranih napadov</li>
+                        <li>Delež posodobljenih sistemov</li>
+                        <li>Uspešnost obnovitve iz varnostnih kopij</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>👥 Organizacijski kazalniki</h4>
+                    <ul>
+                        <li>Delež zaposlenih, ki so opravili usposabljanje</li>
+                        <li>Število prijavljenih sumljivih dogodkov</li>
+                        <li>Čas skladnosti z varnostnimi politikami</li>
+                        <li>Število identificiranih in odpravljenih ranljivosti</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>💰 Poslovni kazalniki</h4>
+                    <ul>
+                        <li>Stroški incidentov</li>
+                        <li>Čas izpadov sistemov</li>
+                        <li>Stroški varnostnih ukrepov vs. potencialne izgube</li>
+                        <li>Skladnost z regulatornimi zahtevami</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📅 Redni pregledi</h4>
+                    <ul>
+                        <li><strong>Mesečno:</strong> Tehnični kazalniki, pregled incidentov</li>
+                        <li><strong>Kvartalno:</strong> Ocena učinkovitosti ukrepov, prilagoditve</li>
+                        <li><strong>Letno:</strong> Celostna revizija varnosti, strateške odločitve</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10: Cost Optimization -->
+        <section id="cost-optimization">
+            <h2>10. Stroškovna optimizacija</h2>
+
+            <div class="highlight-box">
+                <h3 style="color: white;">Pametno investiranje</h3>
+                <p style="color: white;">Prednostni ukrepi z najboljšim ROI (povračilo investicije):</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="info-box">
+                    <h4>1. Izobraževanje zaposlenih</h4>
+                    <p><strong>Strošek:</strong> Nizek | <strong>Vpliv:</strong> Zelo visok</p>
+                    <p>Najcenejši in najučinkovitejši ukrep. Zmanjša človeške napake za do 70 %.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>2. Večfaktorska avtentikacija</h4>
+                    <p><strong>Strošek:</strong> Nizek | <strong>Vpliv:</strong> Visok</p>
+                    <p>Preprečuje 99,9 % avtomatiziranih napadov na račune.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>3. Varnostno kopiranje</h4>
+                    <p><strong>Strošek:</strong> Srednji | <strong>Vpliv:</strong> Zelo visok</p>
+                    <p>Ključno za obnovitev po ransomware napadih.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>4. Posodobitve sistemov</h4>
+                    <p><strong>Strošek:</strong> Nizek | <strong>Vpliv:</strong> Visok</p>
+                    <p>Zapre znane varnostne vrzeli, ki jih napadalci najpogosteje izkoriščajo.</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Izogibajte se skupnim napakam</h4>
+                <ul>
+                    <li>Nakup rešitev brez jasne strategije</li>
+                    <li>Premalo usposabljanja zaposlenih</li>
+                    <li>Zanemarjanje osnov v prid naprednim rešitvam</li>
+                    <li>Nezadostno testiranje</li>
+                    <li>Pomanjkljivo vzdrževanje</li>
+                </ul>
+            </div>
+
+            <h3>Kdaj ima smisel uporabljati zunanje ponudnike?</h3>
+            <ul>
+                <li>✓ Primanjkuje internega znanja</li>
+                <li>✓ Potreba po 24/7 pokritju</li>
+                <li>✓ Omejen proračun za stalno zaposlitev</li>
+                <li>✓ Potreba po specialističnem znanju</li>
+                <li>✓ Želja po hitri implementaciji</li>
+            </ul>
+        </section>
+
+        <!-- Section 11: Compliance -->
+        <section id="compliance">
+            <h2>11. Skladnost z zakonodajo</h2>
+
+            <div class="info-box">
+                <h3>Zakaj je skladnost pomembna?</h3>
+                <p>Neskladnost lahko povzroči:</p>
+                <ul>
+                    <li>Globe do 20 milijonov EUR ali 4 % letnega prometa (GDPR)</li>
+                    <li>Prepoved poslovanja</li>
+                    <li>Izgubo zaupanja strank</li>
+                    <li>Škodo ugledu</li>
+                </ul>
+            </div>
+
+            <h3>Ključni predpisi</h3>
+
+            <div class="feature-card">
+                <h4>📋 Varstvo osebnih podatkov (GDPR)</h4>
+                <ul>
+                    <li>Obveznost zavarovanja osebnih podatkov</li>
+                    <li>Prijavljanje kršitev v 72 urah</li>
+                    <li>Evidence dejavnosti obdelave</li>
+                    <li>Ocena vpliva na varstvo podatkov (DPIA)</li>
+                    <li>Pravice posameznikov (dostop, popravek, izbris)</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>🔐 Informacijska varnost</h4>
+                <ul>
+                    <li>Nacionalni predpisi o informacijski varnosti</li>
+                    <li>Posebne zahteve za kritične sektorje</li>
+                    <li>Poročanje o pomembnih incidentih</li>
+                    <li>Vzdrževanje sistema upravljanja varnosti informacij (SUVI)</li>
+                </ul>
+            </div>
+
+            <h3>Obvezna dokumentacija</h3>
+            <div class="grid-2">
+                <div class="info-box">
+                    <h4>Tehnična dokumentacija</h4>
+                    <ul>
+                        <li>Politika informacijske varnosti</li>
+                        <li>Analiza tveganj</li>
+                        <li>Načrt neprekinjenega poslovanja</li>
+                        <li>Načrt obnovitve sistemov</li>
+                        <li>Načrt odzivanja na incidente</li>
+                        <li>Seznam ključnih sistemov</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>GDPR dokumentacija</h4>
+                    <ul>
+                        <li>Evidence dejavnosti obdelave</li>
+                        <li>Ocena vpliva na varstvo podatkov</li>
+                        <li>Pogodbe z obdelovalci</li>
+                        <li>Postopki za uveljavljanje pravic</li>
+                        <li>Evidence varnostnih incidentov</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="color: white;">Redni pregledi skladnosti</h3>
+                <ul style="color: white;">
+                    <li style="color: white;"><strong style="color: white;">Letno:</strong> notranji pregledi skladnosti</li>
+                    <li style="color: white;"><strong style="color: white;">Kontinuirano:</strong> posodabljanje dokumentacije</li>
+                    <li style="color: white;"><strong style="color: white;">Po spremembah:</strong> preverjanje implementacije ukrepov</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Stats Section Before CTA -->
+    <div style="background: #f8f9fa; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="text-align: center; color: #50afb0; margin-bottom: 50px;">Zakaj izbrati nas?</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">let izkušenj na slovenskem trgu</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">certificiranih strokovnjakov</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💡</div>
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">zadovoljnih strank</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number">3x</div>
+                    <div class="stat-label">Microsoft partner leta</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljeni na nemoteno poslovanje in stalno rast?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Povežite se z nami za brezplačno svetovanje in pridobite ponudbo za vzdrževanje, prilagojeno vašim potrebam.</p>
+            
+            <div class="cta-buttons">
+                <a href="https://www.stroka.si/Zaupajte-nam-svoj-izziv?zanimanje=Upravljanje%20informacijske%20infrastrukture" target="_blank" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="https://www.stroka.si/Kaj-delamo/Upravljanje-informacijske-infrastrukture" target="_blank" class="btn btn-secondary">Več o naših storitvah</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Naslednji koraki</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">1️⃣ Ocena stanja</h4>
+                        <p>Izvedite osnovno oceno trenutnega stanja vaše organizacije</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">2️⃣ Identificirajte tveganja</h4>
+                        <p>Opredelite najšibkejše točke in največja tveganja</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">3️⃣ Akcijski načrt</h4>
+                        <p>Pripravite načrt s prioritetami in časovnico</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">4️⃣ Implementacija</h4>
+                        <p>Začnite z implementacijo, korak za korakom</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <a href="https://www.stroka.si" target="_blank">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        </a> 
+        <p style="margin: 20px 0;">Z več kot 30-letnimi izkušnjami na področju kibernetske varnosti vam pomagamo zaščititi vaše poslovanje.</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.9em;">Stroka produkt d.o.o. | Ljubljana, Slovenija</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">Ta priročnik predstavlja splošne smernice in priporočila. Za specifične primere in zakonske obveznosti priporočamo posvet s strokovnjaki.</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+
+</html>
+
+
+
