@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 korakov uspešne implementacije ERP PANTHEON | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-top: 4px solid #50afb0;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            color: #50afb0;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .highlight-box h4 {
+            color: white;
+        }
+
+        .highlight-box p {
+            color: white;
+        }
+
+        .highlight-box ul,
+        .highlight-box ol {
+            color: white;
+        }
+
+        .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff8f0;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .step-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .step-card h3 {
+            margin-top: 0;
+            color: #50afb0;
+        }
+
+        .phase-card {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .phase-card h4 {
+            margin-top: 0;
+            color: #50afb0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .stat-number {
+                font-size: 2.5em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+
+            .step-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>5 korakov uspešne implementacije ERP PANTHEON</h1>
+        <p class="hero-subtitle">Praktični vodič za učinkovito uvedbo poslovnega sistema PANTHEON</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Zakaj je pravilna implementacija ključna?</h2>
+            <p>PANTHEON je poslovni sistem, ki podjetjem omogoča avtomatizacijo poslovnih procesov in izboljšanje učinkovitosti poslovanja. Implementacija programa PANTHEON je kompleksen proces, ki zahteva skrbno načrtovanje in izvedbo. Skoraj 26 % implementacij ERP sistema je neuspešnih zaradi pomanjkanja podrobnega projektnega načrta. Ta priročnik vam predstavlja preverjeno metodologijo za uspešno uvedbo sistema PANTHEON.</p>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">26%</div>
+                <div class="stat-label">implementacij je neuspešnih zaradi slabega načrtovanja</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">20%</div>
+                <div class="stat-label">neuspehov zaradi slabega upravljanja sprememb</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">ključnih korakov do uspešne implementacije</div>
+            </div>
+        </div>
+
+        <!-- Step 1 -->
+        <section id="step1">
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Posnetek stanja</h3>
+                
+                <p>V prvem koraku implementacije programa PANTHEON se strokovnjaki Skupine stroka.si posvetijo temeljnemu razumevanju strukture podjetja. Posnetek stanja omogoča vpogled v delovanje posameznih procesov, zajem podatkov in njihovo obdelavo.</p>
+
+                <div class="warning-box">
+                    <h4>Zakaj je posnetek stanja pomemben?</h4>
+                    <ul>
+                        <li>Omogoča ekipi za implementacijo, da razume, kako podjetje trenutno deluje</li>
+                        <li>Pomaga ekipi, da identificira potrebe podjetja in cilje implementacije</li>
+                        <li>Pomaga strokovnjakom, da načrtujejo izvedbo projekta</li>
+                    </ul>
+                </div>
+
+                <h4>Tri faze posnetka stanja</h4>
+
+                <div class="phase-card">
+                    <h4>Faza 1: Vzpostavitev projekta</h4>
+                    <p>V projektu je najprej vzpostavljena projektna organizacija naročnika in izvajalca, opredeljen način dela ter pripravljena projektna infrastruktura. Sočasno je izveden pregled in končna potrditev zahtev.</p>
+                </div>
+
+                <div class="phase-card">
+                    <h4>Faza 2: Vodenje projekta</h4>
+                    <p>Vsebuje ključne aktivnosti:</p>
+                    <ul>
+                        <li>Spremljanje projektne komunikacije</li>
+                        <li>Delegiranje in spremljanje izvajanja projektnih opravil</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4>Faza 3: Enostavni posnetek</h4>
+                    <p>Izvedba pregleda:</p>
+                    <ul>
+                        <li>Posnetek stanja poteka na podlagi delavnic s poslovnimi analitiki, programerji in sistemskimi inženirji</li>
+                        <li>Delavnica poteka online ali na lokaciji in predstavlja konstruktivni sestanek s primernimi sogovorniki</li>
+                        <li>Izvajalec potrebuje vse potrebne dostope in razpoložljivo dokumentacijo</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Pri posnetku stanja se osredotočimo na:</h4>
+                    <ul>
+                        <li>Organizacijo ključnih uporabnikov, ki skrbijo za izvajanje poslovnega procesa</li>
+                        <li>Uporabnike, ki skrbijo za izvajanje IT podpore procesom</li>
+                        <li>Proces definiranja zahtev procesa in izpolnjevanje zahtevkov po pokritosti IT podpore</li>
+                    </ul>
+                </div>
+
+                <h4>Priprava na delavnico</h4>
+                <p>Udeleženci s strani naročnika predhodno pripravijo:</p>
+                <ul>
+                    <li>Seznam želja in težav (vodje oddelkov)</li>
+                    <li>Seznam želja in težav (operativa)</li>
+                    <li>Seznam analiz, poročil in izpisov, ki so v uporabi</li>
+                    <li>Seznam analiz, poročil in izpisov, ki bi jih želeli koristiti</li>
+                    <li>Obstoječo dokumentacijo, vezano na prikaz stanja (interni procesi, poteki dela)</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>Rezultat posnetka stanja</h4>
+                    <p>Dokument z osnovnim popisom, kaj stranka trenutno uporablja vezano na poslovni sistem ali procese. Sledi predlog za nadaljnje sodelovanje na področju izvedbe implementacije in podpore ter priprava predloga vzdrževanja.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2 -->
+        <section id="step2">
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Namestitev in konfiguracija sistema</h3>
+                
+                <p>Drugi korak pri implementaciji programa PANTHEON je namestitev in konfiguracija sistema. V tem koraku se namesti programska oprema in nastavijo osnovne nastavitve sistema.</p>
+
+                <h4>Namestitev programske opreme</h4>
+                <p>Pri namestitvi programske opreme PANTHEON se upošteva:</p>
+                <ul>
+                    <li>Operativni sistem, ki ga podjetje uporablja</li>
+                    <li>Zmogljivost strojne opreme</li>
+                </ul>
+
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h4>Osnovne nastavitve sistema</h4>
+                        <ul>
+                            <li>Sistemske nastavitve na administratorski konzoli (e-mail, nastavitve backup poti)</li>
+                            <li>Splošne nastavitve na administratorski konzoli</li>
+                            <li>Dodajanje uporabnikov in nastavitve začetnih avtorizacij</li>
+                            <li>Splošne nastavitve eDokumentacije</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>Konfiguracija sistema</h4>
+                        <ul>
+                            <li>Nastavitve blagovnih in materialnih funkcij</li>
+                            <li>Nastavitve finančno računovodskih funkcij</li>
+                            <li>Programske dodelava</li>
+                            <li>Oblikovanja izpisov</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3 -->
+        <section id="step3">
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Prenos podatkov</h3>
+                
+                <p>Tretji korak pri implementaciji je prenos podatkov. V tem koraku se iz obstoječe informacijske infrastrukture prenesejo podatki, ki so potrebni za delovanje programa.</p>
+
+                <div class="highlight-box">
+                    <h4>Prenos podatkov vključuje:</h4>
+                    <ul>
+                        <li>Prenos ali vzpostavitev šifranta kupci in dobavitelji</li>
+                        <li>Prenos ali vzpostavitev šifranta artikli (brez prenosa šifrantov pogodbenih cen in partnerjevih kod)</li>
+                        <li>Prenos otvoritvenega stanja zaloge</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Pomembno</h4>
+                    <p>Prenos podatkov je kritičen korak, ki zahteva skrbno načrtovanje in testiranje. Zagotoviti je potrebno celovitost in pravilnost prenesenih podatkov ter njihovo kompatibilnost s sistemom PANTHEON.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4 -->
+        <section id="step4">
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Izobraževanje uporabnikov in testiranje ob zagonu</h3>
+                
+                <div class="warning-box">
+                    <h4>⚠️ Ključni dejavnik uspeha</h4>
+                    <p>Pomanjkanje znanja pri upravljanju sprememb je glavni dejavnik neuspešnega uvajanja ERP sistema. Po podatkih študije podjetja Gartner je skoraj 20 % neuspehov pri uvajanju ERP mogoče pripisati slabim praksam upravljanja sprememb.</p>
+                </div>
+
+                <p>Četrti in izredno pomemben korak je izobraževanje uporabnikov. Izobraževanje se lahko izvaja v več fazah, pri čemer vsaka faza gradi na predhodni.</p>
+
+                <h4>Faze izobraževanja</h4>
+
+                <div class="phase-card">
+                    <h4>Faza 1: Osnove sistema</h4>
+                    <p>Uporabnike seznanimo z osnovami sistema, kot so:</p>
+                    <ul>
+                        <li>Orodja PA</li>
+                        <li>Šifrant subjektov</li>
+                        <li>Šifrant identov</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <h4>Faza 2: Delovni procesi</h4>
+                    <p>Uporabnike usposobimo, da svoj delovni proces izvajajo v PANTHEON programu. Z načrtnim pristopom k izobraževanju zaposlenih lahko podjetja zagotovijo, da bodo zaposleni učinkovito uporabljali sistem in bodo lahko izkoristili vse prednosti.</p>
+                </div>
+
+                <h4>Testiranje in zagon sistema</h4>
+                <p>Sledi testiranje in zagon sistema, kjer se preveri, ali sistem deluje pravilno. Pri tem koraku:</p>
+                <ul>
+                    <li>Stranka potrdi posamezne funkcionalnosti</li>
+                    <li>Določi se datum prehoda</li>
+                    <li>Izvede se zagon PANTHEON-a</li>
+                    <li>Strokovnjaki so prisotni v primeru kakršnih koli negotovosti ali nepravilnosti ob zagonu sistema</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Koristi načrtnega izobraževanja</h4>
+                    <ul>
+                        <li>Zaposleni učinkovito uporabljajo sistem</li>
+                        <li>Izkoristijo vse prednosti sistema</li>
+                        <li>Zmanjšanje odpora do sprememb</li>
+                        <li>Hitrejša produktivnost po zagonu</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 5 -->
+        <section id="step5">
+            <div class="step-card">
+                <span class="step-number">5</span>
+                <h3>Podpora po zagonu sistema</h3>
+                
+                <p>Peti, zadnji korak pri implementaciji programa PANTHEON je podpora uporabnikom po zagonu sistema, za katero sledi le še prehod na vzdrževalno pogodbo.</p>
+
+                <div class="info-box">
+                    <h4>Časovno obdobje podpore</h4>
+                    <p>Časovno obdobje podpore po zagonu se dogovori glede na zahtevnost implementacije in dodelav. To zagotavlja nemoten prehod in hitro reševanje morebitnih težav.</p>
+                </div>
+
+                <h4>Vzdrževalna pogodba</h4>
+                <p>Vzdrževalna pogodba uporabniku omogoča:</p>
+                <ul>
+                    <li>Hitrejši dostop do strokovnjakov</li>
+                    <li>Uporabo enotne platforme za podporo strankam</li>
+                    <li>Dodelitev skrbnika (glede na tip pogodbe)</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Prednosti skrbnika</h4>
+                    <p>Glede na tip vzdrževalne pogodbe se lahko dodeli skrbnik, ki je:</p>
+                    <ul>
+                        <li>V popolnosti seznanjen s procesi podjetja</li>
+                        <li>Redno spremlja delovanje sistema</li>
+                        <li>Odpravlja morebitne napake na sistemu</li>
+                        <li>Proaktivno predlaga izboljšave</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Success Factors -->
+        <section id="success-factors">
+            <h2>Ključni dejavniki za uspešno implementacijo</h2>
+            
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>📋 Jasno definiranje potreb</h4>
+                    <p>Pred začetkom implementacije je ključno natančno opredeliti, kaj podjetje potrebuje in pričakuje od sistema PANTHEON. To vključuje analizo poslovnih procesov in identifikacijo področij za izboljšave.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🗓️ Dobro načrtovanje projekta</h4>
+                    <p>Podroben projektni načrt z jasno opredeljenimi fazami, mejniki in roki je temelj uspešne implementacije. Skoraj 26 % neuspehov je posledica pomanjkljivega načrtovanja.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>👥 Izbira usposobljenega izvajalca</h4>
+                    <p>Partner z izkušnjami in dokazanimi referencami na področju implementacije PANTHEON sistema lahko bistveno poveča verjetnost uspešne izvedbe projekta.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🤝 Sodelovanje vseh deležnikov</h4>
+                    <p>Aktivna vključenost vodstva, IT oddelka in končnih uporabnikov v vseh fazah implementacije zagotavlja, da sistem ustreza dejanskim potrebam organizacije.</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h4>Naj bo izboljšanje učinkovitosti poslovanja vaša prioriteta</h4>
+                <p>Pri določanju ciljev implementacije upoštevajte:</p>
+                <ul>
+                    <li>Izboljšanje učinkovitosti poslovanja</li>
+                    <li>Znižanje stroškov</li>
+                    <li>Povečanje zadovoljstva strank</li>
+                    <li>Avtomatizacijo ponavljajočih se procesov</li>
+                    <li>Boljši nadzor nad poslovanjem</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Implementation Timeline -->
+        <section id="timeline">
+            <h2>Časovni potek implementacije</h2>
+            
+            <p>Tipična implementacija sistema PANTHEON poteka po naslednjem časovnem poteku, ki se lahko prilagodi glede na specifične potrebe in obseg projekta:</p>
+
+            <div class="phase-card">
+                <h4>Teden 1-2: Posnetek stanja in načrtovanje</h4>
+                <ul>
+                    <li>Vzpostavitev projektne ekipe</li>
+                    <li>Izvedba delavnic</li>
+                    <li>Priprava projektnega načrta</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Teden 3-4: Namestitev in osnovna konfiguracija</h4>
+                <ul>
+                    <li>Namestitev programske opreme</li>
+                    <li>Osnovna konfiguracija sistema</li>
+                    <li>Testiranje infrastrukture</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Teden 5-6: Prenos podatkov in napredna konfiguracija</h4>
+                <ul>
+                    <li>Prenos šifrantov in podatkov</li>
+                    <li>Napredne nastavitve</li>
+                    <li>Programske dodelava (če potrebno)</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Teden 7-8: Izobraževanje in testiranje</h4>
+                <ul>
+                    <li>Usposabljanje uporabnikov</li>
+                    <li>Testiranje funkcionalnosti</li>
+                    <li>Priprava na produkcijski zagon</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Teden 9+: Zagon in podpora</h4>
+                <ul>
+                    <li>Produkcijski zagon sistema</li>
+                    <li>Intenzivna podpora uporabnikom</li>
+                    <li>Odpravljanje težav in optimizacije</li>
+                    <li>Prehod na vzdrževalno pogodbo</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>Opomba</h4>
+                <p>Časovni okvir je prilagodljiv in odvisen od kompleksnosti implementacije, velikosti organizacije in obsega potrebnih prilagoditev. Manjša podjetja lahko zaključijo implementacijo hitreje, medtem ko lahko večja podjetja z obsežnimi procesi potrebujejo več časa.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Stats Section Before CTA -->
+    <div style="background: #f8f9fa; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="text-align: center; color: #50afb0; margin-bottom: 50px;">Zakaj izbrati Skupino stroka.si?</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">let izkušenj z ERP sistemi</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12+</div>
+                    <div class="stat-label">certificiranih strokovnjakov</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">800+</div>
+                    <div class="stat-label">zadovoljnih strank</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">115+</div>
+                    <div class="stat-label">projektov implementacije letno</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljeni za uspešno implementacijo sistema PANTHEON?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Povežite se z nami za brezplačno svetovanje in pridobite ponudbo za implementacijo, prilagojeno vašim potrebam.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Vaša pot do uspešne implementacije</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">1️⃣ Brezplačno svetovanje</h4>
+                        <p>Pogovorimo se o vaših potrebah in ciljih</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">2️⃣ Ponudba na mero</h4>
+                        <p>Pripravimo prilagojeno ponudbo za vašo organizacijo</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">3️⃣ Načrtovanje projekta</h4>
+                        <p>Skupaj pripravimo podroben projektni načrt</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">4️⃣ Implementacija</h4>
+                        <p>Izvedemo projekt po preverjenem 5-stopenjskem modelu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Z več kot 30-letnimi izkušnjami na področju implementacije ERP sistemov vam pomagamo do učinkovitejšega poslovanja.</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+</html>
