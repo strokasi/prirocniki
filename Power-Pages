@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Pages: Profesionalni spletni portali brez programiranja | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-top: 4px solid #50afb0;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            color: #333;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3, .highlight-box h4, .highlight-box p, .highlight-box ul, .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff8f0;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h4 {
+            color: #e74c3c;
+        }
+
+        .scenario-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .scenario-card h3 {
+            margin-top: 0;
+            color: #50afb0;
+        }
+
+        .scenario-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .step-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+
+            .scenario-card, .step-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>Power Pages: Profesionalni spletni portali brez programiranja</h1>
+        <p class="hero-subtitle">No-code platforma za ustvarjanje varnih poslovnih portalov</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Spletna stran ni več privilegij</h2>
+            <p>Kolikokrat ste si v podjetju želeli: "Bilo bi super, če bi imeli portal, kjer bi stranke same oddajale zahtevke" ali "Potrebovali bi sistem, kjer bi partnerji videli samo svoje podatke" ali "Želel bi spletno stran za interno znanje, dostopno samo zaposlenim"?</p>
+            <p>In potem pride ista misel: "Potrebno bo prositi razvijalce, oni bodo rekli, da nimajo časa, in bo to stalo ogromno..." <strong>In ideja umre.</strong></p>
+            <p><strong>Microsoft Power Pages to spreminja.</strong> Omogoča vam ustvarjanje profesionalnih, varnih spletnih portalov in strani – brez da bi potrebovali programerja.</p>
+        </div>
+
+        <!-- Key Benefits -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🚀</div>
+                <div class="stat-label">Portal v tednih, ne mesecih</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔒</div>
+                <div class="stat-label">Vgrajena varnost in pravice dostopa</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔗</div>
+                <div class="stat-label">Nativna integracija z Microsoft Dataverse</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💻</div>
+                <div class="stat-label">No-code vizualni urejevalnik</div>
+            </div>
+        </div>
+
+        <!-- Section 1: What is Power Pages -->
+        <section id="kaj-je-power-pages">
+            <h2>Kaj je Power Pages in kako deluje?</h2>
+            
+            <p>Power Pages je platforma za ustvarjanje spletnih mest in portalov, ki so povezani z vašimi poslovnimi podatki. Ni klasični "website builder" kot WordPress ali Wix. Je orodje za ustvarjanje <strong>funkcionalnih poslovnih portalov</strong>.</p>
+
+            <div class="highlight-box">
+                <h3>Kaj uporabniki lahko počnejo na Power Pages portalu?</h3>
+                <ul>
+                    <li>Dostopajo do podatkov (samo do svojih)</li>
+                    <li>Oddajajo zahtevke in obrazce</li>
+                    <li>Sledijo stanju svojih naročil ali zahtevkov</li>
+                    <li>Sodelujejo v skupnostih</li>
+                    <li>Dostopajo do baze znanja</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>Ključna razlika: Microsoft Dataverse</h4>
+                <p>Power Pages je nativno povezan z <strong>Microsoft Dataverse</strong> – podatkovno bazo, ki je srce Microsoft Power Platform.</p>
+                <p style="margin-top: 10px;">To pomeni, da lahko vaš portal prikazuje in shranjuje podatke direktno v isti bazi, ki jih uporabljajo vaše:</p>
+                <ul>
+                    <li>Dynamics 365 aplikacije</li>
+                    <li>Power Apps</li>
+                    <li>Power Automate procesi</li>
+                </ul>
+            </div>
+
+            <h3>Kako dostopate do Power Pages?</h3>
+            <p>Dostop je enostaven preko spletne povezave: <strong>make.powerpages.microsoft.com</strong></p>
+            
+            <p>Z vizualnim urejevalnikom "klikni in povleci" sestavite svojo stran. Nastavite lahko:</p>
+            <ul>
+                <li>Varnost spletnega mesta</li>
+                <li>Oblikovanje</li>
+                <li>Navigacijo</li>
+                <li>Povezavo s podatki</li>
+            </ul>
+            <p><strong>Vse brez programiranja.</strong></p>
+        </section>
+
+        <!-- Section 2: Practical Scenarios -->
+        <section id="primeri-uporabe">
+            <h2>Kako podjetja uporabljajo Power Pages v praksi?</h2>
+
+            <div class="scenario-card">
+                <span class="scenario-number">1</span>
+                <h3>Portal za stranke - Self-service podpora</h3>
+                
+                <p><strong>Problem:</strong> Podjetje, ki prodaja opremo, prejme na dan 50+ klicev in mailov s strani strank z vprašanji o stanju naročila, reklamacijah, tehničnih težavah. Ekipa podpore je preobremenjena.</p>
+
+                <h4>Rešitev s Power Pages portalom:</h4>
+                <p>Stranke lahko:</p>
+                <ul>
+                    <li>Uredijo prijavo s svojim računom (povezanim s CRM)</li>
+                    <li>Vidijo samo svoja naročila in njihovo stanje</li>
+                    <li>Oddajo reklamacijo ali zahtevek za podporo</li>
+                    <li>Iščejo po bazi znanja z odgovori na najpogostejša vprašanja</li>
+                    <li>Sledijo statusu svojih odprtih zahtevkov</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Avtomatizacija v ozadju:</h4>
+                    <p>Ko stranka odda zahtevek za podporo:</p>
+                    <ul>
+                        <li>Se avtomatsko ustvari v Dynamics 365 Customer Service</li>
+                        <li>Dodeli pristojnemu agentu</li>
+                        <li>Sproži Power Automate potek dela</li>
+                        <li>Stranka dobi obvestilo na mail</li>
+                        <li>Lahko na portalu spremlja napredek</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>✅ Rezultat</h4>
+                    <ul>
+                        <li><strong>40 % manj klicev in mailov</strong></li>
+                        <li>Stranke so bolj zadovoljne (dobijo odgovore hitreje)</li>
+                        <li>Ekipa podpore se lahko fokusira na kompleksnejše primere</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">2</span>
+                <h3>Portal za partnerje in distributerje</h3>
+                
+                <p><strong>Scenarij:</strong> Proizvodno podjetje dela z mrežo 30 distributerjev. Vsak distributer potrebuje dostop do cen, katalogov, naročil, dokumentacije – a vsak sme videti samo svoje podatke.</p>
+
+                <h4>Power Pages partner portal omogoča:</h4>
+                <ul>
+                    <li>Vsak distributer se prijavi s svojimi pravicami</li>
+                    <li>Vidi aktualne cene in popuste (samo za svojo regijo/nivo)</li>
+                    <li>Lahko odda naročilo direktno v sistem</li>
+                    <li>Dostopa do produktnih katalogov, tehničnih podrobnosti, marketinškega materiala</li>
+                    <li>Vidi zgodovino svojih naročil in stanje plačil</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Proces naročanja:</h4>
+                    <p>Ko distributer odda naročilo:</p>
+                    <ul>
+                        <li>Se avtomatsko zabeleži v Dynamics 365 Sales</li>
+                        <li>Sproži se proces odobritve (če presega določen znesek)</li>
+                        <li>Nato gre v proizvodnjo</li>
+                        <li>Distributer vse spremlja na portalu v realnem času</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>✅ Rezultat</h4>
+                    <ul>
+                        <li>Naročila prihajajo strukturirano (ne več po mailu ali telefonu)</li>
+                        <li>Manj napak pri vnosu</li>
+                        <li>Partnerji so bolj avtonomni</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">3</span>
+                <h3>Interni portal za znanje in postopke</h3>
+                
+                <p><strong>Potreba:</strong> HR in kvaliteta želita centralno mesto za vse postopke, obrazce, navodila, politike – dostopno samo zaposlenim.</p>
+
+                <h4>Interni Power Pages portal znanja:</h4>
+                <ul>
+                    <li>Zaposleni se prijavijo z Microsoft 365 računi</li>
+                    <li>Iščejo po postopkih in navodilih (kategorizirano po oddelkih)</li>
+                    <li>Dostopajo do obrazcev (zahtevek za dopust, potni nalog, itd.)</li>
+                    <li>Oddajo predloge za izboljšave</li>
+                    <li>Dostopajo do video tutorialov in usposabljanj</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Dinamično posodabljanje:</h4>
+                    <ul>
+                        <li>Ko se postopek posodobi, ga Quality Manager posodobi direktno v Dataverse</li>
+                        <li>Sprememba je takoj vidna na portalu</li>
+                        <li>Ko zaposleni odda obrazec, gre ta v odobritveni proces v Power Automate</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>✅ Rezultat</h4>
+                    <p>Zaposleni ne iščejo več informacij po SharePointu, mailu ali sprašujejo HR. <strong>Vse je na enem mestu, vedno aktualno.</strong></p>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">4</span>
+                <h3>Portal za registracijo na dogodke</h3>
+                
+                <p><strong>Scenarij:</strong> Marketing organizira večje letne dogodke (konference, usposabljanja, webinarje) in potrebuje sistem za registracije.</p>
+
+                <h4>Power Pages portal omogoča:</h4>
+                <ul>
+                    <li>Pregled vseh prihajajočih dogodkov</li>
+                    <li>Registracijo za dogodek z izbiro delavnic</li>
+                    <li>Online plačilo kotizacije (integracija s plačilnim sistemom)</li>
+                    <li>Potrdilo o plačilu in QR kodo za vstop</li>
+                    <li>Dostop do gradiv po dogodku (samo za registrirane)</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Avtomatizacija procesa:</h4>
+                    <p>Ko se nekdo registrira:</p>
+                    <ul>
+                        <li>Podatki se shranijo v Dataverse</li>
+                        <li>Sproži se Power Automate, ki pošlje potrdilo</li>
+                        <li>Ustvari vnos v CRM</li>
+                        <li>Če je preseženo število mest, ustavi registracije</li>
+                        <li>Marketing ekipa ima real-time pregled nad številom registracij in prihodkov</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>✅ Rezultat</h4>
+                    <p>Profesionalen sistem registracij brez zunanjih orodij. <strong>Vsi podatki ostanejo v vašem ekosistemu.</strong></p>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">5</span>
+                <h3>Portal za zbiranje ponudb in prošenj</h3>
+                
+                <p><strong>Uporaba:</strong> Javni sektor ali večje podjetje želi transparentno zbirati ponudbe od dobaviteljev za različne projekte.</p>
+
+                <h4>Power Pages portal omogoča:</h4>
+                <ul>
+                    <li>Objavo razpisov in povabil k oddaji ponudbe</li>
+                    <li>Registracijo in ustvarjanje profila dobaviteljev</li>
+                    <li>Oddajo ponudbe z vsemi prilogami</li>
+                    <li>Sledenje statusa ponudb</li>
+                    <li>Dostop do arhiva preteklih razpisov</li>
+                </ul>
+
+                <p>Komisija za pregled ponudb ima backend dostop (preko aplikacije), kjer vidi vse oddane ponudbe, jih ocenjuje in zabeleži odločitev. Dobavitelji pa na portalu vidijo samo rezultat za svoje ponudbe.</p>
+
+                <div class="info-box">
+                    <h4>✅ Rezultat</h4>
+                    <p>Transparentnost, sledljivost, digitaliziranost. <strong>Brez mailov z veliko prilogami.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Why Power Pages -->
+        <section id="zakaj-power-pages">
+            <h2>Zakaj je Power Pages pomemben za vaše podjetje?</h2>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>🚀 Hitra implementacija brez programiranja</h4>
+                    <p>Portal lahko vzpostavite v nekaj dneh ali tednih, ne v več mesecih.</p>
+                    <p>Uporabljate vnaprej pripravljene predloge in komponente, kode ne pišete od začetka.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔒 Varnost in pravice vgrajene</h4>
+                    <p>Power Pages ima vgrajene mehanizme za upravljanje dostopa.</p>
+                    <p>Določite lahko, kdo vidi kaj, na nivoju posamezne vrstice v podatkih:</p>
+                    <ul>
+                        <li>Zunanje stranke ne morejo videti podatkov drugih strank</li>
+                        <li>Zaposleni vidijo več kot zunanji</li>
+                        <li>Vse je konfigurirano, ne programirano</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔗 Integracija z Microsoft 365 svetom</h4>
+                    <p>Portal ni osamljen. Povezan je z vašim Dataverse, kar pomeni:</p>
+                    <ul>
+                        <li>Prikazuje podatke iz Dynamics 365</li>
+                        <li>Zbira podatke, ki jih procesira Power Automate</li>
+                        <li>Deluje z Power Apps</li>
+                        <li>Vse v enem ekosistemu</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🎨 Profesionalen videz brez oblikovalca</h4>
+                    <p>Power Pages prihaja s profesionalnimi predlogami:</p>
+                    <ul>
+                        <li>Responzivne (delujejo na mobitelih in tablicah)</li>
+                        <li>Skladne z WCAG standardi dostopnosti</li>
+                        <li>Prilagodljive (barve, logotipi, CGP podjetja)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>👥 Manjša obremenitev IT ekipe</h4>
+                    <p>Ko je portal enkrat postavljen, ga lahko vsebinsko vzdržujejo poslovni uporabniki:</p>
+                    <ul>
+                        <li>Marketing</li>
+                        <li>Podpora</li>
+                        <li>HR</li>
+                    </ul>
+                    <p style="margin-top: 10px;">IT ekipa ni potrebna za vsako manjšo spremembo.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📊 Povezava s poslovnimi podatki</h4>
+                    <p>Portal je živ in dinamičen:</p>
+                    <ul>
+                        <li>Prikazuje aktualne podatke iz vaših sistemov</li>
+                        <li>Uporabniki vidijo vedno najnovejše informacije</li>
+                        <li>Brez ročnega posodabljanja vsebine</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Copilot in Power Pages -->
+        <section id="copilot-v-power-pages">
+            <h2>Copilot v Power Pages: pomočnik pri gradnji portalov</h2>
+
+            <div class="intro-box">
+                <h2>Umetna inteligenca pri ustvarjanju portalov</h2>
+                <p>Copilot v Power Pages vam pomaga pri ustvarjanju in upravljanju portalov.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Generiranje strani z opisom</h3>
+                
+                <p>Namesto da ročno vlečete komponente, lahko Copilotu opišete:</p>
+                
+                <div class="highlight-box">
+                    <p style="font-style: italic;">"Ustvari stran, kjer lahko uporabniki oddajo zahtevek za podporo z opisom težave, prioriteto in možnostjo nalaganja slike."</p>
+                </div>
+
+                <p>Copilot v nekaj sekundah sestavi formo z vsemi potrebnimi polji.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Priporočila za izboljšave</h3>
+                
+                <p>Ko gradite portal, lahko Copilot analizira vašo strukturo in predlaga:</p>
+                
+                <ul>
+                    <li>"Ta stran ima premalo informacij za uporabnika – predlagam dodajanje FAQ sekcije"</li>
+                    <li>"Priporočam dodajanje breadcrumb navigacije za lažjo orientacijo"</li>
+                    <li>"Predlagam dodajanje iskalne funkcije na to stran"</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Generiranje vsebine</h3>
+                
+                <p>Potrebujete besedilo za uvodno stran portala ali FAQ odgovore?</p>
+                
+                <p>Copilot lahko generira:</p>
+                <ul>
+                    <li>"Napiši uvodno besedilo za portal za stranke podjetja, ki prodaja industrijsko opremo"</li>
+                    <li>"Ustvari 10 najpogostejših vprašanj glede reklamacij in odgovorov"</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Pomoč pri oblikovanju</h3>
+                
+                <p>Ko želite prilagoditi barve in slog portala, lahko Copilot pomaga:</p>
+                
+                <ul>
+                    <li>"Predlagaj barvno shemo, ki ustreza našemu logotipu"</li>
+                    <li>"Kako naj razporedim te elemente za najboljšo uporabniško izkušnjo?"</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">5</span>
+                <h3>Optimizacija obrazcev</h3>
+                
+                <p>Copilot lahko analizira vaše obrazce in predlaga izboljšave:</p>
+                
+                <ul>
+                    <li>"Ta obrazec ima preveč obveznih polj, kar lahko odvrne uporabnike. Predlagam zmanjšanje na ključne informacije"</li>
+                    <li>"Dodaj navodila za to polje, ker uporabniki pogosto delajo napake"</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">6</span>
+                <h3>Reševanje težav</h3>
+                
+                <p>Ko naletite na težavo pri konfiguraciji, lahko Copilot pomaga:</p>
+                
+                <ul>
+                    <li>"Zakaj uporabniki ne vidijo te strani?"</li>
+                    <li>"Kako nastavim, da samo člani določene skupine dostopajo do teh podatkov?"</li>
+                </ul>
+
+                <p>Copilot analizira nastavitve in poda rešitev.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">7</span>
+                <h3>Analiza uporabe portala</h3>
+                
+                <p>Ko je portal živ, lahko Copilot analizira podatke o uporabi:</p>
+                
+                <ul>
+                    <li>"Katere strani uporabniki najdlje gledajo?"</li>
+                    <li>"Kje uporabniki najpogosteje zapustijo portal?"</li>
+                </ul>
+
+                <p>In predlaga optimizacije.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: How to Start -->
+        <section id="kako-zaceti">
+            <h2>Kako začeti s Power Pages?</h2>
+
+            <p>Začetek s Power Pages je strukturiran proces:</p>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Definirajte namen</h3>
+                <p>Kaj želite doseči s portalom? Kdo bodo uporabniki?</p>
+                <ul>
+                    <li>Portal za stranke?</li>
+                    <li>Portal za partnerje?</li>
+                    <li>Interni portal za zaposlene?</li>
+                    <li>Portal za dogodke?</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Izberite predlogo</h3>
+                <p>Power Pages ponuja predloge za različne scenarije:</p>
+                <ul>
+                    <li>Customer self-service portal</li>
+                    <li>Partner portal</li>
+                    <li>Employee portal</li>
+                    <li>Community portal</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Prilagodite vsebino</h3>
+                <p>Z vizualnim urejevalnikom dodajte:</p>
+                <ul>
+                    <li>Strani</li>
+                    <li>Forme</li>
+                    <li>Sezname</li>
+                    <li>Navigacijo</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Povežite podatke</h3>
+                <p>Določite, kateri podatki iz Dataverse se prikazujejo:</p>
+                <ul>
+                    <li>Kateri tabele so dostopne</li>
+                    <li>Katere stolpce lahko vidijo uporabniki</li>
+                    <li>Kako filtrirati podatke po uporabniku</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">5</span>
+                <h3>Nastavite varnost</h3>
+                <p>Določite, kdo lahko dostopa do česa:</p>
+                <ul>
+                    <li>Pravice dostopa (read, write, delete)</li>
+                    <li>Vloge uporabnikov</li>
+                    <li>Filtriranje podatkov po vrstici</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">6</span>
+                <h3>Oblikujte</h3>
+                <p>Prilagodite izgled portala:</p>
+                <ul>
+                    <li>Barve</li>
+                    <li>Logotip</li>
+                    <li>Navigacijo</li>
+                    <li>Teme</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">7</span>
+                <h3>Testirajte</h3>
+                <p>Pred objavo temeljito preverite vse scenarije:</p>
+                <ul>
+                    <li>Registracija uporabnikov</li>
+                    <li>Prijava</li>
+                    <li>Dostop do podatkov</li>
+                    <li>Oddaja obrazcev</li>
+                    <li>Mobilna uporaba</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">8</span>
+                <h3>Objavite</h3>
+                <p>Portal gre v produkcijo na vaši domeni.</p>
+            </div>
+        </section>
+
+        <!-- Section 6: What to Know -->
+        <section id="kaj-vedeti">
+            <h2>Kaj morate vedeti pred začetkom?</h2>
+
+            <div class="warning-box">
+                <h4>⚠️ Power Pages ni "plug and play" rešitev</h4>
+                <p>Zahteva nekaj načrtovanja in razumevanja:</p>
+            </div>
+
+            <div class="info-box">
+                <h4>1. Potrebujete Dataverse</h4>
+                <p>Power Pages deluje z Dataverse. Če želite prikazovati ali zbirati podatke, morajo biti v Dataverse ali povezani z njim. To zahteva nekaj začetne konfiguracije.</p>
+            </div>
+
+            <div class="info-box">
+                <h4>2. Licenciranje</h4>
+                <p>Osnovne zmožnosti so vključene v nekatere M365 plane, a za produkcijske portale z več uporabniki potrebujete Power Pages licence.</p>
+                <p style="margin-top: 10px;">Preverite licenčni model, ki je lahko kompleksen (licence po številu ogledov strani ali po uporabnikih).</p>
+            </div>
+
+            <div class="info-box">
+                <h4>3. Vzdrževanje</h4>
+                <p>Portal zahteva vzdrževanje:</p>
+                <ul>
+                    <li>Posodabljanje vsebine</li>
+                    <li>Spremljanje delovanja</li>
+                    <li>Upravljanje uporabnikov</li>
+                </ul>
+                <p style="margin-top: 10px;">Določite, kdo bo to počel.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>❌ Ne za vse scenarije</h4>
+                <p>Power Pages je odličen za portale z dostopom do podatkov. Ni pa pravi za:</p>
+                <ul>
+                    <li><strong>Klasične predstavitvene spletne strani</strong> – uporabite zunanje rešitve</li>
+                    <li><strong>E-trgovine s kompleksnimi katalogi</strong> – uporabite specializirane platforme</li>
+                    <li><strong>Portale z zelo specifičnimi zahtevami</strong> – morda potrebujete custom razvoj</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Stats Section Before CTA -->
+    <div style="background: #f8f9fa; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="text-align: center; color: #50afb0; margin-bottom: 50px;">Zakaj izbrati Skupino stroka.si za Power Pages?</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-label">Certificirani Power Platform partneri</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🚀</div>
+                    <div class="stat-label">Izkušnje z implementacijo portalov</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔧</div>
+                    <div class="stat-label">Celostna podpora od ideje do zagona</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-label">Usposabljanje in svetovanje</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljen ustvariti svoj portal brez programiranja?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Povežite se z nami za svetovanje o Power Pages in odkrijte, kako lahko portal transformira vašo interakcijo s strankami, partnerji ali zaposlenimi.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Naše storitve Power Pages</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">1️⃣ Svetovanje</h4>
+                        <p>Analiza potreb in izbira prave rešitve</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">2️⃣ Implementacija</h4>
+                        <p>Razvoj portala od ideje do zagona</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">3️⃣ Usposabljanje</h4>
+                        <p>Praktično usposabljanje za upravljanje portala</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">4️⃣ Podpora</h4>
+                        <p>Stalna pomoč in vzdrževanje</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Vaš partner za digitalno transformacijo in Power Platform rešitve.</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+</html>
