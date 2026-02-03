@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 skritih Microsoft 365 orodij | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .stats-box {
+            background: #fff8f0;
+            border-left: 5px solid #e74c3c;
+            padding: 30px 40px;
+            margin: 40px auto;
+            max-width: 900px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stats-box .big-number {
+            font-size: 4em;
+            color: #e74c3c;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stats-box p {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .tool-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 12px;
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .tool-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .tool-card h3 {
+            margin-top: 0;
+            color: #50afb0;
+            font-size: 1.8em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .highlight-box h4 {
+            color: white;
+        }
+
+        .highlight-box p {
+            color: white;
+        }
+
+        .highlight-box ul,
+        .highlight-box ol {
+            color: white;
+        }
+
+        .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .benefit-box {
+            background: linear-gradient(135deg, rgba(80, 175, 176, 0.1) 0%, rgba(61, 140, 141, 0.1) 100%);
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .benefit-box h4 {
+            color: #50afb0;
+            margin-top: 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .license-badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .license-badge.included {
+            background: #27ae60;
+        }
+
+        .license-badge.premium {
+            background: #e74c3c;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .tool-card {
+                padding: 25px;
+            }
+
+            .stats-box .big-number {
+                font-size: 3em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>7 skritih Microsoft 365 orodij</h1>
+        <p class="hero-subtitle">Odkrijte potencial, ki ga morda že imate, a ga ne izkoriščate</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Izkoristite celoten potencial vašega Microsoft 365 okolja</h2>
+            <p>Mnoga podjetja uporabljajo Microsoft 365 predvsem za elektronsko pošto, Teams okolje, Word in Excel, medtem ko ostaja široka paleta naprednih orodij neodkrita. Te funkcionalnosti lahko znatno izboljšajo produktivnost, varnost in sodelovanje, pogosto pa so vključene v licence, ki jih organizacije že imajo, ali pa so dosegljive z manjšimi nadgradnjami.</p>
+        </div>
+
+        <div class="stats-box">
+            <span class="big-number">&lt;40%</span>
+            <p><strong>Raziskave kažejo, da povprečno podjetje izkoristi manj kot 40 % funkcionalnosti Microsoft 365 okolja.</strong></p>
+            <p style="margin-top: 15px;">To pomeni ogromno izgubljenih priložnosti za povečanje učinkovitosti in nepotrebne investicije v dodatna orodja tretjih ponudnikov, ki bi jih lahko nadomestile obstoječe rešitve.</p>
+        </div>
+
+        <!-- Tool 1: Microsoft Defender -->
+        <section id="tool-1">
+            <div class="tool-card">
+                <span class="tool-number">1</span>
+                <h3>Microsoft Defender for Endpoint <span class="license-badge premium">M365 Business Premium</span></h3>
+                <p class="icon">🛡️</p>
+                
+                <p><strong>Celovita varnost na dosegu roke</strong></p>
+                
+                <p>Varnostne grožnje eksponentno rastejo, stroški za kibernetsko zaščito pa se povečujejo sorazmerno s kompleksnostjo IT-okolja. Microsoft Defender for Endpoint predstavlja napredni varnostni sistem, ki je na voljo v okviru Microsoft 365 Business Premium okolja in lahko nadomesti ali dopolni obstoječe varnostne rešitve.</p>
+
+                <div class="highlight-box">
+                    <h4>Ključne funkcionalnosti</h4>
+                    <ul>
+                        <li>Neprekinjeno spremljanje vseh končnih naprav v organizaciji</li>
+                        <li>Proaktivno odkrivanje groženj z umetno inteligenco</li>
+                        <li>Avtomatizirano odzivanje na varnostne incidente</li>
+                        <li>Prepoznavanje anomalij v obnašanju naprav in uporabnikov</li>
+                        <li>Zaščita elektronske pošte pred phishing napadi</li>
+                        <li>Izolacija okuženih naprav iz omrežja</li>
+                        <li>Podrobno beleženje varnostnih dogodkov za analizo</li>
+                        <li>Centralizirana nadzorna plošča za celotno organizacijo</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-box">
+                    <h4>💰 Merljive koristi</h4>
+                    <p><strong>Konsolidacija varnostnih rešitev</strong> lahko predstavlja letni prihranek v višini več tisoč evrov za srednja podjetja. Še pomembneje, integrirana narava rešitve zagotavlja boljšo kompatibilnost in lažje vzdrževanje kot kombinacija raznoraznih varnostnih orodij.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>Za vodstvo posebej pomembno</h4>
+                    <p>Centralizirana nadzorna plošča zagotavlja pregleden vpogled v varnostno stanje celotne organizacije, kar omogoča takojšnje ukrepanje še pred nastankom škode.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 2: SharePoint & OneDrive -->
+        <section id="tool-2">
+            <div class="tool-card">
+                <span class="tool-number">2</span>
+                <h3>SharePoint in OneDrive <span class="license-badge included">Vključeno</span></h3>
+                <p class="icon">📁</p>
+                
+                <p><strong>Sodobno in varno sodelovanje</strong></p>
+                
+                <p>Elektronska pošta z ogromnimi priponkami, različice dokumentov v lokalnih mapah in izgubljene datoteke predstavljajo vsakodnevno realnost mnogih organizacij. SharePoint v kombinaciji z OneDrive rešuje te izzive z enotno platformo za upravljanje vsebin, ki omogoča sočasno urejanje dokumentov, avtomatično sinhronizacijo in natančno upravljanje dovoljenj.</p>
+
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h4>📂 SharePoint zmogljivosti</h4>
+                        <ul>
+                            <li>Projektna spletna mesta za timsko delo</li>
+                            <li>Centralizacija dokumentov in komunikacije</li>
+                            <li>Avtomatsko shranjevanje zgodovine sprememb</li>
+                            <li>Možnost povrnitve na prejšnje različice</li>
+                            <li>Natančno upravljanje dovoljenj</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>☁️ OneDrive prednosti</h4>
+                        <ul>
+                            <li>Dostop do dokumentov z različnih naprav</li>
+                            <li>Avtomatična sinhronizacija datotek</li>
+                            <li>Delo brez povezave (offline)</li>
+                            <li>Varno zunanje deljenje datotek</li>
+                            <li>Sodelovanje s partnerji in strankami</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="benefit-box">
+                    <h4>📊 Merljive koristi</h4>
+                    <ul>
+                        <li><strong>30 % zmanjšanje časa</strong> potrebnega za iskanje dokumentov</li>
+                        <li><strong>Praktična odprava</strong> problemov z različicami datotek</li>
+                        <li><strong>25 % zmanjšanje časa</strong> potrebnega za pripravo kolaborativnih dokumentov</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>🔒 Varnostni vidik</h4>
+                    <p>Administratorji lahko natančno določijo, kdo ima dostop do posameznih dokumentov ali map, sistem pa beleži vse aktivnosti za potrebe revizije. Funkcionalnost zunanjega deljenja omogoča varno sodelovanje s partnerji brez kompromisov pri varnosti.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 3: Microsoft Copilot -->
+        <section id="tool-3">
+            <div class="tool-card">
+                <span class="tool-number">3</span>
+                <h3>Microsoft Copilot <span class="license-badge premium">Dodatna licenca ~30€/mesec</span></h3>
+                <p class="icon">🤖</p>
+                
+                <p><strong>Umetna inteligenca kot poslovni pomočnik</strong></p>
+                
+                <p>Copilot predstavlja naslednji korak v evoluciji pisarniškega pomočnika - umetno inteligenco, vgrajeno neposredno v aplikacije Word, Excel, Teams, SharePoint, PowerPoint in Outlook. To orodje zahteva posebno licenco v višini približno 30 evrov na uporabnika mesečno, vendar lahko investicija prinese ogromne prihranke pri času in stroških.</p>
+
+                <div class="highlight-box">
+                    <h4>Zmogljivosti po aplikacijah</h4>
+                    <div class="grid-2">
+                        <div>
+                            <h4 style="color: white;">📝 Word</h4>
+                            <ul style="color: white;">
+                                <li style="color: white;">Avtomatsko tvorjenje besedil</li>
+                                <li style="color: white;">Povzemanje dolgih dokumentov</li>
+                                <li style="color: white;">Preoblikovanje vsebine</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: white;">📊 Excel</h4>
+                            <ul style="color: white;">
+                                <li style="color: white;">Analiza podatkov</li>
+                                <li style="color: white;">Ustvarjanje formul</li>
+                                <li style="color: white;">Vizualizacija trendov</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: white;">📧 Outlook</h4>
+                            <ul style="color: white;">
+                                <li style="color: white;">Sestavljanje odgovorov</li>
+                                <li style="color: white;">Predlaganje terminov</li>
+                                <li style="color: white;">Povzemanje e-poštnih verig</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: white;">📽️ PowerPoint</h4>
+                            <ul style="color: white;">
+                                <li style="color: white;">Priprava predstavitev</li>
+                                <li style="color: white;">Oblikovanje slik</li>
+                                <li style="color: white;">Ustvarjanje na podlagi ključnih besed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>⚠️ Pomembno za implementacijo</h4>
+                    <p>Copilot ni čarobna rešitev, temveč orodje, ki zahteva razumevanje svojih zmogljivosti in omejitev. Pomembna je ustrezna implementacija in usposabljanje zaposlenih. Investicija v licenco se izplača predvsem pri zaposlenih, ki redno delajo z velikimi količinami besedil ali podatkov.</p>
+                </div>
+
+                <div class="benefit-box">
+                    <h4>💡 Kdaj se investicija najbolj izplača?</h4>
+                    <ul>
+                        <li>Pri zaposlenih, ki pripravljajo veliko besedil (poročila, dokumentacija)</li>
+                        <li>Pri analizi velikih količin podatkov v Excel</li>
+                        <li>Pri pripravi pogostih PowerPoint predstavitev</li>
+                        <li>Pri vodjih s polnim e-poštnim nabiralnikom</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 4: Microsoft Intune -->
+        <section id="tool-4">
+            <div class="tool-card">
+                <span class="tool-number">4</span>
+                <h3>Microsoft Intune <span class="license-badge premium">M365 Business Premium</span></h3>
+                <p class="icon">📱</p>
+                
+                <p><strong>Upravljanje mobilnih naprav na daljavo</strong></p>
+                
+                <p>Rast števila službenih mobilnih naprav in tablic predstavlja izziv za IT-oddelke, ki morajo zagotavljati varnost in standardizacijo naprav. Microsoft Intune omogoča centralizirano upravljanje vseh mobilnih naprav v organizaciji, ne glede na platformo - Android, iOS ali Windows.</p>
+
+                <div class="highlight-box">
+                    <h4>Ključne zmogljivosti</h4>
+                    <ul>
+                        <li>Avtomatska namestitev potrebnih aplikacij na nove naprave</li>
+                        <li>Uveljavljanje varnostnih pravil na vseh napravah</li>
+                        <li>Oddaljeno brisanje podatkov v primeru izgube ali kraje</li>
+                        <li>Določanje dovoljenih in prepovedanih aplikacij</li>
+                        <li>Blokiranje dostopa do nevarnih spletnih strani</li>
+                        <li>Zahtevanje PIN kod ali biometrične identifikacije</li>
+                        <li>Ločevanje službenih in zasebnih podatkov (BYOD)</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-box">
+                    <h4>👔 Za vodstvo posebej pomembno</h4>
+                    <p>Možnost ločevanja službenih in zasebnih podatkov na isti napravi (BYOD - Bring Your Own Device). Zaposleni lahko normalno uporabljajo svojo napravo za osebne potrebe, medtem ko so službeni podatki zaščiteni in ločeni.</p>
+                </div>
+
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h4>⏱️ Prihranek časa</h4>
+                        <p>Zmanjšanje časa za pripravo novih naprav z več ur na le nekaj minut. Avtomatizacija namestitve aplikacij in nastavitev.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>🔐 Povečanje varnosti</h4>
+                        <p>Centralno upravljanje varnostnih politik na vseh napravah. Hitro odzivanje v primeru izgube naprave.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 5: Microsoft Loop & Planner -->
+        <section id="tool-5">
+            <div class="tool-card">
+                <span class="tool-number">5</span>
+                <h3>Microsoft Loop in Planner <span class="license-badge premium">M365 Business Premium</span></h3>
+                <p class="icon">🔄</p>
+                
+                <p><strong>Enostavno projektno sodelovanje</strong></p>
+                
+                <p>Loop predstavlja sodoben pristop k projektnemu sodelovanju, ki združuje funkcionalnosti upravljanja nalog, dokumentiranja in komunikacije v enotni platformi. Orodje je dostopno v okviru Microsoft Business Premium licenc, za organizacije z osnovnimi licencami pa predstavlja nadgradnjo, ki lahko preoblikuje način projektnega dela.</p>
+
+                <div class="highlight-box">
+                    <h4>Kaj omogoča Microsoft Loop?</h4>
+                    <ul>
+                        <li>Ustvarjanje dinamičnih delovnih prostorov za projekte</li>
+                        <li>Kombiniranje različnih tipov vsebin (besedila, tabele, seznami nalog)</li>
+                        <li>Sinhronizacija sprememb v realnem času</li>
+                        <li>Prispevanje k vsebini ne glede na lokacijo</li>
+                        <li>Vgradnja elementov iz drugih Microsoft aplikacij</li>
+                        <li>Predloge za projektne dokumente, zapisnike sestankov in analize</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>🔗 Integracija z Microsoft Planner</h4>
+                    <p>Posebej zmogljiva je integracija z Microsoft Planner, ki omogoča naprednejše upravljanje projektnih nalog:</p>
+                    <ul>
+                        <li>Znotraj Loop se lahko osebam določi naloge z datumi izvedbe</li>
+                        <li>Sistem avtomatično obvesti udeležence preko Outlook-a</li>
+                        <li>Vse naloge se samodejno dodajo tudi v Planner v Teams okolju vsakega posameznika</li>
+                        <li>Vsak član tima ima centraliziran pregled nad svojimi nalogami</li>
+                        <li>Podatki ostanejo centralizirani in vedno aktualni</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-box">
+                    <h4>📋 Konsistentnost v organizaciji</h4>
+                    <p>Posebej koristna je funkcija predlog za projektne dokumente, ki vključuje strukture za načrte projektov, zapisnike sestankov in analize napredka. Te predloge poskrbijo za konsistentnost pristopa k projektom v celotni organizaciji.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 6: Microsoft Visio -->
+        <section id="tool-6">
+            <div class="tool-card">
+                <span class="tool-number">6</span>
+                <h3>Microsoft Visio <span class="license-badge premium">Osnovna: M365 Premium | Napredna: Dodatna licenca</span></h3>
+                <p class="icon">📐</p>
+                
+                <p><strong>Vizualizacija procesov in podatkov</strong></p>
+                
+                <p>Vizualna predstavitev procesov, organizacijskih shem in podatkovnih tokov je ključna za razumevanje kompleksnih poslovnih struktur. Microsoft Visio omogoča enostavno ustvarjanje profesionalnih diagramov, pri čemer je osnovna spletna različica dosegljiva pri Microsoft Business Premium licenci, namizna aplikacija pa zahteva dodatno naložbo.</p>
+
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h4>📊 Vrste diagramov</h4>
+                        <ul>
+                            <li>Organizacijske sheme</li>
+                            <li>Procesni diagrami</li>
+                            <li>Vizualizacija IT infrastrukture</li>
+                            <li>Poslovni procesi</li>
+                            <li>Projektne časovnice</li>
+                            <li>Podatkovni tokovi</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>🔄 Integracija</h4>
+                        <ul>
+                            <li>Avtomatsko posodabljanje iz Excel tabel</li>
+                            <li>Sinhronizacija s SharePoint seznami</li>
+                            <li>Vedno aktualne vizualne predstavitve</li>
+                            <li>Brez ročnega posodabljanja</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="benefit-box">
+                    <h4>👔 Vrednost za vodstvo</h4>
+                    <p>Za vodstvo je Visio posebej koristen pri:</p>
+                    <ul>
+                        <li>Predstavljanju strategij in vizij</li>
+                        <li>Analiziranju ozkih grl v procesih</li>
+                        <li>Komunikaciji sprememb v organizaciji</li>
+                        <li>Poenostavitvi kompleksnih tem</li>
+                        <li>Pospeševanju sprejemanja odločitev</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>💡 Ključna prednost</h4>
+                    <p>Vizualna narava komunikacije pogosto izboljša razumevanje kompleksnih tem in pospeši sprejemanje odločitev. Diagram pove več kot tisoč besed.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tool 7: Microsoft Viva Insights -->
+        <section id="tool-7">
+            <div class="tool-card">
+                <span class="tool-number">7</span>
+                <h3>Microsoft Viva Insights <span class="license-badge premium">Osnovno: Vključeno | Napredne funkcije: Premium</span></h3>
+                <p class="icon">📈</p>
+                
+                <p><strong>Podatki za pametnejše vodenje</strong></p>
+                
+                <p>Odločitve, ki temeljijo na podatkih, so temelj uspešnega vodenja sodobnih organizacij. Microsoft Viva Insights vodjem zagotavlja vpogled v produktivnost, vzorce sodelovanja in časovno porabo zaposlenih, kar omogoča sprejemanje utemeljenih strateških odločitev.</p>
+
+                <div class="highlight-box">
+                    <h4>Kaj sistem analizira?</h4>
+                    <ul>
+                        <li>Vzorce komunikacije med zaposlenimi in oddelki</li>
+                        <li>Čas, porabljen za sestanke in njihovo učinkovitost</li>
+                        <li>Prekinitve in njihov vpliv na produktivnost</li>
+                        <li>Kakovost časa za osredotočeno delo</li>
+                        <li>Ure dela zunaj običajnega delovnega časa</li>
+                        <li>Sodelovanje med različnimi timami</li>
+                        <li>Trende v obnašanju in produktivnosti</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>🔒 Varovanje zasebnosti</h4>
+                    <p>Funkcionalnosti za vodje omogočajo vpogled v produktivnost njihovih timov <strong>brez kršenja zasebnosti posameznikov</strong>. Podatki so predstavljeni v povzeti obliki, ki kaže trende in vzorce, ne pa podrobnosti o posameznikih.</p>
+                </div>
+
+                <div class="benefit-box">
+                    <h4>🎯 Praktične uporabe</h4>
+                    
+                    <div class="grid-2">
+                        <div>
+                            <h4 style="color: #50afb0;">Prepoznavanje problemov</h4>
+                            <p>Če podatki kažejo na povečanje števila ur dela zunaj običajnega delovnega časa, lahko vodja pravočasno ukrepa za preprečitev izgorelosti zaposlenih.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #50afb0;">Optimizacija procesov</h4>
+                            <p>Če zaposleni preveč časa porabijo za pisanje e-pošte, je morda smiselno razmisliti o avtomatizaciji ali uvedbi Copilot licenc.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #50afb0;">Učinkovitost sestankov</h4>
+                            <p>Analiza časa v sestankih razkrije, ali so sestanki učinkoviti ali je potrebna optimizacija sestankovne kulture.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #50afb0;">Sodelovanje</h4>
+                            <p>Odkrivanje ozkih grl v komunikaciji med oddelki in izboljšanje sodelovanja.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Section -->
+        <section id="implementation">
+            <h2>Pot do optimalnega izkoristka Microsoft 365 okolja</h2>
+            
+            <p>Izziv ni v pomanjkanju zmogljivosti, temveč v njihovi pravilni implementaciji in sprejetju med zaposlenimi. Uspešna uvedba zahteva sistematičen pristop, ki vključuje oceno trenutnega stanja, načrtovanje implementacije in kontinuirano usposabljanje uporabnikov.</p>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>1️⃣ Ocena trenutnega stanja</h4>
+                    <ul>
+                        <li>Katera orodja že uporabljate?</li>
+                        <li>Katere licence že imate?</li>
+                        <li>Kje so največje težave?</li>
+                        <li>Kaj zaposleni potrebujejo?</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>2️⃣ Načrtovanje implementacije</h4>
+                    <ul>
+                        <li>Določitev prioritet</li>
+                        <li>Izbira ustreznih licenc</li>
+                        <li>Časovni načrt uvajanja</li>
+                        <li>Določitev odgovornih oseb</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>3️⃣ Konfiguracija in prilagoditev</h4>
+                    <ul>
+                        <li>Pravilne nastavitve varnosti</li>
+                        <li>Prilagoditev organizaciji</li>
+                        <li>Testiranje funkcionalnosti</li>
+                        <li>Priprava dokumentacije</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>4️⃣ Usposabljanje uporabnikov</h4>
+                    <ul>
+                        <li>Predstavitev novih orodij</li>
+                        <li>Praktične delavnice</li>
+                        <li>Priprava navodil</li>
+                        <li>Kontinuirana podpora</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 40px;">
+                <h3>📊 Investicija, ki se izplača</h3>
+                <p>Organizacije, ki uspešno implementirajo širšo paleto Microsoft 365 orodij, poročajo o <strong>20-30 % povečanju učinkovitosti</strong> pri vsakodnevnih nalogah.</p>
+                <p style="margin-top: 15px;">Rezultat je organizacija, ki ni le tehnološko napredna, temveč tudi agilna, varna in pripravljena na izzive prihodnosti. V svetu, kjer je digitalna transformacija ključ do konkurenčnosti, optimalna uporaba Microsoft 365 okolja predstavlja pomembno konkurenčno prednost.</p>
+            </div>
+        </section>
+
+        <!-- Licensing Overview -->
+        <section id="licensing">
+            <h2>Pregled licenciranja</h2>
+            
+            <div class="info-box">
+                <h4>Pomembna informacija</h4>
+                <p>Različna orodja zahtevajo različne ravni licenciranja. Medtem ko so nekatera orodja kot SharePoint in OneDrive široko dostopna, druga kot Copilot in napredne funkcionalnosti Viva Insights zahtevajo specifične licence ali nadgradnje.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="feature-card" style="border-top-color: #27ae60; background: #f0fff4;">
+                    <h4 style="color: #27ae60;">✓ Vključeno v osnovne pakete</h4>
+                    <ul>
+                        <li>SharePoint</li>
+                        <li>OneDrive</li>
+                        <li>Osnovne funkcije Viva Insights</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" style="border-top-color: #e74c3c; background: #fff8f0;">
+                    <h4 style="color: #e74c3c;">Microsoft 365 Business Premium</h4>
+                    <ul>
+                        <li>Microsoft Defender for Endpoint</li>
+                        <li>Microsoft Intune</li>
+                        <li>Microsoft Loop in Planner</li>
+                        <li>Visio spletna različica</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" style="border-top-color: #e67e22; background: #fff8f0;">
+                    <h4 style="color: #e67e22;">Dodatne licence</h4>
+                    <ul>
+                        <li>Microsoft Copilot (~30€/uporabnik/mesec)</li>
+                        <li>Visio namizna aplikacija</li>
+                        <li>Napredne funkcije Viva Insights</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" style="border-top-color: #50afb0;">
+                    <h4>💡 Priporočilo</h4>
+                    <p>Pred odločitvijo o nadgradnji licenc priporočamo analizo potreb in izračun povračila investicije (ROI). Naša ekipa vam lahko pomaga pri optimalni izbiri.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljeni optimizirati vaše Microsoft 365 okolje?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Pomagamo vam identificirati priložnosti, načrtovati implementacijo in usposobiti zaposlene za učinkovito uporabo vseh razpoložljivih orodij.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Naše storitve</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">📋 Analiza trenutnega stanja</h4>
+                        <p>Ocenimo vaše trenutno uporabo Microsoft 365 in identificiramo priložnosti</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🎯 Načrt optimizacije</h4>
+                        <p>Pripravimo prilagojeno strategijo za maksimalno izkoriščanje potenciala</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">⚙️ Implementacija in konfiguracija</h4>
+                        <p>Pravilno nastavimo in prilagodimo orodja vašim potrebam</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🎓 Usposabljanje uporabnikov</h4>
+                        <p>Usposobimo vašo ekipo za učinkovito uporabo novih orodij</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Z več kot 30-letnimi izkušnjami vam pomagamo do maksimalnega izkoristka Microsoft 365 okolja.</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+</html>
