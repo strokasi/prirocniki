@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copilot agenti – od asistenta do avtonomnih procesov | Skupina stroka.si</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  line-height:1.6;
+  color:#000;
+  background:#fff;
+}
+.hero{
+  background:linear-gradient(135deg,#50afb0 0%,#3d8c8d 100%);
+  color:#fff;
+  padding:80px 20px;
+  text-align:center;
+}
+.hero-logo{
+  max-width:250px;
+  margin-bottom:40px;
+}
+.hero h1{font-size:2.5em;margin-bottom:20px}
+.hero-subtitle{font-size:1.3em;max-width:900px;margin:0 auto}
+
+.container{max-width:1200px;margin:0 auto;padding:20px}
+
+.intro-box{
+  background:#f8f9fa;
+  border-left:5px solid #50afb0;
+  padding:30px 40px;
+  margin:60px auto;
+  max-width:900px;
+  border-radius:8px;
+}
+
+section{margin:80px 0}
+h2{
+  color:#50afb0;
+  font-size:2.2em;
+  margin-bottom:30px;
+  border-bottom:3px solid #50afb0;
+  padding-bottom:15px;
+}
+h3{font-size:1.6em;margin:30px 0 15px}
+h4{color:#50afb0;margin:20px 0 10px}
+p{margin-bottom:15px}
+
+.tool-card{
+  background:#fff;
+  border:2px solid #50afb0;
+  border-radius:12px;
+  padding:40px;
+  margin:40px 0;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+.highlight-box{
+  background:#50afb0;
+  color:#fff;
+  padding:30px;
+  border-radius:8px;
+  margin:30px 0;
+}
+
+.info-box{
+  background:#f8f9fa;
+  border-left:5px solid #50afb0;
+  padding:25px;
+  margin:25px 0;
+  border-radius:5px;
+}
+
+.warning-box{
+  background:#fff8f0;
+  border-left:5px solid #e74c3c;
+  padding:25px;
+  margin:25px 0;
+  border-radius:5px;
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+  margin:30px 0;
+}
+
+.feature-card{
+  background:#f8f9fa;
+  padding:25px;
+  border-radius:8px;
+  border-top:4px solid #50afb0;
+}
+
+.checklist{
+  list-style:none;
+}
+.checklist li{
+  padding-left:35px;
+  position:relative;
+  margin-bottom:12px;
+}
+.checklist li:before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  color:#50afb0;
+  font-weight:700;
+  font-size:1.3em;
+}
+
+.cta-section{
+  background:linear-gradient(135deg,#50afb0 0%,#3d8c8d 100%);
+  color:#fff;
+  padding:80px 20px;
+  text-align:center;
+}
+
+.btn{
+  padding:15px 40px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  display:inline-block;
+  margin:10px;
+}
+.btn-primary{background:#fff;color:#50afb0}
+.btn-secondary{border:2px solid #fff;color:#fff}
+
+.footer{
+  background:#000;
+  color:#ccc;
+  text-align:center;
+  padding:60px 20px 30px;
+}
+.footer-logo{max-width:200px;margin-bottom:30px}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <a href="https://www.stroka.si" target="_blank">
+    <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png" class="hero-logo">
+  </a>
+  <h1>Copilot agenti</h1>
+  <p class="hero-subtitle">
+    Od osebnega asistenta do avtonomnih AI procesov
+  </p>
+</div>
+
+<div class="container">
+
+<div class="intro-box">
+<h2>Zakaj Copilot agenti niso več prihodnost, ampak realnost</h2>
+<p>
+Umetna inteligenca v poslovnem okolju je prešla iz faze osebne pomoči v fazo
+<strong>samostojnega izvajanja procesov</strong>.
+Microsoft Copilot Studio agenti niso zgolj nadgradnja Copilota,
+temveč povsem nova kategorija digitalnih sodelavcev.
+</p>
+<p>
+Po napovedih Gartnerja bodo do leta 2028 AI agenti sodelovali pri
+<strong>15 % vsakodnevnih poslovnih odločitev</strong>.
+</p>
+</div>
+
+<section>
+<h2>Copilot ≠ Copilot agent</h2>
+
+<div class="grid-2">
+<div class="feature-card">
+<h4>Microsoft Copilot</h4>
+<ul>
+<li>Podpira posameznika</li>
+<li>Generira besedila in povzetke</li>
+<li>Povečuje osebno produktivnost</li>
+<li>Reagira na zahtevo uporabnika</li>
+</ul>
+</div>
+
+<div class="feature-card">
+<h4>Copilot agenti</h4>
+<ul>
+<li>Pokrijejo celoten proces</li>
+<li>Izvajajo naloge samostojno</li>
+<li>Delujejo med sistemi</li>
+<li>Sprožajo se ob dogodkih</li>
+</ul>
+</div>
+</div>
+
+<div class="highlight-box">
+<p>
+<strong>Vsak zaposleni ima Copilota. Vsak proces ima lahko agenta.</strong>
+</p>
+</div>
+</section>
+
+<section>
+<h2>Stopnje Copilot agentov</h2>
+
+<div class="tool-card">
+<h3>1️⃣ Agenti za informacije</h3>
+<p>
+Vračajo preverjene odgovore iz zaupanja vrednih virov
+(SharePoint, interne politike, dokumentacija).
+</p>
+</div>
+
+<div class="tool-card">
+<h3>2️⃣ Agenti za izvajanje nalog</h3>
+<p>
+Izpolnjujejo obrazce, odpirajo tikete, usmerjajo odobritve,
+posodabljajo poslovne sisteme.
+</p>
+</div>
+
+<div class="tool-card">
+<h3>3️⃣ Avtonomni agenti</h3>
+<p>
+Delujejo brez neposredne zahteve uporabnika.
+Dogodki sprožijo zaporedje dejanj preko Teams, Dynamics, SAP ali drugih sistemov.
+</p>
+</div>
+</section>
+
+<section>
+<h2>Praktični primeri uporabe</h2>
+
+<div class="grid-2">
+<div class="feature-card">
+<h4>👥 HR</h4>
+<p>Odgovori na vprašanja o dopustih, pravilnikih, povračilih stroškov.</p>
+</div>
+
+<div class="feature-card">
+<h4>💼 Prodaja</h4>
+<p>Iskanje ponudb, referenc in prezentacij glede na kontekst povpraševanja.</p>
+</div>
+
+<div class="feature-card">
+<h4>🛠️ IT podpora</h4>
+<p>Samodejno odpiranje, kategorizacija in reševanje tiketov.</p>
+</div>
+
+<div class="feature-card">
+<h4>📦 Nabava</h4>
+<p>Avtomatske odobritve in spremljanje nabavnih zahtevkov.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Kdo lahko gradi agente?</h2>
+
+<ul class="checklist">
+<li>Poslovni uporabniki – agenti znanja</li>
+<li>Power Platform uporabniki – agenti nalog</li>
+<li>IT in razvijalci – avtonomni agenti</li>
+<li>Partnerji – upravljani agenti</li>
+</ul>
+</section>
+
+<section>
+<h2>Razvojni modeli</h2>
+
+<div class="grid-2">
+<div class="feature-card">
+<h4>Low-code / Declarative</h4>
+<p>Hitro uvajanje, minimalna konfiguracija.</p>
+</div>
+
+<div class="feature-card">
+<h4>Copilot Studio</h4>
+<p>Nadzor, integracije, varnost, lifecycle management.</p>
+</div>
+
+<div class="feature-card">
+<h4>Pro-code (Azure)</h4>
+<p>Popolna prilagoditev, skalabilnost, napredno opazovanje.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Kaj to pomeni za slovenska podjetja</h2>
+
+<div class="info-box">
+<ul>
+<li>Brez migracije podatkov</li>
+<li>Slovenščina kot primarni jezik</li>
+<li>Vgrajena varnost in GDPR skladnost</li>
+<li>Uporaba obstoječega Microsoft 365 okolja</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h2>Ključna vprašanja pred uvedbo</h2>
+
+<div class="warning-box">
+<ul class="checklist">
+<li>Katere procese želimo avtomatizirati?</li>
+<li>Kdo je lastnik podatkov?</li>
+<li>Kakšna so tveganja in omejitve?</li>
+<li>Kdo upravlja agente?</li>
+</ul>
+</div>
+</section>
+
+</div>
+
+<div class="cta-section">
+<h2>Ste pripravljeni na agentsko prihodnost?</h2>
+<p>Pomagamo vam od prvega agenta do strateške avtomatizacije.</p>
+<a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+<a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+</div>
+
+<div class="footer">
+<img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png" class="footer-logo">
+<p>Skupina stroka.si, Stroka produkt d.o.o.</p>
+<p>ccc@stroka.si | www.stroka.si</p>
+<p style="font-size:0.85em;">© 2026 Stroka produkt d.o.o.</p>
+</div>
+
+</body>
+</html>
