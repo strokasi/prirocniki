@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priročnik za prepoznavanje pristnih AI rešitev | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .highlight-box h4 {
+            color: white;
+        }
+
+        .highlight-box p {
+            color: white;
+        }
+
+        .highlight-box ul,
+        .highlight-box ol {
+            color: white;
+        }
+
+        .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff8f0;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h3,
+        .warning-box h4 {
+            color: #e74c3c;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .red-flag-card {
+            padding: 30px;
+            background: #fff8f0;
+            border-radius: 8px;
+            border-top: 4px solid #e74c3c;
+            transition: transform 0.3s ease;
+        }
+
+        .red-flag-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .red-flag-card h4 {
+            color: #e74c3c;
+            margin-top: 0;
+        }
+
+        .checklist-box {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .checklist-box h4 {
+            margin-top: 0;
+            color: #50afb0;
+        }
+
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding-left: 40px;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #50afb0;
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, rgba(80, 175, 176, 0.1) 0%, rgba(61, 140, 141, 0.1) 100%);
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .example-box h4 {
+            color: #50afb0;
+            margin-top: 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: #50afb0;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .fake-ai {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .real-ai {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>Kako prepoznati pristno AI rešitev</h1>
+        <p class="hero-subtitle">Praktični vodič za razlikovanje med resničnimi AI inovacijami in zavajajočim trženjem</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Največja grožnja umetni inteligenci</h2>
+            <p>V zadnjih letih je umetna inteligenca v središču tehnološkega dogajanja. Podjetja ponosno razkazujejo svoje rešitve, ki jih poganja AI, obljubljajo učinkovitost brez meja, avtomatizacijo in predikcijo. Vendar se z vse večjim navdušenjem povečuje tudi razširjenost zavajajočih trditev in obljub. Številne "AI rešitve" v resnici niso nič drugega kot površne integracije splošnih orodij, kot je ChatGPT. Ta trend ne le spodkopava zaupanje v umetno inteligenco, temveč prikriva tudi potencial resničnih, inovativnih sistemov.</p>
+        </div>
+
+        <!-- Section 1: AI Washing -->
+        <section id="ai-washing">
+            <h2>1. Fenomen "AI pranja" (AI Washing)</h2>
+            
+            <div class="warning-box">
+                <h3>Kaj je AI pranje?</h3>
+                <p>Izraz "AI pranje" se nanaša na podjetja, ki svoje izdelke označujejo kot izdelke, ki temeljijo na umetni inteligenci, ne da bi ponujala prave funkcije umetne inteligence. Te rešitve so pogosto preprosti ovoji osnovnih API klepetalnikov ali drugih osnovnih orodij, brez prefinjene infrastrukture in globlje interakcije, potrebne za smiselno poslovno preobrazbo.</p>
+            </div>
+
+            <h3>Posledice AI pranja</h3>
+            
+            <div class="grid-2">
+                <div class="red-flag-card">
+                    <h4>📉 Razočarane stranke</h4>
+                    <p>Površinska izvedba ne prinaša obljubljene vrednosti, kar vodi do izgube zaupanja in nezadovoljstva uporabnikov.</p>
+                </div>
+
+                <div class="red-flag-card">
+                    <h4>🚫 Naraščajoča skepsa</h4>
+                    <p>Vse večja skeptičnost do rešitev, ki jih poganja umetna inteligenca, zlasti v Sloveniji, kjer so podjetja previdna pri vlaganju.</p>
+                </div>
+
+                <div class="red-flag-card">
+                    <h4>⚠️ Ovira za inovacije</h4>
+                    <p>Nezaupanje predstavlja pomembno oviro za sprejetje resničnih AI inovacij, ki lahko dejansko preobrazijo poslovanje.</p>
+                </div>
+
+                <div class="red-flag-card">
+                    <h4>💰 Izguba investicij</h4>
+                    <p>Podjetja vlagajo v sisteme, ki ne prinašajo oprijemljivih koristi, kar škoduje proračunu in zaupanju.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Warning Signs -->
+        <section id="warning-signs">
+            <h2>2. Opozorilni znaki lažnih AI rešitev</h2>
+            
+            <p>Vodje podjetij morajo biti pri ocenjevanju AI rešitev še posebej pozorni. Spoznajte ključne opozorilne znake, ki razkrivajo dvomljive trditve o umetni inteligenci:</p>
+
+            <div class="grid-2">
+                <div class="red-flag-card">
+                    <h4>🔴 Odzivi na podlagi predlog</h4>
+                    <p>Rešitve, ki ponujajo splošne rezultate brez poglobljenega razumevanja konteksta ali strokovnega prilagajanja. Če sistem ne razume specifičnega konteksta vaše panoge, gre verjetno za enostavno integracijo ChatGPT-ja.</p>
+                </div>
+
+                <div class="red-flag-card">
+                    <h4>🔴 Minimalna kompleksnost podatkov</h4>
+                    <p>Kompleksna orodja, ki uporabljajo umetno inteligenco, so uspešna pri obdelavi zbirk podatkov iz več virov. Rešitve, ki teh podatkov ne izkoriščajo, so verjetno preveč poenostavljene.</p>
+                </div>
+
+                <div class="red-flag-card">
+                    <h4>🔴 Pomanjkanje preglednih metrik</h4>
+                    <p>Ponudniki, ki ne morejo posredovati podatkov o stopnji napak, odstotkih natančnosti ali krivulji učenja, bi morali vzbuditi zaskrbljenost. Prava AI ima merljive kazalnike uspešnosti.</p>
+                </div>
+
+                <div class="red-flag-card">
+                    <h4>🔴 Pomanjkanje specializiranih strokovnjakov</h4>
+                    <p>Pravi razvoj AI orodij zahteva podatkovne znanstvenike, inženirje strojnega učenja in arhitekte umetne inteligence. Podjetja, ki nimajo teh strokovnjakov, pogosto ne morejo podpreti svojih trditev.</p>
+                </div>
+
+                <div class="red-flag-card">
+                    <h4>🔴 Nezmožnost zagotavljanja konkretnih meritev</h4>
+                    <p>Če ponudnik ne more pokazati natančnosti, podatkov o uspešnosti ali primerjalnih študij, gre verjetno za površinsko rešitev.</p>
+                </div>
+
+                <div class="red-flag-card">
+                    <h4>🔴 Pomanjkanje prilagajanja panogi</h4>
+                    <p>AI rešitve brez možnosti učenja za posamezno panogo in prilagajanja specifičnim potrebam so zgolj splošna orodja brez dodane vrednosti.</p>
+                </div>
+
+                <div class="red-flag-card">
+                    <h4>🔴 Minimalne naložbe v infrastrukturo</h4>
+                    <p>Prava AI zahteva specializirano strokovno znanje in infrastrukturo. Rešitve brez tovrstnih naložb so verjetno le površinske integracije.</p>
+                </div>
+
+                <div class="red-flag-card">
+                    <h4>🔴 Odsotnost mehanizmov za preverjanje</h4>
+                    <p>Napredni AI sistemi imajo vgrajene mehanizme za odpravljanje napak in preverjanje. Brez njih gre zgolj za nenadzorovan sistem, ki lahko daje napačne rezultate.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: How to Evaluate -->
+        <section id="evaluation">
+            <h2>3. Kako oceniti trditve o AI rešitvah</h2>
+            
+            <p>Poslovne vodje, ki se gibljejo po zapleteni pokrajini rešitev umetne inteligence, morajo pri razlikovanju med resničnimi AI implementacijami in prefinjenim trženjem dobro razumeti, kaj je prava integracija umetne inteligence.</p>
+
+            <h3>Ključni elementi prave AI rešitve</h3>
+
+            <div class="feature-card" style="border-top-color: #50afb0; background: white; border: 2px solid #50afb0;">
+                <h4>1. Integracija in preverjanje podatkov iz več virov</h4>
+                
+                <p><strong>Legitimni sistemi umetne inteligence vsebujejo:</strong></p>
+                <ul>
+                    <li>Prefinjene vmesnike iz več virov podatkov, ki delujejo hkrati</li>
+                    <li>Izvajanje zanesljivih mehanizmov preverjanja v podatkovnih tokovih</li>
+                    <li>Sisteme za potrjevanje v realnem času s povratnimi zankami</li>
+                    <li>Avtomatizirano preverjanje dejstev s popravljanjem napak</li>
+                </ul>
+
+                <div class="example-box">
+                    <h4>💡 Primer iz prakse</h4>
+                    <p>Napredni proizvodni sistemi, kot je DIGI-H-AM, prikazujejo pravo integracijo umetne inteligence, saj obdelujejo več podatkovnih tokov v realnem času iz senzorjev, hkrati pa analizirajo nastavitve strojev in specifikacije izdelkov.</p>
+                </div>
+            </div>
+
+            <div class="feature-card" style="border-top-color: #50afb0; background: white; border: 2px solid #50afb0; margin-top: 30px;">
+                <h4>2. Infrastruktura, ki jo je mogoče razširiti</h4>
+                
+                <p><strong>Za prave rešitve umetne inteligence so potrebni:</strong></p>
+                <ul>
+                    <li>Namensko zasnovana infrastruktura v oblaku, namenjena delovnim obremenitvam z umetno inteligenco</li>
+                    <li>Specializirane rešitve za shranjevanje podatkov, optimizirane za posebne primere uporabe</li>
+                    <li>Napredne linije obdelave, ki lahko obravnavajo zapletene podatkovne odnose</li>
+                    <li>Celoviti sistemi za odpravljanje napak in potrjevanje, ki se učijo iz napak</li>
+                </ul>
+            </div>
+
+            <div class="feature-card" style="border-top-color: #50afb0; background: white; border: 2px solid #50afb0; margin-top: 30px;">
+                <h4>3. Obveščevalni podatki za posamezna področja</h4>
+                
+                <p><strong>Predstavitev avtentičnih rešitev umetne inteligence:</strong></p>
+                <ul>
+                    <li>Poglobljena integracija z bazami znanja za posamezno panogo</li>
+                    <li>Prefinjene možnosti obdelave preteklih podatkov</li>
+                    <li>Mapiranje kompleksnih odnosov v medsebojno povezanih sistemih</li>
+                    <li>Prilagodljivi mehanizmi učenja, ki se razvijajo z novimi podatki</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 40px;">
+                <h3>✓ Kontrolni seznam za ocenjevanje AI rešitev</h3>
+                
+                <p><strong>Ko podjetja razmišljajo o rešitvi, ki jo poganja umetna inteligenca, morajo:</strong></p>
+                
+                <div class="checklist" style="color: white;">
+                    <li style="color: white;">Povprašati po kazalnikih - dokazujejo natančnost, krivuljo učenja in prilagodljivost njihovega sistema</li>
+                    <li style="color: white;">Preveriti vire podatkov - ali rešitev uporablja celovite in raznolike podatkovne zbirke</li>
+                    <li style="color: white;">Oceniti dejanske rezultate - potrditve in študije primerov, ki prikazujejo merljive koristi</li>
+                    <li style="color: white;">Preučiti ekipo - prepričati se, da so v razvojni ekipi izkušeni strokovnjaki za umetno inteligenco</li>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Comparison Table -->
+        <section id="comparison">
+            <h2>4. Primerjava: Lažna vs. Prava AI rešitev</h2>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Lažna AI rešitev</th>
+                            <th>Prava AI rešitev</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Viri podatkov</strong></td>
+                            <td class="fake-ai">Enostaven API klic</td>
+                            <td class="real-ai">Več virov podatkov z integracijo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kontekst</strong></td>
+                            <td class="fake-ai">Splošni odgovori</td>
+                            <td class="real-ai">Prilagojeno panogi in podjetju</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Učenje</strong></td>
+                            <td class="fake-ai">Brez učenja</td>
+                            <td class="real-ai">Stalno učenje iz podatkov</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Preverjanje</strong></td>
+                            <td class="fake-ai">Ni mehanizmov preverjanja</td>
+                            <td class="real-ai">Avtomatizirano preverjanje in popravljanje</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Metrike</strong></td>
+                            <td class="fake-ai">Ni meritev uspešnosti</td>
+                            <td class="real-ai">Jasni KPI-ji in natančnost</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infrastruktura</strong></td>
+                            <td class="fake-ai">Minimalna ali nobena</td>
+                            <td class="real-ai">Specializirana AI infrastruktura</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ekipa</strong></td>
+                            <td class="fake-ai">Brez AI strokovnjakov</td>
+                            <td class="real-ai">Podatkovni znanstveniki, ML inženirji</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rezultati</strong></td>
+                            <td class="fake-ai">Nejasni, težko merljivi</td>
+                            <td class="real-ai">Merljivi, dokazljivi z študijami primerov</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 5: Future of AI -->
+        <section id="future">
+            <h2>5. Prihodnost AI v Sloveniji: lokalni in nacionalni sistemi</h2>
+            
+            <p>Leta 2025 pričakujemo pomemben premik k razvoju lokaliziranih sistemov umetne inteligence. Podjetja in vlada se vedno bolj zavedajo, kako pomembno je zgraditi infrastrukturo za umetno inteligenco, ki daje prednost varnosti podatkov, preglednosti in zaupanju.</p>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>🇸🇮 Lokalizacija podatkov</h4>
+                    <p>AI sistemi na nacionalni ravni omogočajo shranjevanje in obdelavo podatkov znotraj Slovenije, kar zagotavlja skladnost z lokalnimi predpisi in večjo varnost.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔍 Preglednost</h4>
+                    <p>Lokalni sistemi omogočajo večjo preglednost delovanja AI algoritmov in razumevanje, kako sistem prihaja do zaključkov.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🎯 Prilagoditev potrebam</h4>
+                    <p>Sistemi, prilagojeni specifičnim regionalnim in nacionalnim potrebam, se pojavljajo kot obetavna alternativa globalnim, nepreglednim platformam.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🛡️ Varnost in zaupanje</h4>
+                    <p>Lokalna infrastruktura omogoča večji nadzor nad podatki in zmanjšuje tveganja, povezana z globalnimi platformami.</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h4>Trend 2025</h4>
+                <p>Opažamo vse večje povpraševanje po AI rešitvah, ki podatke obdelujejo lokalno, zagotavljajo sledljivost odločitev in omogočajo prilagoditve specifičnim zahtevam slovenskih podjetij in regulativnega okolja.</p>
+            </div>
+        </section>
+
+        <!-- Section 6: Real AI Examples -->
+        <section id="examples">
+            <h2>6. Primeri pristne umetne inteligence</h2>
+            
+            <p>V Skupini stroka.si smo razvili in uvedli rešitve, ki temeljijo na umetni inteligenci in so zgled, kaj lahko dosežejo prave inovacije na področju umetne inteligence. Z vključevanjem najsodobnejših modelov strojnega učenja, napredne napovedne analitike in obdelave podatkov iz več virov so naši sistemi zasnovani tako, da omogočajo merljive rezultate.</p>
+
+            <div class="example-box">
+                <h4>🏭 DIGI-H-AM</h4>
+                <p><strong>Spletna aplikacija za podporo 3D aditivni proizvodnji</strong></p>
+                <ul>
+                    <li>Spremlja proizvodne parametre v realnem času</li>
+                    <li>Analizira podatke iz več senzorjev hkrati</li>
+                    <li>Uporablja napovedne modele za odkrivanje morebitnih napak</li>
+                    <li>Testira se na mednarodni ravni z robustnimi zmogljivostmi</li>
+                </ul>
+                <p><strong>Rezultat:</strong> Zmanjšanje napak v proizvodnji in optimizacija procesov aditivne proizvodnje.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>⚙️ IQ TPM 4.0</h4>
+                <p><strong>Inteligentni sistem vzdrževanja</strong></p>
+                <ul>
+                    <li>Združuje podatke interneta stvari (IoT) z napredno analitiko</li>
+                    <li>Optimizira vzdrževanje strojev na podlagi prediktivnih modelov</li>
+                    <li>Omogoča lokalno obdelavo podatkov ali obdelavo v oblaku</li>
+                    <li>Zmanjšuje nepredvidene izpade in stroške vzdrževanja</li>
+                </ul>
+                <p><strong>Rezultat:</strong> Transformacija od reaktivnega k predvidljivemu vzdrževanju.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>💻 Programiranje - od nizkokodnega do brezkodnega</h4>
+                <p><strong>Demokratizacija razvoja aplikacij</strong></p>
+                <ul>
+                    <li>Uporaba umetne inteligence za avtomatizacijo kodiranja</li>
+                    <li>Omogoča neprogramerjem (fiziki, matematiki) ustvarjanje aplikacij</li>
+                    <li>Višja produktivnost in hitrejši razvoj</li>
+                    <li>Višja kakovost kode z AI pregledom</li>
+                </ul>
+                <p><strong>Rezultat:</strong> Demokratizacija razvoja in povečanje inovacij.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>🚀 AI Expert Accelerator</h4>
+                <p><strong>Platforma za ustvarjanje vsebin</strong></p>
+                <ul>
+                    <li>Vključuje modele GPT za ustvarjanje vsebin</li>
+                    <li>Stalno posodobljena zbirka podatkov</li>
+                    <li>Učenje na podlagi povratnih informacij uporabnikov</li>
+                    <li>Prilagoditev specifičnim potrebam uporabnikov</li>
+                </ul>
+                <p><strong>Rezultat:</strong> Hitrejše ustvarjanje visokokakovostnih vsebin.</p>
+            </div>
+        </section>
+
+        <!-- Section 7: Call to Transparency -->
+        <section id="transparency">
+            <h2>7. Poziv k preglednosti in inovativnosti</h2>
+            
+            <div class="highlight-box">
+                <h3>Naše poslanstvo</h3>
+                <p>Širjenje zavajajočih trditev o AI lahko ogrozi potencial umetne inteligence za preoblikovanje industrij. V Skupini stroka.si se zavzemamo za preglednost, pristnost in odgovorno uporabo umetne inteligence.</p>
+                <p style="margin-top: 15px;">Naše poslanstvo je zagotavljati rešitve, ki ne le izpolnjujejo, temveč tudi presegajo pričakovanja, krepijo zaupanje in spodbujajo pomembne spremembe.</p>
+            </div>
+
+            <h3>Ključna načela</h3>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>🔎 Preglednost</h4>
+                    <p>Jasno komuniciranje o tem, kako AI deluje, kakšne so njegove omejitve in kako prihaja do rezultatov. Brez skrivnosti ali prikrivanja.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>✅ Pristnost</h4>
+                    <p>Ponujanje rešitev, ki dejansko uporabljajo napredno umetno inteligenco, ne le osnovnih API integracij. Dokazljive zmogljivosti.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📊 Merljivost</h4>
+                    <p>Zagotavljanje jasnih metrik in KPI-jev, ki dokazujejo vrednost rešitve. Brez nejasnih obljub.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🎓 Izobraževanje</h4>
+                    <p>Pomoč strankam pri razumevanju AI tehnologije in njenega potenciala. Dvigovanje standardov v industriji.</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h4>Prihodnost AI je odvisna od nas vseh</h4>
+                <p>Ker podjetja in vlada vse bolj raziskujejo umetno inteligenco, je ključnega pomena ločiti prave inovacije od površinskega trženja. Prihodnost umetne inteligence je odvisna od naše sposobnosti zagotavljanja prave vrednosti, vzpostavljanja zaupanja in odgovornega izkoriščanja transformativne moči te tehnologije.</p>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section id="conclusion">
+            <h2>Zaključek</h2>
+            
+            <div class="warning-box">
+                <h3>Ali so največja grožnja umetne inteligence podjetja, ki trdijo, da ponujajo AI?</h3>
+                <p>Odgovor je v tem, da ločimo marketinški hrup od resničnih inovacij. Največja grožnja ni sama tehnologija, ampak površno trženje in zavajanje, ki spodkopava zaupanje ter ovira razvoj in sprejetje resnično inovativnih rešitev.</p>
+            </div>
+
+            <div class="checklist-box">
+                <h4>Vaš naslednji korak</h4>
+                <div class="checklist">
+                    <li>Ocenite svoje trenutne ali načrtovane AI rešitve po merilih iz tega priročnika</li>
+                    <li>Zahtevajte konkretne metrike in dokazila o zmogljivostih</li>
+                    <li>Preverite ekipo razvijalcev in njihovo strokovno znanje</li>
+                    <li>Poiščite reference in študije primerov z merljivimi rezultati</li>
+                    <li>Izberite partnerja, ki daje prednost preglednosti in pristnosti</li>
+                </div>
+            </div>
+
+            <p style="font-size: 1.15em; text-align: center; margin-top: 40px; color: #50afb0; font-weight: 600;">Sodelujmo, da dvignemo standarde rešitev AI – za Slovenijo in širše.</p>
+        </section>
+
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljeni na resnično AI transformacijo?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Pogovorimo se o pristnih AI rešitvah, ki prinašajo merljive rezultate in ne zgolj marketinških obljub.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Kako vam lahko pomagamo?</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🔍 Revizija obstoječih rešitev</h4>
+                        <p>Ocenimo vaše trenutne AI rešitve in identificiramo morebitne težave</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">💡 Svetovanje pri izbiri</h4>
+                        <p>Pomagamo vam izbrati pravo AI rešitev za vaše potrebe</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🛠️ Razvoj na mero</h4>
+                        <p>Ustvarimo pristno AI rešitev, prilagojeno vašemu poslovanju</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">📚 Izobraževanje</h4>
+                        <p>Usposobimo vašo ekipo za razumevanje in uporabo AI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Z več kot 30-letnimi izkušnjami razvijamo pristne AI rešitve, ki prinašajo merljive rezultate.</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+</html>
