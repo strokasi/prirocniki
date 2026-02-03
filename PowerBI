@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priročnik za poslovno analitiko s Power BI | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .stats-box {
+            background: linear-gradient(135deg, rgba(80, 175, 176, 0.1) 0%, rgba(61, 140, 141, 0.1) 100%);
+            border: 2px solid #50afb0;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 900px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stats-box .big-number {
+            font-size: 4em;
+            color: #50afb0;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stats-box p {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .highlight-box h4 {
+            color: white;
+        }
+
+        .highlight-box p {
+            color: white;
+        }
+
+        .highlight-box ul,
+        .highlight-box ol {
+            color: white;
+        }
+
+        .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff8f0;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h4 {
+            color: #e74c3c;
+        }
+
+        .benefit-box {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+            border-left: 5px solid #27ae60;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .benefit-box h4 {
+            color: #27ae60;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .phase-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 25px 0;
+        }
+
+        .phase-card h4 {
+            color: #50afb0;
+            margin-top: 0;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, rgba(80, 175, 176, 0.05) 0%, rgba(61, 140, 141, 0.05) 100%);
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .example-card h4 {
+            color: #50afb0;
+            margin-top: 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .stats-box .big-number {
+                font-size: 3em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>Microsoft Power BI</h1>
+        <p class="hero-subtitle">Od raztresenih podatkov do poslovnih vpogledov v realnem času</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Vsakdo potrebuje podatke, ne le vodstvo</h2>
+            <p>Podjetja živijo od hitrih odločitev, učinkovitega načrtovanja in odzivanja na potrebe trga. Pri večjih ekipah in različnih oddelkih – od prodaje, marketinga in računovodstva do projektnega vodenja in podpore – nastaja vsak dan ogromna količina podatkov. Vprašanje ni, ali podatki obstajajo. Vprašanje je, ali jih lahko uporabimo takrat, ko jih potrebujemo.</p>
+        </div>
+
+        <div class="stats-box">
+            <span class="big-number">87%</span>
+            <p><strong>Podjetja lahko zmanjšajo čas za pripravo poročil za do 87 % z uvedbo poslovne analitike.</strong></p>
+            <p style="margin-top: 15px;">Podatki v realnem času omogočajo hitrejše in boljše odločitve, ki temeljijo na dejstvih, ne na predpostavkah.</p>
+        </div>
+
+        <!-- Section 1: The Problem -->
+        <section id="problem">
+            <h2>1. Klasični problem upravljanja podatkov</h2>
+            
+            <p>Mnoga podjetja delujejo po klasičnem modelu: vodje pripravljajo poročila, računovodstvo svoje podatke ureja v Excelih, projektna pisarna posodobitve pošilja po e-pošti. Vsak oddelek ima svoje tabele, svoje načine sledenja in svoje roke za oddajo poročil.</p>
+
+            <div class="warning-box">
+                <h4>⚠️ Posledice tradicionalnega pristopa</h4>
+                <ul>
+                    <li>Informacije so raztresene po različnih sistemih in datotekah</li>
+                    <li>Podatki so pogosto zastareli – točni le za dan, ko so bili pripravljeni</li>
+                    <li>Dostopni so samo nekaterim – omejen dostop do informacij</li>
+                    <li>Ročno zbiranje podatkov vzame veliko časa – ure dela za mesečna poročila</li>
+                    <li>Težko spremljanje trendov – podatki niso vizualizirani</li>
+                </ul>
+            </div>
+
+            <h3>Ključno vprašanje</h3>
+            <p>Problem ni v pomanjkanju podatkov. Problem je v tem, da niso na voljo takrat in tistim, ki jih potrebujejo za odločanje.</p>
+
+            <div class="info-box">
+                <h4>💡 Predstavljajte si</h4>
+                <p>Kaj bi se zgodilo, če bi vsi zaposleni, ne samo vodje, imeli dostop do podatkov, ki jih potrebujejo za svoje delo?</p>
+                <ul>
+                    <li>Prodajalec lahko sam preveri stanje pri stranki</li>
+                    <li>Projektni vodja takoj vidi, kje smo s porabo ur na projektu</li>
+                    <li>Podpornik na helpdesku ve, koliko odprtih zahtevkov ima trenutno v svoji čakalni vrsti</li>
+                    <li>Vodja oddelka lahko v realnem času spremlja promet in obremenjenost ekipe</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 2: The Solution -->
+        <section id="solution">
+            <h2>2. Power BI kot rešitev</h2>
+            
+            <h3>Kaj je Power BI?</h3>
+            <p>Microsoft Power BI je platforma za poslovno analitiko, ki podatke iz različnih virov pretvori v interaktivne vizualizacije in poročila. Omogoča:</p>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>📊 Povezovanje virov podatkov</h4>
+                    <p>Power BI se lahko poveže z vašimi obstoječimi sistemi:</p>
+                    <ul>
+                        <li>ERP sistemi (SAP, PANTHEON, Dynamics)</li>
+                        <li>CRM sistemi (Salesforce, Dynamics 365)</li>
+                        <li>Excel tabele in CSV datoteke</li>
+                        <li>Podatkovne baze (SQL Server, Oracle)</li>
+                        <li>Oblačne storitve (SharePoint, OneDrive)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>⏱️ Podatki v realnem času</h4>
+                    <p>Kar je v vašem poslovnem sistemu, to vidite tudi v analitiki:</p>
+                    <ul>
+                        <li>Ni več zamikov</li>
+                        <li>Ni čakanja na mesečna poročila</li>
+                        <li>Takoj vidite spremembe</li>
+                        <li>Odločitve na podlagi svežih podatkov</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📈 Vizualizacije</h4>
+                    <p>Podatki postanejo razumljivi:</p>
+                    <ul>
+                        <li>Grafi in diagrami namesto tabel</li>
+                        <li>Interaktivni dashboardi</li>
+                        <li>Hitra identifikacija trendov</li>
+                        <li>Pregledno za vse uporabnike</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔐 Upravljanje dostopov</h4>
+                    <p>Pravilen dostop za prave osebe:</p>
+                    <ul>
+                        <li>Vodje vidijo celotno ekipo</li>
+                        <li>Zaposleni vidijo svoje podatke</li>
+                        <li>Varnost občutljivih informacij</li>
+                        <li>Kontrola nad deljenjem</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Use Cases -->
+        <section id="use-cases">
+            <h2>3. Praktični primeri uporabe Power BI</h2>
+
+            <div class="example-card">
+                <h4>📊 Analitika poslovanja in prometa</h4>
+                <p><strong>Namen:</strong> Pregled nad prometom, rastjo in obremenitvijo po oddelkih</p>
+                
+                <p><strong>Kaj omogoča:</strong></p>
+                <ul>
+                    <li>Vpogled v prihodke po virih (projekti, vzdrževanje, najem, storitve)</li>
+                    <li>Spremljanje rasti po področjih poslovanja</li>
+                    <li>Pregled nad porabljenimi urami po projektih</li>
+                    <li>Identifikacija preobremenitve ali neizkoriščenosti</li>
+                </ul>
+
+                <p><strong>Za koga:</strong> Vodstvo, vodje oddelkov, vsi zaposleni (vsak vidi svoj prispevek)</p>
+
+                <div class="benefit-box">
+                    <h4>💰 Vrednost</h4>
+                    <p>Vodje vidijo, iz katerih virov prihajajo prihodki in katera področja rastejo. Vsak zaposleni lahko sam preveri, koliko ur je poročal in koliko prihodkov je ustvaril.</p>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>💼 360° pogled na stranko</h4>
+                <p><strong>Namen:</strong> Celovit pregled nad vsako stranko na enem mestu</p>
+                
+                <p><strong>Kaj prikazuje:</strong></p>
+                <ul>
+                    <li>S katerimi področji je stranka že pokrita</li>
+                    <li>Kje so še priložnosti za dodatne storitve</li>
+                    <li>Odprte in zaključene ponudbe</li>
+                    <li>Letna realizacija in mesečno fakturiranje</li>
+                    <li>Koliko kateri oddelek dela za to stranko</li>
+                    <li>Terjatve in plačilna dinamika</li>
+                </ul>
+
+                <p><strong>Za koga:</strong> Prodaja, projektni vodje, vodstvo</p>
+
+                <div class="benefit-box">
+                    <h4>💰 Vrednost</h4>
+                    <p>Prodajalec gre lahko na sestanek s stranko popolnoma pripravljen. Vidi celotno sliko sodelovanja, ne le svojega dela. Ni več iskanja podatkov po različnih sistemih.</p>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>📋 Projektna analitika</h4>
+                <p><strong>Namen:</strong> Spremljanje projektov in njihove uspešnosti</p>
+                
+                <p><strong>Kaj omogoča:</strong></p>
+                <ul>
+                    <li>Vrednost projektov in storitveni delež</li>
+                    <li>Časovnice v obliki Ganttovega diagrama</li>
+                    <li>Planirane vs. oddelane ure</li>
+                    <li>Poraba po stroškovnih nosilcih</li>
+                    <li>Identifikacija tveganih projektov</li>
+                </ul>
+
+                <p><strong>Za koga:</strong> Projektna pisarna, projektni vodje, vodstvo</p>
+
+                <div class="benefit-box">
+                    <h4>💰 Vrednost</h4>
+                    <p>Vse podatke o projektih na enem mestu. Hitro prepoznavanje projektov, ki presegajo proračun ali zamujajo. Proaktivno ukrepanje namesto reaktivnega reševanja problemov.</p>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>🎯 Prodajni lijak</h4>
+                <p><strong>Namen:</strong> Povezava med marketingom, prodajo in projekti</p>
+                
+                <p><strong>Kaj povezuje:</strong></p>
+                <ul>
+                    <li>Možne stranke iz marketinških aktivnosti</li>
+                    <li>Prodajne priložnosti v različnih fazah</li>
+                    <li>Zaključene pogodbe in projekte</li>
+                    <li>Vrednost priložnosti po področjih</li>
+                </ul>
+
+                <p><strong>Za koga:</strong> Marketing, prodaja, vodstvo</p>
+
+                <div class="benefit-box">
+                    <h4>💰 Vrednost</h4>
+                    <p>Celoten pogled od prve interakcije do zaključenega projekta. Identifikacija ozkih grl v prodajnem procesu. Ukrepanje sproti, ne šele ob koncu meseca.</p>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>🎫 Helpdesk in podpora</h4>
+                <p><strong>Namen:</strong> Spremljanje obremenjenosti podpore</p>
+                
+                <p><strong>Kaj prikazuje:</strong></p>
+                <ul>
+                    <li>Koliko odprtih zahtevkov ima vsak podpornik</li>
+                    <li>V kakšnem statusu so zahtevki</li>
+                    <li>Kako hitro se zapirajo zahtevki</li>
+                    <li>Kje so ozka grla in kje je potrebna pomoč</li>
+                </ul>
+
+                <p><strong>Za koga:</strong> Helpdesk ekipa, vodje podpore</p>
+
+                <div class="benefit-box">
+                    <h4>💰 Vrednost</h4>
+                    <p>Vsak podpornik vidi svoje številke. Vodje lahko pravočasno prerazporedijo delo. Boljša razporeditev obremenitve in hitrejše reševanje zahtevkov.</p>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h4>🔄 Periodično fakturiranje</h4>
+                <p><strong>Namen:</strong> Pregled nad rednimi prihodki</p>
+                
+                <p><strong>Kaj omogoča:</strong></p>
+                <ul>
+                    <li>Koliko pogodb imamo prodanih</li>
+                    <li>Katerim strankam in za kakšne zneske</li>
+                    <li>Kdo je skrbnik posamezne stranke</li>
+                    <li>Vrste pogodb (vzdrževanje, najem, storitve)</li>
+                </ul>
+
+                <p><strong>Za koga:</strong> Računovodstvo, prodaja, vodstvo</p>
+
+                <div class="benefit-box">
+                    <h4>💰 Vrednost</h4>
+                    <p>Preglednost periodičnih prihodkov. Hitro preverjanje in kontrola. Identifikacija priložnosti za dodatne prodaje.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Implementation -->
+        <section id="implementation">
+            <h2>4. Postopna uvedba Power BI analitike</h2>
+
+            <div class="info-box">
+                <h4>📌 Ključno pravilo</h4>
+                <p>Ne začnite z vsem naenkrat. Postopna uvedba omogoča prilagajanje in izboljševanje na podlagi povratnih informacij.</p>
+            </div>
+
+            <h3>Priporočen pristop k uvedbi</h3>
+
+            <div class="phase-card">
+                <h4>Faza 1: Analiza potreb in izbira prvega modula</h4>
+                <ul>
+                    <li>Identificirajte največjo težavo pri dostopu do podatkov</li>
+                    <li>Kateri oddelek najbolj potrebuje analitiko?</li>
+                    <li>Katera poročila pripravljate najpogosteje?</li>
+                    <li>Začnite z enim kritičnim področjem</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Faza 2: Priprava podatkovnih virov</h4>
+                <ul>
+                    <li>Preverjanje kakovosti podatkov v obstoječih sistemih</li>
+                    <li>Čiščenje in standardizacija podatkov</li>
+                    <li>Priprava povezav med sistemi</li>
+                    <li>Testiranje prenosa podatkov</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Faza 3: Razvoj prve verzije (v1.0)</h4>
+                <ul>
+                    <li>Ustvarite osnovno analitiko z najpomembnejšimi kazalniki</li>
+                    <li>Ne čakajte na popolnost – verzija 1.0 je dovolj dobra za začetek</li>
+                    <li>Vključite uporabnike že v razvoj</li>
+                    <li>Testirajte z realnimi podatki</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Faza 4: Prenos znanja in povratne informacije</h4>
+                <ul>
+                    <li>Organizirajte delavnice za uporabnike</li>
+                    <li>Pokažite, kako se uporablja in kaj vse lahko vidijo</li>
+                    <li>Zberite povratne informacije – kaj manjka? Kaj bi dodali?</li>
+                    <li>Implementirajte izboljšave</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Faza 5: Iterativno izboljševanje</h4>
+                <ul>
+                    <li>Na podlagi uporabe dodate nove funkcionalnosti</li>
+                    <li>Optimizirate vizualizacije</li>
+                    <li>Razširite na druge oddelke</li>
+                    <li>Povezujete različne analitike</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🔑 Ključni dejavniki uspeha</h3>
+                <ul>
+                    <li><strong>Vključevanje uporabnikov:</strong> Brez njihove vključenosti analitika ostane neuporabljena</li>
+                    <li><strong>Verzija 1.0 je dovolj:</strong> Prva verzija služi kot začetna točka za dialog</li>
+                    <li><strong>Prenos znanja:</strong> Organizirajte delavnice pri vsaki analitiki</li>
+                    <li><strong>Postopnost:</strong> Začnite z eno analitiko in postopoma širite</li>
+                    <li><strong>Dva pogleda:</strong> Vodja vidi celotno ekipo, zaposleni svoje podatke</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 5: Benefits -->
+        <section id="benefits">
+            <h2>5. Merljive koristi Power BI analitike</h2>
+
+            <div class="grid-2">
+                <div class="feature-card" style="border-top-color: #27ae60;">
+                    <h4>⏱️ Prihranek časa</h4>
+                    <p><strong>Do 87 % manj časa</strong> za pripravo mesečnih poročil</p>
+                    <p>Kar je prej vzelo 32 ur ročnega dela, je zdaj dostopno z enim klikom v realnem času.</p>
+                </div>
+
+                <div class="feature-card" style="border-top-color: #27ae60;">
+                    <h4>📊 Dostopnost podatkov</h4>
+                    <p><strong>Vsak zaposleni</strong> ima dostop do podatkov, ki jih potrebuje</p>
+                    <p>Ni več potrebe po pošiljanju zahtev računovodstvu ali vodjem.</p>
+                </div>
+
+                <div class="feature-card" style="border-top-color: #27ae60;">
+                    <h4>⚡ Hitrejše odločanje</h4>
+                    <p><strong>Podatki v realnem času</strong> omogočajo takojšnje ukrepanje</p>
+                    <p>Ne čakate več na mesečna poročila za odločitve.</p>
+                </div>
+
+                <div class="feature-card" style="border-top-color: #27ae60;">
+                    <h4>🔍 Boljša preglednost</h4>
+                    <p><strong>Celovit pregled</strong> nad strankami, projekti in procesi</p>
+                    <p>Vse informacije na enem mestu, brez iskanja po sistemih.</p>
+                </div>
+
+                <div class="feature-card" style="border-top-color: #27ae60;">
+                    <h4>💡 Informirani zaposleni</h4>
+                    <p><strong>Vsi vedo</strong>, kaj se v podjetju dogaja</p>
+                    <p>Transparentnost povečuje motivacijo in angažiranost.</p>
+                </div>
+
+                <div class="feature-card" style="border-top-color: #27ae60;">
+                    <h4>📈 Proaktivno ukrepanje</h4>
+                    <p><strong>Identifikacija problemov</strong> pred nastankom škode</p>
+                    <p>Vizualizacije razkrijejo trende, ki jih v tabelah ne opazite.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Key Learnings -->
+        <section id="learnings">
+            <h2>6. Ključne lekcije pri uvedbi</h2>
+
+            <div class="warning-box">
+                <h4>❌ Česa se izogibati</h4>
+                <ul>
+                    <li><strong>Razvoj vsega naenkrat:</strong> Namesto analitik za vse oddelke hkrati začnite z eno</li>
+                    <li><strong>Tehnična dovršenost brez uporabnikov:</strong> Brez vključenosti ostane neuporabljena</li>
+                    <li><strong>Čakanje na popolnost:</strong> Verzija 1.0 je dovolj dobra za začetek</li>
+                    <li><strong>Pozabljanje na prenos znanja:</strong> Brez usposabljanja analitika ne postane navada</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>✅ Najboljše prakse</h4>
+                <ul>
+                    <li><strong>Vključite uporabnike od začetka:</strong> Njihove povratne informacije oblikujejo rešitev</li>
+                    <li><strong>Iterativno izboljševanje:</strong> Na podlagi resničnih potreb, ne predpostavk</li>
+                    <li><strong>Dvostopenjski dostop:</strong> Vodje vidijo ekipo, zaposleni svoje podatke</li>
+                    <li><strong>Redno usposabljanje:</strong> Pri vsaki analitiki organizirajte delavnice</li>
+                    <li><strong>Dokumentacija procesov:</strong> Zapišite, kako se podatki pripravljajo</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 7: Change Management -->
+        <section id="change">
+            <h2>7. Ni le tehnična sprememba – je sprememba načina dela</h2>
+
+            <p>Uspešna uvedba Power BI analitike ni le tehnični projekt. Gre za spremembo kulture in navad v organizaciji.</p>
+
+            <div class="highlight-box">
+                <h3>🔄 Od orodja do navade</h3>
+                <p>Pomembno je, da ne uvedete samo orodja. Uvedli ste novo navado:</p>
+                <ul style="color: white;">
+                    <li style="color: white;">Da pred sestankom s stranko preverite podatke</li>
+                    <li style="color: white;">Da pred tedenskimisestanki pogledate številke</li>
+                    <li style="color: white;">Da sproti spremlate svoje delo</li>
+                    <li style="color: white;">Da odločitve temeljijo na podatkih, ne na občutkih</li>
+                </ul>
+            </div>
+
+            <h3>Kako zagotoviti sprejetje?</h3>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>👥 Vključenost vodstva</h4>
+                    <p>Vodstvo mora biti prvi uporabnik. Če vodje uporabljajo analitiko v sestankih, bodo tudi drugi.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🎓 Kontinuirano usposabljanje</h4>
+                    <p>Ne le enkratna delavnica. Redno osvežujte znanje in predstavljajte nove funkcionalnosti.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>💬 Pridobivanje povratnih informacij</h4>
+                    <p>Ustvarite kanal za predloge. Uporabniki naj vedo, da se njihov glas sliši.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🏆 Praznovanje uspehov</h4>
+                    <p>Delite primere, kako je analitika pomagala pri odločitvah ali odkrivanju priložnosti.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Getting Started -->
+        <section id="start">
+            <h2>8. Kako začeti s Power BI?</h2>
+
+            <div class="phase-card">
+                <h4>Korak 1: Ocenite trenutno stanje</h4>
+                <ul>
+                    <li>Katera poročila pripravljate najpogosteje?</li>
+                    <li>Koliko časa porabite za pripravo poročil?</li>
+                    <li>Kdo vse potrebuje dostop do katerih podatkov?</li>
+                    <li>Kateri viri podatkov so na voljo (ERP, CRM, Excel)?</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Korak 2: Definirajte prioritete</h4>
+                <ul>
+                    <li>Kateri oddelek ima največjo težavo z dostopom do podatkov?</li>
+                    <li>Katera analitika bi prinesla največ vrednosti?</li>
+                    <li>S čim začeti za hiter uspeh (quick win)?</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Korak 3: Sestavite ekipo</h4>
+                <ul>
+                    <li>BI strokovnjak za razvoj analitik</li>
+                    <li>IT za pripravo podatkovnih virov</li>
+                    <li>Predstavniki oddelkov za zahteve</li>
+                    <li>Projektni vodja za koordinacijo</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Korak 4: Pilot projekt</h4>
+                <ul>
+                    <li>Začnite z eno analitiko za en oddelek</li>
+                    <li>Razvijte verzijo 1.0 v 2-4 tednih</li>
+                    <li>Testirajte z realnimi uporabniki</li>
+                    <li>Zberite povratne informacije in izboljšajte</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Korak 5: Razširitev</h4>
+                <ul>
+                    <li>Na podlagi uspeha pilot projekta razširite na druge oddelke</li>
+                    <li>Razvijajte nove analitike postopoma</li>
+                    <li>Povezujte analitike med seboj</li>
+                    <li>Nenehno izboljšujte na podlagi uporabe</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 9: Future -->
+        <section id="future">
+            <h2>9. Prihodnost poslovne analitike</h2>
+
+            <p>Power BI ni statično orodje. Nenehno se razvija in dodajajo se nove zmogljivosti:</p>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>🤖 AI integracija</h4>
+                    <p>Umetna inteligenca v Power BI omogoča:</p>
+                    <ul>
+                        <li>Avtomatsko odkrivanje vpogledov</li>
+                        <li>Napovedne analize</li>
+                        <li>Priporočila na podlagi podatkov</li>
+                        <li>Naravni jezik za postavljanje vprašanj</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📱 Mobilni dostop</h4>
+                    <p>Power BI mobilne aplikacije omogočajo:</p>
+                    <ul>
+                        <li>Dostop do analitik kjerkoli</li>
+                        <li>Push obvestila o pomembnih spremembah</li>
+                        <li>Interakcija s podatki na poti</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔗 Širša integracija</h4>
+                    <p>Povezovanje z več viri:</p>
+                    <ul>
+                        <li>IoT naprave</li>
+                        <li>Družbeni mediji</li>
+                        <li>Externes podatkovne baze</li>
+                        <li>API povezave</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📊 Napredne vizualizacije</h4>
+                    <p>Nove možnosti prikaza:</p>
+                    <ul>
+                        <li>3D vizualizacije</li>
+                        <li>Geografske karte</li>
+                        <li>Prilagojeni vizuali</li>
+                        <li>Animirani prikazi</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljeni na transformacijo vašega poslovanja?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Pomagamo vam od analize potreb do polno delujoče poslovne analitike. Naša ekipa ima izkušnje z implementacijo Power BI v različnih panogah in velikostih podjetij.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Naše storitve</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🔍 Analiza potreb</h4>
+                        <p>Identificiramo priložnosti za Power BI v vašem podjetju</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">⚙️ Razvoj analitik</h4>
+                        <p>Ustvarimo prilagojene dashboarde in poročila</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🔗 Integracija</h4>
+                        <p>Povežemo Power BI z vašimi obstoječimi sistemi</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🎓 Usposabljanje</h4>
+                        <p>Usposobimo vašo ekipo za učinkovito uporabo</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 50px; font-size: 1.15em;">Podatki so že v vašem podjetju. Vprašanje je le, ali jih lahko uporabljate za odločitve.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Z več kot 30-letnimi izkušnjami vam pomagamo do učinkovitejšega poslovanja s poslovnoanalitiko.</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+</html>
