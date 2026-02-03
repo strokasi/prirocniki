@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Visio: Vizualizirajte procese | Praktični vodič | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-top: 4px solid #50afb0;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            color: #333;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3, .highlight-box h4, .highlight-box p, .highlight-box ul, .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff8f0;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h4 {
+            color: #e74c3c;
+        }
+
+        .scenario-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .scenario-card h3 {
+            margin-top: 0;
+            color: #50afb0;
+        }
+
+        .scenario-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .step-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        .quote-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 1.15em;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+
+            .scenario-card, .step-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>Microsoft Visio: Vizualizirajte procese</h1>
+        <p class="hero-subtitle">Od kompleksnosti do jasnosti s profesionalnimi diagrami</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Ko besede ne zadostujejo</h2>
+            <p>Poskusite nekomu razložiti kompleksen poslovni proces samo z besedami. "Najprej gre zahtevek v oddelek A, kjer ga pregleda vodja. Če je odobren, gre naprej v oddelek B, razen če presega 5000 EUR, potem mora še v oddelek C ..." Po tretjem stavku nihče več ne sledi.</p>
+            <p>Zdaj si predstavljajte isti proces kot diagram s povezanimi ikonami, barvami in puščicami. V petih sekundah razumete celotni potek. <strong>To je moč vizualizacije. In točno to je Microsoft Visio.</strong></p>
+            <p>Visio je orodje za ustvarjanje profesionalnih diagramov in vizualizacij – od preprostih organizacijskih shem do kompleksnih procesnih diagramov in tehničnih načrtov. Kljub temu, da je na voljo v številnih Microsoft 365 načrtih, ga večina uporabnikov še nikoli ni odprla.</p>
+        </div>
+
+        <!-- Key Benefits -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-label">Profesionalne predloge za vse industrije</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔗</div>
+                <div class="stat-label">Povezava s podatki iz Excel in SharePoint</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📏</div>
+                <div class="stat-label">Natančnost in merila za tehnične načrte</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-label">Sodelovanje in verzioniranje</div>
+            </div>
+        </div>
+
+        <!-- Section 1: What is Visio -->
+        <section id="kaj-je-visio">
+            <h2>Kaj pravzaprav je Visio in kdaj ga potrebujete?</h2>
+            
+            <p>Visio je specializirano orodje za ustvarjanje diagramov, shem in vizualnih predstavitev procesov. Ni urejevalnik besedil in ni PowerPoint. Je nekaj vmes – orodje, ki pretvarja kompleksne informacije v jasne, razumljive vizualne prikaze.</p>
+
+            <div class="info-box">
+                <h4>Različice Visio</h4>
+                <p>Visio pride v dveh različicah:</p>
+                <ul>
+                    <li><strong>Visio Plan 1:</strong> Ogled in ustvarjanje preko spleta</li>
+                    <li><strong>Visio Plan 2:</strong> Namizna aplikacija s polnimi funkcijami</li>
+                </ul>
+                <p style="margin-top: 15px;">Mnogi M365 Business načrti že vključujejo osnovno verzijo, mnogim pa je dostopen tudi kot dodatek.</p>
+            </div>
+
+            <div class="info-box">
+                <h4>Kako dostopate do Visio?</h4>
+                <ul>
+                    <li><strong>Spletni vmesnik:</strong> visio.cloud.microsoft</li>
+                    <li><strong>Namizna aplikacija:</strong> Visio desktop app</li>
+                    <li><strong>Shranjevanje:</strong> SharePoint ali OneDrive</li>
+                </ul>
+                <p style="margin-top: 15px;">Vsi diagrami so shranjeni v oblaku, kar pomeni, da jih lahko delite in urejate skupaj s sodelavci.</p>
+            </div>
+
+            <div class="quote-box">
+                "Kdaj potrebujete Visio? Ko poskušate razložiti ali dokumentirati nekaj, kar je preveč zapleteno za besedilo, a hkrati potrebuje profesionalen in standardiziran pristop."
+            </div>
+        </section>
+
+        <!-- Section 2: Practical Scenarios -->
+        <section id="primeri-uporabe">
+            <h2>Kako podjetja uporabljajo Visio v praksi?</h2>
+
+            <div class="scenario-card">
+                <span class="scenario-number">1</span>
+                <h3>Dokumentacija poslovnih procesov</h3>
+                
+                <p>IT oddelek želi dokumentirati celoten proces upravljanja IT zahtevkov – od trenutka, ko uporabnik odda zahtevek, do njegovega zaprtja.</p>
+
+                <h4>V Wordu bi to bil dolg dokument, poln korakov in pogojev.</h4>
+                <h4>V Visiu je to jasen diagram poteka.</h4>
+
+                <div class="highlight-box">
+                    <h4>BPMN diagram (Business Process Model and Notation)</h4>
+                    <p>Vsaka faza procesa postane oblikovana škatlica:</p>
+                    <ul>
+                        <li>"Uporabnik odda zahtevek" →</li>
+                        <li>"Sistem kategorizira" →</li>
+                        <li>"Preveri prioriteto" →</li>
+                        <li>Če je prioriteta visoka → "Dodeli takoj"</li>
+                        <li>Če ne → "Dodeli v vrsto"</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Prednosti v praksi:</h4>
+                    <ul>
+                        <li>Nova oseba v IT ekipi razume proces v 5 minutah</li>
+                        <li>Ko se proces spremeni, posodobite diagram in vsi takoj vidijo spremembo</li>
+                        <li>Diagram lahko izvozite v PDF in ga delite z drugimi oddelki</li>
+                        <li>Enostavna vključitev v ISO dokumentacijo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">2</span>
+                <h3>Organizacijske strukture, ki se spreminjajo</h3>
+                
+                <p>HR oddelek upravlja organizacijsko shemo podjetja s 150 zaposlenimi.</p>
+
+                <h4>V PowerPointu bi bilo to nočna mora za vzdrževanje.</h4>
+                <h4>V Excelu bi bilo nepregledno.</h4>
+                <h4>V Visiu je to dinamična organizacijska shema, povezana s podatki.</h4>
+
+                <div class="highlight-box">
+                    <h4>Povezava s podatki</h4>
+                    <p>Visio lahko poveže z Excel tabelo ali s podatkovno bazo, kjer so shranjeni podatki zaposlenih:</p>
+                    <ul>
+                        <li>Ime</li>
+                        <li>Pozicija</li>
+                        <li>Oddelek</li>
+                        <li>Vodja</li>
+                    </ul>
+                    <p style="margin-top: 15px;">Ko se struktura spremeni – nekdo dobi napredovanje ali se oddelek reorganizira – HR posodobi podatke in <strong>diagram se avtomatsko prilagodi</strong>.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>Različni pogledi iz istih podatkov:</h4>
+                    <ul>
+                        <li>Celotna organizacija</li>
+                        <li>Samo vodstvo</li>
+                        <li>Samo določen oddelek</li>
+                    </ul>
+                    <p style="margin-top: 10px;">Vse brez podvajanja dela.</p>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">3</span>
+                <h3>Mrežne topologije in infrastruktura</h3>
+                
+                <p>IT ekipa dokumentira mrežno infrastrukturo podjetja. Potrebujejo jasen pregled:</p>
+                <ul>
+                    <li>Kateri strežniki so kje</li>
+                    <li>Kako so povezani</li>
+                    <li>Kje so požarni zidovi</li>
+                    <li>Kako poteka podatkovni tok</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>V Visiu ustvarijo mrežni diagram:</h4>
+                    <ul>
+                        <li>Uporaba vnaprej pripravljenih oblik za strežnike, usmerjevalnike, stikala, oblake, podatkovne centre</li>
+                        <li>Vsaki napravi lahko dodajo dodatne informacije (IP naslovi, modeli, odgovorne osebe)</li>
+                        <li>Informacije vidne kot tooltip ali v ločeni tabeli</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Uporabnost:</h4>
+                    <ul>
+                        <li><strong>Pri težavah:</strong> IT tehnik odpre diagram in takoj vidi, katere komponente so vpletene</li>
+                        <li><strong>Pri načrtovanju:</strong> Simulirajo spremembe v diagramu, preden jih dejansko implementirajo</li>
+                        <li><strong>Za revizije:</strong> Delijo diagram kot dokumentacijo infrastrukture</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">4</span>
+                <h3>Tlorisi prostorov in sedežni plan</h3>
+                
+                <p>Po preselitvi v nove prostore mora podjetje načrtovati razporeditev pisarn.</p>
+
+                <h4>Vodja pisarne v Visiu ustvari tloris pisarn z natančnimi merami:</h4>
+
+                <div class="highlight-box">
+                    <h4>Funkcionalnosti:</h4>
+                    <ul>
+                        <li>Vnaprej pripravljene oblike za mize, stole, omare, sejne sobe</li>
+                        <li>Vsako delovno mesto lahko označi z imenom zaposlenega ali oddelkom</li>
+                        <li>Ko pride do prerazporeditve, preprosto premakne elemente po diagramu</li>
+                        <li>Diagram lahko izvozi in ga pripne na steno v pisarni</li>
+                        <li>Digitalno deli z vsemi zaposlenimi</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">5</span>
+                <h3>Customer journey mapping</h3>
+                
+                <p>Marketinška ekipa želi razumeti celotno pot stranke od prvega stika do nakupa in naprej.</p>
+
+                <h4>V Visiu ustvarijo customer journey map:</h4>
+
+                <div class="highlight-box">
+                    <h4>Vizualni prikaz vseh stičnih točk:</h4>
+                    <ul>
+                        <li><strong>Faza ozaveščanja:</strong> Prvi obisk spletne strani, ogled oglasov</li>
+                        <li><strong>Faza razmisleka:</strong> Branje blogov, prijava na newsletter</li>
+                        <li><strong>Faza odločitve:</strong> Kontakt s prodajo, demo</li>
+                        <li><strong>Nakup:</strong> Proces naročila</li>
+                        <li><strong>After-sales:</strong> Podpora in vzdrževanje</li>
+                    </ul>
+                    <p style="margin-top: 15px;">Pri vsaki fazi lahko dodajo priložnosti za izboljšave.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>Vrednost za ekipo:</h4>
+                    <p>Ta vizualizacija pomaga celotni ekipi – od marketinga do prodaje do podpore – razumeti, kje so ključni trenutki in kje lahko izboljšajo izkušnjo stranke.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Why Visio is Still Relevant -->
+        <section id="zakaj-visio">
+            <h2>Zakaj je Visio še vedno relevanten?</h2>
+
+            <p>V času, ko lahko diagrame rišete tudi v PowerPointu, se sprašujete: zakaj bi potrebovali Visio?</p>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>📚 Profesionalni standardi in predloge</h4>
+                    <p>Visio vsebuje na stotine profesionalnih predlog za različne industrije in namene:</p>
+                    <ul>
+                        <li>BPMN procesi</li>
+                        <li>UML diagrami</li>
+                        <li>Mrežne topologije</li>
+                        <li>Električne sheme</li>
+                        <li>Arhitekturni načrti</li>
+                    </ul>
+                    <p style="margin-top: 10px;">Te predloge sledijo industrijskim standardom in zagotavljajo konsistentnost.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔗 Povezava s podatki</h4>
+                    <p>Visio ni le orodje za risanje. Lahko ga povežete z:</p>
+                    <ul>
+                        <li>Excel tabelami</li>
+                        <li>SharePoint seznami</li>
+                        <li>Bazami podatkov</li>
+                    </ul>
+                    <p style="margin-top: 10px;">To pomeni, da se diagrami avtomatsko posodabljajo, ko se podatki spremenijo.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📏 Natančnost in merilo</h4>
+                    <p>Za arhitekte, inženirje in načrtovalce je ključna natančnost.</p>
+                    <p>Visio omogoča delo z realnimi merami in merilom. Ko narišete tloris pisarne, je to točno 10x15 metrov, ne "približno toliko".</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🎯 Kompleksnost brez kaosa</h4>
+                    <p>Ko imate diagram s 50 elementi, 100 povezavami in več plastmi informacij, PowerPoint postane neobvladljiv.</p>
+                    <p>Visio je zasnovan za upravljanje kompleksnih diagramov z orodji za:</p>
+                    <ul>
+                        <li>Poravnavo</li>
+                        <li>Skupine</li>
+                        <li>Plasti</li>
+                        <li>Hierarhijo</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>👥 Sodelovanje in verzije</h4>
+                    <p>Ker so Visio datoteke shranjene v SharePointu, lahko več ljudi hkrati pregleduje in komentira diagram.</p>
+                    <p>Vodite lahko verzije in vidite zgodovino sprememb.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔄 Integracija z Microsoft 365</h4>
+                    <p>Visio diagrami se lahko vključijo v:</p>
+                    <ul>
+                        <li>Word dokumente</li>
+                        <li>PowerPoint prezentacije</li>
+                        <li>SharePoint strani</li>
+                        <li>Teams kanale</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Copilot and Visio -->
+        <section id="copilot-in-visio">
+            <h2>Kako lahko Copilot pomaga pri delu z Visiom?</h2>
+
+            <div class="intro-box">
+                <h2>Umetna inteligenca kot pomočnik</h2>
+                <p>Čeprav Copilot trenutno ni neposredno integriran v Visio aplikacijo, lahko še vedno izkoristite moč umetne inteligence za učinkovitejše delo z diagrami.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Načrtovanje in strukturiranje procesov</h3>
+                
+                <p>Preden začnete risati diagram, lahko v Microsoft 365 Copilotu (npr. v Teamsih ali spletnem vmesniku) opišete proces, ki ga želite vizualizirati:</p>
+                
+                <div class="highlight-box">
+                    <p style="font-style: italic;">"Opiši korake postopka zaposlitve novega sodelavca."</p>
+                </div>
+
+                <p>Copilot vam bo podal strukturiran seznam korakov, ki jih nato preprosto pretvorite v diagram v Visiu.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Priprava vsebine za diagramiranje</h3>
+                
+                <p>Imate dolg Word dokument s postopki? Prosite Copilot:</p>
+                
+                <div class="highlight-box">
+                    <p style="font-style: italic;">"Iz tega dokumenta izvleci glavne korake procesa in jih organiziraj v logično zaporedje."</p>
+                </div>
+
+                <p>Dobili boste pregleden seznam, ki ga nato vizualizirate v Visiu.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Pomoč pri optimizaciji procesov</h3>
+                
+                <p>Ko imate diagram že ustvarjen, lahko Copilotu opišete proces:</p>
+                
+                <div class="highlight-box">
+                    <p style="font-style: italic;">"Oceni učinkovitost tega postopka: korak 1, korak 2, korak 3..."</p>
+                </div>
+
+                <p>Copilot lahko opazi nepotrebne korake ali predlaga izboljšave, ki jih nato upoštevate v posodobljenem diagramu.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Generiranje dokumentacije</h3>
+                
+                <p>Ko je vaš Visio diagram končan, lahko Copilot pomaga pri ustvarjanju spremljajoče dokumentacije:</p>
+                
+                <ul>
+                    <li>"Na podlagi tega procesa napiši postopkovnik za zaposlene"</li>
+                    <li>"Ustvari kontrolni seznam za ta diagram"</li>
+                </ul>
+
+                <p>Tako diagram in besedilna dokumentacija delujeta skupaj.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">5</span>
+                <h3>Iskanje in organizacija diagramov</h3>
+                
+                <p>Če imate veliko Visio datotek shranjenih v SharePointu, lahko Copilot pomaga pri iskanju:</p>
+                
+                <div class="highlight-box">
+                    <p style="font-style: italic;">"Kateri dokument vsebuje diagram procesa za odobritev naročil?"</p>
+                </div>
+
+                <p>Copilot pregleda datoteke in vam pomaga najti pravo.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">6</span>
+                <h3>Prevajanje med standardi</h3>
+                
+                <p>Potrebujete nasvet, kako preprost diagram pretvoriti v BPMN standard?</p>
+                
+                <p>Copilot vam lahko razloži razlike med standardi in svetuje, katere elemente uporabiti, vi pa nato v Visiu uporabite ustrezne oblike.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">7</span>
+                <h3>Nasveti in učenje</h3>
+                
+                <p>Copilot je odličen mentor za učenje Visia:</p>
+                
+                <ul>
+                    <li>"Kako v Visiu ustvarim povezavo z bazo podatkov?"</li>
+                    <li>"Katera predloga je najboljša za mrežni diagram?"</li>
+                    <li>"Kako nastavim merilo v tlorisom?"</li>
+                </ul>
+
+                <p>Dobite takojšnje napotke, ki vam prihranijo iskanje po dokumentaciji.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: How to Start -->
+        <section id="kako-zaceti">
+            <h2>Kako začeti z Visio?</h2>
+
+            <p>Začetek z orodjem Visio je preprost:</p>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Odprite Visio</h3>
+                <p>Spletno na visio.cloud.microsoft ali namizno aplikacijo.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Izberite predlogo</h3>
+                <p>Začnite z osnovno predlogo za vaš namen:</p>
+                <ul>
+                    <li>Flowchart (diagram poteka)</li>
+                    <li>Org chart (organizacijska shema)</li>
+                    <li>Network diagram (mrežni diagram)</li>
+                    <li>Floor plan (tloris)</li>
+                    <li>BPMN diagram</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Povlecite in spustite oblike</h3>
+                <p>Iz stranske palete povlecite oblike na platno.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Povežite oblike</h3>
+                <p>Uporabite puščice ali povezovalce za povezavo elementov.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">5</span>
+                <h3>Dodajte besedilo in oblikovanje</h3>
+                <p>Dodajte opise, spremenite barve, prilagodite slog.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">6</span>
+                <h3>Shranite in delite</h3>
+                <p>Shranite v OneDrive ali SharePoint in delite s sodelavci.</p>
+            </div>
+
+            <div class="info-box">
+                <h4>💡 Nasvet</h4>
+                <p>Ne potrebujete biti grafični oblikovalec. Vnaprej pripravljene oblike in predloge poskrbijo, da vaš diagram izgleda profesionalno.</p>
+            </div>
+        </section>
+
+        <!-- Section 6: When NOT to use Visio -->
+        <section id="kdaj-ne-uporabiti">
+            <h2>Kdaj Visio ni prava izbira?</h2>
+
+            <p>Pomembno je vedeti tudi, kdaj Visio ni optimalna izbira:</p>
+
+            <div class="warning-box">
+                <h4>❌ Za preproste diagrame v prezentacijah</h4>
+                <p>Če potrebujete preprost diagram za eno PowerPoint prosojnico, uporabite SmartArt v PowerPointu.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>❌ Za hitro skiciranje idej</h4>
+                <p>Za neformalne skice med sestankom je dovolj OneNote ali Microsoft Whiteboard.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>❌ Za kompleksne projektne načrte</h4>
+                <p>Za Gantt diagrame in projektno vodenje uporabite Project, Loop ali Planner.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>❌ Za podatkovne vizualizacije</h4>
+                <p>Za grafe in statistične prikaze uporabite Excel ali Power BI.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Visio je najboljši za:</h4>
+                <ul>
+                    <li>Standardizirane procesne diagrame</li>
+                    <li>Tehnične načrte</li>
+                    <li>Organizacijske strukture</li>
+                    <li>Vizualizacije, ki jih boste vzdrževali ter delili dolgoročno</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Stats Section Before CTA -->
+    <div style="background: #f8f9fa; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="text-align: center; color: #50afb0; margin-bottom: 50px;">Zakaj izbrati Skupino stroka.si za Microsoft 365?</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-label">Certificirani Microsoft partneri</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-label">Strokovnjaki za vizualizacijo procesov</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-label">Usposabljanja za Visio in diagramiranje</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔧</div>
+                    <div class="stat-label">Pomoč pri dokumentaciji procesov</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Iz zapletenosti v jasnost</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Povežite se z nami za pomoč pri vizualizaciji vaših poslovnih procesov in uvedbi Visia v vašo organizacijo.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Naše storitve Visio</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">1️⃣ Usposabljanja</h4>
+                        <p>Praktična usposabljanja za uporabo Visia</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">2️⃣ Dokumentacija procesov</h4>
+                        <p>Pomoč pri vizualizaciji vaših poslovnih procesov</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">3️⃣ Svetovanje</h4>
+                        <p>Izbira pravih predlog in standardov</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">4️⃣ Podpora</h4>
+                        <p>Stalna pomoč pri delu z Visiom</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Vaš partner za digitalno transformacijo in Microsoft 365 rešitve.</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+</html>
