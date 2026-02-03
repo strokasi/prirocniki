@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Planner: Enostavno upravljanje projektov | Praktični vodič | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-top: 4px solid #50afb0;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            color: #333;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3, .highlight-box h4, .highlight-box p, .highlight-box ul, .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff8f0;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h4 {
+            color: #e74c3c;
+        }
+
+        .scenario-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .scenario-card h3 {
+            margin-top: 0;
+            color: #50afb0;
+        }
+
+        .scenario-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .benefit-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid #50afb0;
+            margin: 20px 0;
+        }
+
+        .benefit-card h4 {
+            margin-top: 0;
+            color: #50afb0;
+        }
+
+        .step-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+
+            .scenario-card, .step-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>Microsoft Planner: Enostavno upravljanje projektov</h1>
+        <p class="hero-subtitle">Praktični vodič za organizacijo nalog in izboljšanje koordinacije ekip</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Zakaj Planner ostaja neopažen?</h2>
+            <p>Ko pomislimo na Microsoft 365, nam najprej na misel pridejo Outlook, Word, Excel in Teams. Kaj pa, če vam povemo, da imate v Business licenci že vključeno orodje za upravljanje projektov, ki ga morda še niste odprli?</p>
+            <p><strong>Microsoft Planner je preprosto, a močno orodje</strong> za organizacijo nalog in projektov, ki ga večina uporabnikov spregleda – kljub temu, da bi jim lahko bistveno olajšalo vsakodnevno delo.</p>
+            <p>Planner je zasnovan za ekipe, ki potrebujejo jasen pregled nad nalogami, roki in odgovornostmi, a nimajo časa za kompleksne sisteme projektnega vodenja. Gre za preprosto orodje za enostavno organizacijo dela – idealno za ekipe, ki želijo hitro začeti z boljšo koordinacijo.</p>
+        </div>
+
+        <!-- Key Benefits -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <div class="stat-label">Vizualno upravljanje nalog</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏱️</div>
+                <div class="stat-label">Začnite v 5 minutah</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-label">Sodelovanje v realnem času</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔗</div>
+                <div class="stat-label">Integracija z Microsoft 365</div>
+            </div>
+        </div>
+
+        <!-- Section 1: What is Planner -->
+        <section id="kaj-je-planner">
+            <h2>Kaj pravzaprav je Microsoft Planner?</h2>
+            
+            <p>Planner je vizualno orodje za upravljanje nalog, ki deluje po principu "kartice na tabli" – podobno kot fizična tabla s post-it lističi, samo v digitalni obliki.</p>
+
+            <div class="highlight-box">
+                <h3>Osnovni elementi Plannerja</h3>
+                <p>Vsak projekt (ali "načrt", kot ga imenuje Microsoft) vsebuje:</p>
+                <ul>
+                    <li><strong>Naloge</strong> – organizirane v skupine</li>
+                    <li><strong>Dodelitve</strong> – vsaka naloga je dodeljena članom ekipe</li>
+                    <li><strong>Roki</strong> – določeni termini za dokončanje</li>
+                    <li><strong>Opisi in priponke</strong> – dodatne informacije</li>
+                    <li><strong>Kontrolni seznami</strong> – podnaloge znotraj vsake naloge</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>Kako dostopate do Plannerja?</h4>
+                <ul>
+                    <li><strong>Spletni portal:</strong> office.com</li>
+                    <li><strong>Microsoft Teams:</strong> Kot zavihek v katerem koli kanalu</li>
+                    <li><strong>Mobilna aplikacija:</strong> Planner app za Android in iOS</li>
+                </ul>
+                <p style="margin-top: 15px;">Ker je del Microsoft 365 okolja, so vsi podatki sinhronizirani in varni.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Pomembno vedeti</h4>
+                <p>Planner je odlična izbira za ekipe, ki iščejo enostavno rešitev za osnovno koordinacijo dela in pregled nad nalogami. Namerno ni zasnovan za večje in kompleksne projekte – njegov pravi namen je <strong>enostavnost in hitrost dela</strong>.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Practical Scenarios -->
+        <section id="primeri-uporabe">
+            <h2>Kako podjetja uporabljajo Planner v praksi?</h2>
+
+            <div class="scenario-card">
+                <span class="scenario-number">1</span>
+                <h3>Marketing ekipa in kampanje</h3>
+                
+                <p><strong>Scenarij:</strong> Marketinška ekipa pripravlja mesečno kampanjo.</p>
+
+                <h4>Struktura načrta:</h4>
+                <p>Vodja marketinga v Plannerju ustvari nov načrt "Kampanja - Oktober 2025" in ga razdeli na skupine:</p>
+                <ul>
+                    <li><strong>Vsebina</strong> – priprava besedil in materialov</li>
+                    <li><strong>Oblikovanje</strong> – grafični elementi</li>
+                    <li><strong>Objave</strong> – scheduling in publishing</li>
+                    <li><strong>Analiza</strong> – merjenje rezultatov</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Kako to deluje v praksi:</h4>
+                    <ul>
+                        <li>Za vsako nalogo (npr. "Pripravi besedilo za LinkedIn objavo") določi odgovorno osebo in rok</li>
+                        <li>Dodajo kontrolni seznam korakov za vsako nalogo</li>
+                        <li>Ko grafični oblikovalec dokonča svoj del, prestavi kartico iz "V delu" v "Dokončano"</li>
+                        <li>Vsi člani ekipe vidijo napredek v realnem času</li>
+                        <li>Brez dolgih sestankov ali mailov s poizvedbami "Kje smo s tem projektom?"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">2</span>
+                <h3>IT ekipa in HelpDesk</h3>
+                
+                <p><strong>Scenarij:</strong> IT ekipa uporablja Planner za organizacijo zahtevkov uporabnikov.</p>
+
+                <h4>Organizacija po prioritetah:</h4>
+                <p>Ustvarijo načrt "IT podpora - Q4" z grupami:</p>
+                <ul>
+                    <li>Nujno</li>
+                    <li>Visoka prioriteta</li>
+                    <li>Normalno</li>
+                    <li>Nizka prioriteta</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>Uporaba oznak</h4>
+                    <p>Ko pride nov zahtevek:</p>
+                    <ul>
+                        <li>Dodajo kot nalogo</li>
+                        <li>Dodelijo IT tehniku</li>
+                        <li>Označijo z ustrezno oznako (npr. "Hardware", "Software", "Dostopi")</li>
+                        <li>Vsak tehnik ima jasen pregled nad svojimi nalogami</li>
+                        <li>Vodja v zavihku "Grafikoni" vidi obremenjenost ekipe</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">3</span>
+                <h3>HR in proces zaposlovanja</h3>
+                
+                <p><strong>Scenarij:</strong> HR oddelek uporablja Planner za sledenje novim zaposlenim.</p>
+
+                <h4>Kontrolni seznam za vsakega kandidata:</h4>
+                <ul>
+                    <li>Pripravi delovno mesto</li>
+                    <li>Naroči opremo</li>
+                    <li>Ustvari račune</li>
+                    <li>Organiziraj uvajanje</li>
+                    <li>Predstavi ekipi</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Sodelovanje med oddelki:</h4>
+                    <p>Vsak korak lahko dodelijo različnim sodelavcem:</p>
+                    <ul>
+                        <li>IT oddelek poskrbi za opremo in račune</li>
+                        <li>Vodja organizira uvajanje</li>
+                        <li>HR koordinira celoten proces</li>
+                        <li>Nov zaposlen lahko tudi sam vidi svoj Planner s koraki uvajanja</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">4</span>
+                <h3>Splošne administrativne naloge</h3>
+                
+                <p><strong>Scenarij:</strong> Manjša podjetja uporabljajo Planner za splošno organizacijo pisarne.</p>
+
+                <h4>Načrt "Pisarna" vsebuje ponavljajoče se naloge:</h4>
+                <ul>
+                    <li>"Naroči pisarniški material" – mesečna naloga</li>
+                    <li>"Preveri delovanje klimatske naprave" – kvartalna naloga</li>
+                    <li>"Organiziraj skupni zajtrk" – po potrebi</li>
+                </ul>
+
+                <p>Te naloge se dodelijo odgovornim osebam in se ponavljajo mesečno ali po potrebi.</p>
+            </div>
+        </section>
+
+        <!-- Section 3: Benefits -->
+        <section id="dodana-vrednost">
+            <h2>Kakšna je dodana vrednost za vašo ekipo?</h2>
+
+            <div class="grid-2">
+                <div class="benefit-card">
+                    <h4>👀 Preglednost namesto ugibanja</h4>
+                    <p>Največja vrednost Plannerja je v tem, da vsi člani ekipe takoj vidijo, kdo dela na čem.</p>
+                    <p>Ne potrebujete več uskladitvenih sestankov ali verig mailov, kjer se sprašujete, ali je nekdo dobil vašo zadnjo verzijo dokumenta.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>⏰ Prihranek časa pri koordinaciji</h4>
+                    <p>Raziskave kažejo, da zaposleni porabijo do 20 % svojega časa za iskanje informacij in koordinacijo z drugimi.</p>
+                    <p>Planner ta čas radikalno zmanjša – vsi podatki so na enem mestu, vedno posodobljeni.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>✅ Izboljšana odgovornost</h4>
+                    <p>Ko je naloga jasno dodeljena osebi z določenim rokom, se zmanjša možnost, da "se izgubi".</p>
+                    <p>Vsak ve, kaj je njegova odgovornost in do kdaj mora biti opravljeno.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>🔗 Integracija z orodji, ki jih že uporabljate</h4>
+                    <p>Planner ni samo posamezna aplikacija:</p>
+                    <ul>
+                        <li>Naloge se sinhronizirajo z Outlookom (prikazujejo se v koledarju)</li>
+                        <li>Povezava z datotekami v SharePointu ali OneDrive</li>
+                        <li>Pogovori o nalogah potekajo direktno v Teamsih</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Copilot in Planner -->
+        <section id="copilot-v-planner">
+            <h2>Kako Copilot v Plannerju spreminja način dela?</h2>
+
+            <div class="intro-box">
+                <h2>Umetna inteligenca pri upravljanju projektov</h2>
+                <p>Microsoft Copilot prinaša umetno inteligenco tudi v Planner, kar upravljanje projektov znatno izboljša.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Avtomatsko ustvarjanje načrtov</h3>
+                
+                <p>Namesto da sami razmišljate o vseh potrebnih korakih, lahko Copilotu preprosto napišete:</p>
+                
+                <ul>
+                    <li>"Ustvari načrt za lansiranje novega izdelka"</li>
+                    <li>"Pripravi načrt za organizacijo podjetniške konference"</li>
+                </ul>
+
+                <p>Copilot vam v nekaj sekundah pripravi strukturiran načrt z logičnimi fazami, nalogami in celo predlogi rokov.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Inteligentni povzetki napredka</h3>
+                
+                <p>Ko vodja projekta potrebuje hiter pregled, lahko Copilota vpraša:</p>
+                
+                <ul>
+                    <li>"Kako napreduje projekt X?"</li>
+                    <li>"Katere naloge so zapoznele?"</li>
+                    <li>"Kdo ima največ odprtih nalog?"</li>
+                </ul>
+
+                <p>Copilot analizira vse naloge, komentarje in aktivnosti ter pripravi strukturiran povzetek v naravnem jeziku.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Pomoč pri razporeditvi dela</h3>
+                
+                <p>Copilot lahko analizira obremenitev članov ekipe in predlaga optimalno razporeditev nalog.</p>
+
+                <div class="highlight-box">
+                    <h4>Primer uporabe:</h4>
+                    <p>Ko mu poveste "Ekipi želim porazdeliti naloge glede na njihovo trenutno obremenitev", vam Copilot poda konkretne predloge, kdo bi se naj lotil katere naloge.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Pametni opomniki in prioritete</h3>
+                
+                <p>Copilot spremlja vaše naloge in vas proaktivno opominja na tiste, ki se bližajo roku ali stojijo zaradi odvisnosti od drugih.</p>
+
+                <div class="info-box">
+                    <h4>Primeri opominov:</h4>
+                    <ul>
+                        <li>"Opažam, da ima naloga X rok čez 2 dni, a še ni dokončana nobena podnaloga."</li>
+                        <li>"Naloga Y čaka na odobritev že 3 dni."</li>
+                        <li>"Projekt Z ima več zapoznelih nalog – želite pregled?"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">5</span>
+                <h3>Generiranje nalog iz sestankov</h3>
+                
+                <p>Po sestanku v Teamsih lahko Copilot avtomatsko analizira zapisnik in predlaga naloge, ki jih je treba dodati v Planner.</p>
+
+                <p><strong>Ukaz:</strong> "Iz tega sestanka ustvari naloge v Plannerju"</p>
+                <p><strong>Rezultat:</strong> Strukturiran seznam z odgovornimi osebami in roki.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: How to Start -->
+        <section id="kako-zaceti">
+            <h2>Prvi koraki s Plannerjem</h2>
+
+            <p>Začetek dela s Plannerjem je preprost in ne zahteva dolgega uvajanja:</p>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Odprite Planner v Teams</h3>
+                
+                <ul>
+                    <li>Odprite Microsoft Teams</li>
+                    <li>V kateremkoli kanalu kliknite na "+" za dodajanje zavihka</li>
+                    <li>Izberite "Planner"</li>
+                    <li>Ustvarite nov načrt</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Poimenujte svoj načrt</h3>
+                
+                <p>Izberite jasno in opisno ime za svoj načrt, npr.:</p>
+                <ul>
+                    <li>"Marketing kampanja Q1 2026"</li>
+                    <li>"IT podpora - Helpdesk"</li>
+                    <li>"Onboarding nov zaposleni"</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Dodajte skupine nalog</h3>
+                
+                <p>Ustvarite logične skupine za vaše naloge:</p>
+                <ul>
+                    <li><strong>Po fazah projekta:</strong> "V načrtu", "V delu", "Dokončano"</li>
+                    <li><strong>Po aktivnostih:</strong> "Vsebina", "Oblikovanje", "Testiranje"</li>
+                    <li><strong>Po prioriteti:</strong> "Nujno", "Visoko", "Normalno", "Nizko"</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Začnite dodajati naloge</h3>
+                
+                <p>Za vsako nalogo določite:</p>
+                <ul>
+                    <li><strong>Naziv naloge</strong> – kratek in jasen opis</li>
+                    <li><strong>Odgovorna oseba</strong> – dodelite članu ekipe</li>
+                    <li><strong>Rok</strong> – določite datum dokončanja</li>
+                    <li><strong>Opis</strong> – dodatne informacije (opcijsko)</li>
+                    <li><strong>Priponke</strong> – povezani dokumenti (opcijsko)</li>
+                    <li><strong>Kontrolni seznam</strong> – podkoraki (opcijsko)</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">5</span>
+                <h3>Nastavite roke in prioritete</h3>
+                
+                <div class="info-box">
+                    <h4>💡 Nasvet</h4>
+                    <p>Ni vam potrebno imeti popolnega načrta. Planner je dovolj prilagodljiv, da ga sproti prilagajate potrebam vaše ekipe. Začnite z osnovami in dodajajte funkcionalnosti postopoma.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Practices -->
+        <section id="dobre-prakse">
+            <h2>Dobre prakse za uporabo Plannerja</h2>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>🎯 Jasna poimenovanja</h4>
+                    <p>Uporabljajte opisna imena za načrte, skupine in naloge. Namesto "Projekt 1" uporabite "Spletna stran - Prenova 2026".</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📅 Realistični roki</h4>
+                    <p>Nastavite roke, ki so dosegljivi. Preveč optimistični roki vodijo v nenehno prestavljanje in zmanjšujejo verodostojnost sistema.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🏷️ Konsistentna uporaba oznak</h4>
+                    <p>Določite sistem oznak in ga uporabljajte dosledno (npr. barve za prioritete ali kategorije nalog).</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📊 Redni pregled grafikonov</h4>
+                    <p>Uporabljajte zavihek "Grafikoni" za pregled napredka. Redno preverjajte število odprtih in zapoznelih nalog.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>💬 Komunikacija v nalogah</h4>
+                    <p>Uporabljajte komentarje v nalogah za specifično komunikacijo. Tako je vsa zgodovina shranjena na enem mestu.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔔 Vklopite obvestila</h4>
+                    <p>Zagotovite, da člani ekipe prejmejo obvestila za dodeljene naloge in spremembe rokov.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Stats Section Before CTA -->
+    <div style="background: #f8f9fa; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="text-align: center; color: #50afb0; margin-bottom: 50px;">Zakaj izbrati Skupino stroka.si za Microsoft 365?</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-label">Certificirani Microsoft partneri</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-label">Praktične delavnice in usposabljanja</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-label">Strokovnjaki za Microsoft 365 ekosistem</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔧</div>
+                    <div class="stat-label">Podpora pri implementaciji in optimizaciji</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljen izboljšati koordinacijo vaše ekipe?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Povežite se z nami za delavnico o Microsoft Planner in drugih Microsoft 365 orodjih, ki lahko transformirajo način dela vaše ekipe.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Naše storitve Microsoft 365</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">1️⃣ Usposabljanja</h4>
+                        <p>Praktične delavnice o uporabi Microsoft 365 orodij</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">2️⃣ Implementacija</h4>
+                        <p>Pomoč pri uvedbi Plannerja in drugih orodij v vaše podjetje</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">3️⃣ Svetovanje</h4>
+                        <p>Optimizacija procesov in izbira pravih orodij</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">4️⃣ Podpora</h4>
+                        <p>Stalna pomoč in odgovori na vaša vprašanja</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Vaš partner za digitalno transformacijo in Microsoft 365 rešitve.</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+</html>
