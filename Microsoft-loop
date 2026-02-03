@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Loop: Prihodnost sodelovanja v realnem času | Praktični vodič | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .intro-box ul {
+            margin-top: 15px;
+            margin-left: 20px;
+        }
+
+        .intro-box li {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-top: 4px solid #50afb0;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            color: #333;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .highlight-box h4 {
+            color: white;
+        }
+
+        .highlight-box p {
+            color: white;
+        }
+
+        .highlight-box ul,
+        .highlight-box ol {
+            color: white;
+        }
+
+        .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff8f0;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h4 {
+            color: #e74c3c;
+        }
+
+        .scenario-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .scenario-card h3 {
+            margin-top: 0;
+            color: #50afb0;
+        }
+
+        .scenario-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .benefit-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid #50afb0;
+            margin: 20px 0;
+        }
+
+        .benefit-card h4 {
+            margin-top: 0;
+            color: #50afb0;
+        }
+
+        .step-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        .quote-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+
+            .scenario-card, .step-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>Microsoft Loop: Prihodnost sodelovanja v realnem času</h1>
+        <p class="hero-subtitle">Praktični vodič za uporabo Microsoft Loop in Copilot v vašem podjetju</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Nov način razmišljanja o dokumentih</h2>
+            <p>Če ste kadar koli delali na projektu, kjer je bilo treba informacije zbirati iz mailov, Teams pogovorov, SharePoint dokumentov in Excel tabel, potem veste, kako hitro postane vse skupaj kaotično. Kje je bila zadnja verzija tistega dokumenta? Kdo je odobril spremembo? Kaj smo se dogovorili na sestanku prejšnji teden?</p>
+            <p><strong>Microsoft Loop je Microsoftov odgovor na ta problem</strong> – in obenem eden najbolj inovativnih izdelkov, ki jih je Microsoft ustvaril v zadnjih letih. Loop je popolnoma nov način razmišljanja o tem, kako ekipe ustvarjajo, delijo in organizirajo informacije.</p>
+            <p>Kljub temu, da je na voljo v okviru Business licence, ga večina uporabnikov še vedno ne pozna ali ne razume, kako bi ga lahko uporabila. Ta priročnik vam bo pomagal razumeti in začeti uporabljati Loop v vašem podjetju.</p>
+        </div>
+
+        <!-- Key Benefits -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🔄</div>
+                <div class="stat-label">Informacije se posodabljajo v realnem času</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🧩</div>
+                <div class="stat-label">Modularne komponente, ki živijo povsod</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-label">Sočasno sodelovanje brez konfliktov</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🤖</div>
+                <div class="stat-label">Copilot kot inteligentni sodelavec</div>
+            </div>
+        </div>
+
+        <!-- Section 1: What is Loop -->
+        <section id="kaj-je-loop">
+            <h2>Kaj je Microsoft Loop in zakaj je drugačen?</h2>
+            
+            <p>Loop je sistem za sodelovanje, kjer so informacije "žive" in se posodabljajo povsod, kjer jih potrebujete.</p>
+
+            <div class="highlight-box">
+                <h3>Kako deluje Loop?</h3>
+                <p>Predstavljajte si, da ustvarite tabelo s podatki v Loop komponenti. To tabelo nato delite v Teams klepetu, vključite v e-mail in jo dodate v OneNote zapisek. <strong>Ko kdor koli uredi to tabelo kjerkoli, se sprememba prikaže povsod – v realnem času.</strong></p>
+            </div>
+
+            <h3>Ključna razlika: Komponente namesto dokumentov</h3>
+            <p>Loop ne dela z "dokumenti", temveč s <strong>"komponentami"</strong> – modularnimi kosi vsebine, ki živijo povsod hkrati. Lahko gre za:</p>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>📊 Tabele</h4>
+                    <p>Strukturirani podatki, ki se posodabljajo v realnem času</p>
+                </div>
+                <div class="feature-card">
+                    <h4>✅ Seznami opravil</h4>
+                    <p>Naloge, ki se sinhronizirajo s Planner in To Do</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📝 Odstavki besedila</h4>
+                    <p>Živahna vsebina, ki se razvija skupaj z ekipo</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📊 Glasovanja</h4>
+                    <p>Hitre odločitve z ekipo</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📈 Diagrami</h4>
+                    <p>Vizualne predstavitve, ki se posodabljajo</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📄 Loop strani</h4>
+                    <p>Celotne strani, kjer se komponente zlagajo skupaj</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h4>Kako dostopate do Loop?</h4>
+                <ul>
+                    <li><strong>Spletni vmesnik:</strong> loop.cloud.microsoft</li>
+                    <li><strong>Microsoft Teams:</strong> Uporabite "/Loop" v katerem koli pogovoru</li>
+                    <li><strong>Outlook:</strong> Vključite Loop komponente v e-maile</li>
+                    <li><strong>OneNote:</strong> Dodajte Loop komponente v zapiske</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Vse je sinhronizirano in vedno posodobljeno.</strong></p>
+            </div>
+        </section>
+
+        <!-- Section 2: Practical Scenarios -->
+        <section id="primeri-uporabe">
+            <h2>Kako podjetja uporabljajo Loop v praksi?</h2>
+
+            <div class="scenario-card">
+                <span class="scenario-number">1</span>
+                <h3>Projektna dokumentacija z real-time spremembami</h3>
+                
+                <p><strong>Scenarij:</strong> Razvojna ekipa dela na novi funkcionalnosti aplikacije. Projektna vodja ustvari Loop stran "Projekt: Nova funkcionalnost - Dashboard".</p>
+
+                <h4>Kaj vsebuje Loop stran?</h4>
+                <ul>
+                    <li>Tabela z mejniki in roki</li>
+                    <li>Seznam odprtih vprašanj, ki jih je potrebno rešiti</li>
+                    <li>Diagram arhitekture sistema</li>
+                    <li>Seznam nalog za vsako fazo</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Prednosti v praksi:</h4>
+                    <ul>
+                        <li>Ko razvijalec odkrije tehnično oviro, jo doda na seznam vprašanj – <strong>vsi jo takoj vidijo</strong></li>
+                        <li>Ko arhitekt posodobi diagram, se sprememba <strong>takoj prikaže vsem</strong></li>
+                        <li>Ko projektni manager premakne rok, vsi vidijo <strong>posodobljeno tabelo v realnem času</strong></li>
+                        <li>Brez pošiljanja "zadnje verzije" po mailu</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>💡 Dodatna uporabnost</h4>
+                    <p>Del te strani – na primer tabelo z mejniki – projektni vodja vključi tudi v tedensko poročilo v Teamsih. Člani managementa tako vedno vidijo trenutno stanje, ne pa "fotografijo" stanja iz prejšnjega tedna.</p>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">2</span>
+                <h3>Srečanja, ki imajo smisel</h3>
+                
+                <p><strong>Scenarij:</strong> Vsak teden ima marketinška ekipa redni sestanek. Namesto da nekdo piše zapisnik v Word dokumentu in ga pošlje po mailu, uporabljajo Loop stran "Tedenski sestanek - Marketing Q4".</p>
+
+                <h4>Kako to deluje?</h4>
+                <ul>
+                    <li>Vsak sestanek doda nov zavihek na isto stran</li>
+                    <li>Med sestankom vsi sodelujejo pri zapisovanju</li>
+                    <li>Ena oseba zapiše dogovor, druga doda komentarje, tretja obarva ključne točke</li>
+                    <li>Na koncu sestanka so že označene naloge</li>
+                    <li>Naloge se avtomatsko sinhronizirajo s Plannerjem ali To Do seznamom</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Prednosti:</h4>
+                    <ul>
+                        <li>Vsa zgodovina sestankov je <strong>na enem mestu</strong></li>
+                        <li>Lahko iščete po vsebini</li>
+                        <li>Vidite kontinuiteto tem</li>
+                        <li>Ne potrebujete več iskati "tistega sestanka, kjer smo se o tem pogovarjali"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">3</span>
+                <h3>Dinamične strategije in plani</h3>
+                
+                <p><strong>Scenarij:</strong> Vodstvo podjetja pripravlja letni strateški načrt. Namesto 50-strani dolge PowerPoint prezentacije, ki bo zastarela čez dva meseca, ustvarijo Loop stran "Strategija 2026".</p>
+
+                <h4>Vsebina Loop strani:</h4>
+                <ul>
+                    <li>Vizijo in cilje (živahen tekst, ki se razvija)</li>
+                    <li>Tabelo KPI-jev s trenutnimi vrednostmi (povezano z Excel podatki)</li>
+                    <li>Časovnico iniciativ</li>
+                    <li>Seznam odgovornosti po oddelkih</li>
+                    <li>Področje za komentarje in diskusijo</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>Živ dokument skozi celo leto</h4>
+                    <p>Ta dokument ni "finalen" januarja in nato pozabljen. Je živ dokument, ki se posodablja skozi celo leto:</p>
+                    <ul>
+                        <li>Ko se cilji spremenijo → posodobi se strategija</li>
+                        <li>Ko dosežete mejnik → posodobi se časovnica</li>
+                        <li>Vsi v podjetju imajo vedno vpogled v najnovejšo verzijo strategije</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">4</span>
+                <h3>Onboarding novih sodelavcev</h3>
+                
+                <p><strong>Scenarij:</strong> HR ustvari Loop stran za vsakega novega zaposlenega.</p>
+
+                <h4>Kaj vsebuje stran?</h4>
+                <ul>
+                    <li>Kontrolni seznam nalog za prvi teden, prvi mesec</li>
+                    <li>Povezave na pomembne vire in dokumentacijo</li>
+                    <li>Kontakte ključnih ljudi v podjetju</li>
+                    <li>Prostor, kjer novo zaposleni zapisuje vprašanja</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Sodelovanje več oddelkov:</h4>
+                    <ul>
+                        <li>Mentor lahko na isto stran dodaja komentarje in nasvet</li>
+                        <li>Vodja vidi napredek</li>
+                        <li>IT oddelek označi, ko so računalnik in dostopi pripravljeni</li>
+                        <li>Vse to se dogaja na enem mestu, vsi sodelujejo</li>
+                        <li>Brez izgubljenih informacij</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Why Loop Changes Everything -->
+        <section id="zakaj-loop-spreminja">
+            <h2>Zakaj Loop spreminja način dela?</h2>
+
+            <div class="grid-2">
+                <div class="benefit-card">
+                    <h4>📁 Konec z verzijami dokumentov</h4>
+                    <p>"Zadnja_verzija_final_v3_FINAL.docx" je preteklost.</p>
+                    <p>V Loop ni verzij, ker je dokument vedno posodobljen. Vsi vidijo enako vsebino, v realnem času.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>📍 Informacije tam, kjer jih potrebujete</h4>
+                    <p>Loop komponente lahko vključite kamor koli – v Teams, Outlook, OneNote, tudi v Planner.</p>
+                    <p>Ne potrebujete več "priti do dokumenta" – dokument pride k vam.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>🤝 Sodelovanje brez trenj</h4>
+                    <p>Pet ljudi lahko hkrati piše na istem odstavku besedila, brez konfliktov, brez "počakaj, da shranim".</p>
+                    <p>Vidite, kdo je kaj napisal. Spremembe se prikazujejo v realnem času.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>🧩 Modularnost in prožnost</h4>
+                    <p>Ustvarjate lahko komponente za različne namene – glasovanja, tabele, sezname, diagrame – in jih kombinirate, kot vam ustreza.</p>
+                    <p>Loop ni "dokument" ali "tabela" ali "seznam". Je vse to hkrati, po potrebi.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>🔇 Zmanjšanje informacijskega hrupa</h4>
+                    <p>Namesto da informacije iščete po Teams kanalih, mailih in SharePointu, jih zbirate na Loop straneh.</p>
+                    <p>Eno mesto, vedno posodobljeno.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h4>🔗 Integracija z Microsoft 365</h4>
+                    <p>Loop je del Microsoft 365 ekosistema in se brezhibno povezuje z vsemi vašimi orodji.</p>
+                    <p>Vse informacije so sinhronizirane, dostopne in varne.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Copilot in Loop -->
+        <section id="copilot-v-loop">
+            <h2>Copilot v Loop: Vaš inteligentni sodelavec</h2>
+
+            <div class="intro-box">
+                <h2>Več kot asistent</h2>
+                <p>Copilot v Loop ni zgolj "asistent". Je kot še en član ekipe, ki piše skupaj z vami in vam pomaga pri delu na Loop straneh.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Generiranje vsebine z enim klikom</h3>
+                
+                <p>Ko začenjate novo Loop stran za projektni načrt, lahko Copilotu preprosto naročite:</p>
+                
+                <div class="quote-box">
+                    "Ustvari predlogo za projektni načrt s fazami, mejniki in področji tveganja."
+                </div>
+
+                <p>Copilot vam v nekaj sekundah pripravi strukturiran dokument, ki ga lahko takoj začnete prilagajati.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Povzemanje dolgih strani</h3>
+                
+                <p>Ko se Loop stran razvije v deset strani zapiskov, odločitev in sprememb, lahko Copilota prosite:</p>
+                
+                <div class="quote-box">
+                    "Povzemi ključne odločitve iz te strani"<br>
+                    "Kaj so bile glavne skrbi, omenjene v zadnjem mesecu?"
+                </div>
+
+                <p>Copilot prebere celotno vsebino in vam da jasen povzetek.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Predlogi naslednjih korakov</h3>
+                
+                <p>Na sestanku zapišete dogovore in ideje. Copilot lahko analizira vsebino in predlaga:</p>
+                
+                <div class="quote-box">
+                    "Na podlagi te diskusije predlagam naslednje korake ..."
+                </div>
+
+                <p>Pripravi vam seznam točk, ki jih lahko takoj spremenite v naloge.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Pisanje in preoblikovanje vsebine</h3>
+                
+                <p>Ko pišete poročilo ali strategijo v Loop, Copilot pomaga z:</p>
+                
+                <ul>
+                    <li>"Razširi to točko v celoten odstavek"</li>
+                    <li>"Preoblikuj ta del, da bo bolj formalen"</li>
+                    <li>"Dodaj primere za to trditev"</li>
+                </ul>
+
+                <p>Piše skupaj z vami in prilagaja ton ter slog vašim potrebam.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">5</span>
+                <h3>Iskanje povezav in vpogledov</h3>
+                
+                <p>Copilot lahko analizira vašo Loop stran in poveže informacije:</p>
+                
+                <div class="quote-box">
+                    "Opažam, da ste omenili to tveganje tukaj in tukaj – ali želite, da ustvarim ločeno sekcijo za upravljanje tveganj?"<br><br>
+                    "Ta naloga je povezana z dokumentom v SharePointu – ali naj dodam povezavo?"
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">6</span>
+                <h3>Sodelovanje z ekipo</h3>
+                
+                <p>Ko sodelujete na Loop strani, lahko Copilot pomaga koordinirati:</p>
+                
+                <ul>
+                    <li>"Katere točke še niso naslovljene?"</li>
+                    <li>"Kdo naj odgovori na to vprašanje?"</li>
+                    <li>"Pripravi povzetek tega sestanka za tiste, ki niso bili prisotni"</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h3>S Copilotom Loop postane še močnejši</h3>
+                <p>Pridobite inteligentnega partnerja, ki vam pomaga ustvarjati, organizirati in razumeti informacije hitreje ter učinkoviteje.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: How to Start -->
+        <section id="kako-zaceti">
+            <h2>Kako začeti z Loop?</h2>
+
+            <p>Loop je enostavno začeti uporabljati. Sledite tem korakom za hiter začetek:</p>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Dostop do Loop</h3>
+                
+                <h4>Možnost A: Preko Teams</h4>
+                <ul>
+                    <li>Odprite Microsoft Teams</li>
+                    <li>V katerem koli klepetu vnesite <strong>"/Loop"</strong></li>
+                    <li>Izberite Loop komponento, ki jo želite ustvariti</li>
+                </ul>
+
+                <h4>Možnost B: Preko spletnega vmesnika</h4>
+                <ul>
+                    <li>Pojdite na <strong>loop.cloud.microsoft</strong></li>
+                    <li>Prijavite se z vašim Microsoft 365 računom</li>
+                    <li>Ustvarite prvo Loop stran</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Povabite člane ekipe</h3>
+                
+                <ul>
+                    <li>Odprite Loop stran ali komponento</li>
+                    <li>Kliknite na gumb "Share" ali "Deli"</li>
+                    <li>Vnesite imena ali e-naslove sodelavcev</li>
+                    <li>Določite pravice dostopa (ogled ali urejanje)</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>💡 Nasvet</h4>
+                    <p>Loop komponente se lahko delijo tudi tako, da jih preprosto kopirate in prilepite v Teams klepet, e-mail ali drugo Loop stran.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Začnite dodajati komponente</h3>
+                
+                <p>Na Loop strani lahko dodate različne komponente:</p>
+
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h4>📊 Tabele</h4>
+                        <p>Za strukturirane podatke in spremljanje</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>✅ Seznami opravil</h4>
+                        <p>Za sledenje nalogam in odgovornostim</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📝 Besedilo</h4>
+                        <p>Za opise, navodila in dokumentacijo</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 Glasovanja</h4>
+                        <p>Za hitre odločitve z ekipo</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Delite komponente</h3>
+                
+                <p>Loop komponente lahko delite na več načinov:</p>
+
+                <ul>
+                    <li><strong>V Teams:</strong> kopirajte in prilepite komponento v klepet ali kanal</li>
+                    <li><strong>V e-mail:</strong> vključite komponento v Outlook sporočilo</li>
+                    <li><strong>V druge Loop strani:</strong> uporabite isto komponento na več mestih</li>
+                    <li><strong>V OneNote:</strong> dodajte Loop komponente v zapiske</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Ključna prednost</h4>
+                    <p>Ko komponento delite, se vse spremembe posodabljajo v realnem času na vseh mestih, kjer je komponenta uporabljena.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">5</span>
+                <h3>Začnite z malimi koraki</h3>
+                
+                <p>Najboljši način za začetek je z majhnim projektom:</p>
+
+                <ul>
+                    <li>Ustvarite Loop stran za naslednji projekt</li>
+                    <li>Uporabite Loop za naslednji tedenski sestanek</li>
+                    <li>Pripravite Loop stran za onboarding novega sodelavca</li>
+                    <li>Ustvarite Loop komponento za sledenje nalogam</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>💡 Priporočilo</h4>
+                    <p>Ko ekipa vidi, kako enostavno je sodelovati, bo Loop postal naravni del vašega načina dela.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Practices -->
+        <section id="dobre-prakse">
+            <h2>Dobre prakse za uporabo Loop</h2>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>🎯 Jasna struktura</h4>
+                    <p>Organizirajte Loop strani po projektih, ekipah ali temah. Uporabite jasne naslove in logično strukturo.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📌 Dosledna uporaba</h4>
+                    <p>Spodbujajte ekipo, da uporablja Loop za vse projekte in sestanke. Konsistentnost je ključ do uspeha.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔔 Obvestila</h4>
+                    <p>Nastavite obvestila za pomembne Loop strani, da ostanete na tekočem s spremembami.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🗂️ Arhiviranje</h4>
+                    <p>Ko je projekt zaključen, arhivirajte Loop strani za kasnejšo referenco, vendar jih ne brišite.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>👥 Pravice dostopa</h4>
+                    <p>Skrbno upravljajte pravice dostopa. Ne potrebujejo vsi urejati vseh strani.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔄 Redne revizije</h4>
+                    <p>Redno pregledujte in posodabljajte Loop strani, da ostanejo aktualne in relevantne.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Common Mistakes -->
+        <section id="pogoste-napake">
+            <h2>Pogoste napake pri uporabi Loop</h2>
+
+            <div class="warning-box">
+                <h4>❌ Napaka 1: Uporaba Loop kot zamenjava za vse dokumente</h4>
+                <p>Loop je odličen za sodelovanje, vendar ni vedno najboljša izbira. Za formalne dokumente, ki potrebujejo različico ali elektronski podpis, uporabite Word ali PDF.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>❌ Napaka 2: Preveč komponent na eni strani</h4>
+                <p>Če imate preveč komponent na eni Loop strani, postane nepregledno. Razdelite vsebino na več strani.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>❌ Napaka 3: Nezadostno izobraževanje ekipe</h4>
+                <p>Če ekipa ne razume, kako Loop deluje, ga ne bodo uporabljali. Vzemite si čas za izobraževanje in demonstracijo.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>❌ Napaka 4: Delitev iste komponente na preveč mestih</h4>
+                <p>Čeprav lahko delite komponente povsod, to včasih povzroči zmedo. Bodite preudarni, kje komponento delite.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Stats Section Before CTA -->
+    <div style="background: #f8f9fa; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="text-align: center; color: #50afb0; margin-bottom: 50px;">Zakaj izbrati Skupino stroka.si za Microsoft 365?</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-label">Certificirani Microsoft partnerji</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-label">Strokovnjaki za Microsoft 365 rešitve</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-label">Usposabljanje in delavnice</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔧</div>
+                    <div class="stat-label">Implementacija in podpora</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljeni izkoristiti moč Microsoft Loop?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Povežite se z nami za delavnico o neizkoriščenih Microsoft 365 orodjih in odkrijte, kako lahko Loop transformira sodelovanje v vašem podjetju.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Naše storitve Microsoft 365</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">1️⃣ Delavnice</h4>
+                        <p>Praktične delavnice o Microsoft 365 orodjih</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">2️⃣ Implementacija</h4>
+                        <p>Pomoč pri uvedbi Loop in drugih orodij</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">3️⃣ Podpora</h4>
+                        <p>Stalna podpora in svetovanje</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">4️⃣ Optimizacija</h4>
+                        <p>Optimizacija vašega Microsoft 365 okolja</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Vaš partner za digitalno transformacijo in Microsoft 365 rešitve.</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+</html>
