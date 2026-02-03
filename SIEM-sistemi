@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zakaj SIEM ni dovolj – in kako zapreti varnostno vrzel | Skupina stroka.si</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  line-height:1.6;
+  color:#000;
+  background:#fff;
+}
+.hero{
+  background:linear-gradient(135deg,#50afb0 0%,#3d8c8d 100%);
+  color:#fff;
+  padding:80px 20px;
+  text-align:center;
+}
+.hero-logo{max-width:250px;margin-bottom:40px}
+.hero h1{font-size:2.5em;margin-bottom:20px}
+.hero-subtitle{font-size:1.3em;max-width:900px;margin:0 auto}
+
+.container{max-width:1200px;margin:0 auto;padding:20px}
+
+.intro-box{
+  background:#f8f9fa;
+  border-left:5px solid #50afb0;
+  padding:30px 40px;
+  margin:60px auto;
+  max-width:900px;
+  border-radius:8px;
+}
+
+section{margin:80px 0}
+h2{
+  color:#50afb0;
+  font-size:2.2em;
+  margin-bottom:30px;
+  border-bottom:3px solid #50afb0;
+  padding-bottom:15px;
+}
+h3{font-size:1.6em;margin:30px 0 15px}
+h4{color:#50afb0;margin:20px 0 10px}
+p{margin-bottom:15px}
+
+.tool-card{
+  background:#fff;
+  border:2px solid #50afb0;
+  border-radius:12px;
+  padding:40px;
+  margin:40px 0;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+.highlight-box{
+  background:#50afb0;
+  color:#fff;
+  padding:30px;
+  border-radius:8px;
+  margin:30px 0;
+}
+
+.info-box{
+  background:#f8f9fa;
+  border-left:5px solid #50afb0;
+  padding:25px;
+  margin:25px 0;
+  border-radius:5px;
+}
+
+.warning-box{
+  background:#fff8f0;
+  border-left:5px solid #e74c3c;
+  padding:25px;
+  margin:25px 0;
+  border-radius:5px;
+}
+
+.stats-box{
+  background:#fff8f0;
+  border-left:5px solid #e74c3c;
+  padding:30px;
+  margin:40px auto;
+  max-width:900px;
+  border-radius:8px;
+  text-align:center;
+}
+.stats-box .big-number{
+  font-size:3.5em;
+  color:#e74c3c;
+  font-weight:700;
+  display:block;
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+  margin:30px 0;
+}
+
+.feature-card{
+  background:#f8f9fa;
+  padding:25px;
+  border-radius:8px;
+  border-top:4px solid #50afb0;
+}
+
+.checklist{
+  list-style:none;
+}
+.checklist li{
+  padding-left:35px;
+  position:relative;
+  margin-bottom:12px;
+}
+.checklist li:before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  color:#50afb0;
+  font-weight:700;
+  font-size:1.3em;
+}
+
+.cta-section{
+  background:linear-gradient(135deg,#50afb0 0%,#3d8c8d 100%);
+  color:#fff;
+  padding:80px 20px;
+  text-align:center;
+}
+
+.btn{
+  padding:15px 40px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  display:inline-block;
+  margin:10px;
+}
+.btn-primary{background:#fff;color:#50afb0}
+.btn-secondary{border:2px solid #fff;color:#fff}
+
+.footer{
+  background:#000;
+  color:#ccc;
+  text-align:center;
+  padding:60px 20px 30px;
+}
+.footer-logo{max-width:200px;margin-bottom:30px}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <a href="https://www.stroka.si" target="_blank">
+    <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png" class="hero-logo">
+  </a>
+  <h1>Vaš sistem spregleda 8 od 10 napadov</h1>
+  <p class="hero-subtitle">
+    Zakaj SIEM sam po sebi ni več dovolj – in kako zapreti varnostno vrzel
+  </p>
+</div>
+
+<div class="container">
+
+<div class="intro-box">
+<h2>Problem ni v količini podatkov, ampak v zaznavi</h2>
+<p>
+Podjetja vlagajo milijone evrov v SIEM sisteme, vendar raziskave kažejo,
+da povprečen SIEM zazna le <strong>21 % napadalnih tehnik</strong>.
+Napadalci so medtem že prešli na umetno inteligenco.
+</p>
+</div>
+
+<div class="stats-box">
+<span class="big-number">79 %</span>
+<p><strong>znanih napadalnih tehnik ostane neopaženih</strong></p>
+<p>kljub tisočem dogodkov in stotinam virov podatkov</p>
+</div>
+
+<section>
+<h2>Zakaj centralizirano spremljanje odpove</h2>
+
+<div class="warning-box">
+<p>
+SIEM sistemi so bili prvotno zasnovani za <strong>upravljanje dnevnikov in skladnost</strong>,
+ne za zaznavanje naprednih groženj v realnem času.
+</p>
+</div>
+
+<div class="grid-2">
+<div class="feature-card">
+<h4>Kaj SIEM zmore</h4>
+<ul>
+<li>Centralno zbiranje dogodkov</li>
+<li>Forenzična analiza</li>
+<li>Skladnost in revizije</li>
+</ul>
+</div>
+
+<div class="feature-card">
+<h4>Česa SIEM ne zmore</h4>
+<ul>
+<li>Zaznavanje vedenjskih anomalij</li>
+<li>Sledenje kompleksnim napadom</li>
+<li>Učenje iz novih groženj</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<h2>AI-napadi spreminjajo pravila igre</h2>
+
+<div class="tool-card">
+<ul>
+<li>87 % organizacij je doživelo AI-gnani napad</li>
+<li>82 % phishing sporočil uporablja AI</li>
+<li>72 % letni porast AI-incidentov</li>
+</ul>
+</div>
+
+<div class="warning-box">
+<p>
+Tradicionalna pravila in vzorci ne morejo slediti
+dinamiki AI-generiranih napadov.
+</p>
+</div>
+</section>
+
+<section>
+<h2>Ko je vse videti normalno – a ni</h2>
+
+<div class="info-box">
+<p>
+Deepfake napadi uporabljajo legitimne prijave,
+običajne procese in veljavne pravice.
+SIEM v teh primerih ne zazna nič sumljivega.
+</p>
+</div>
+
+<p>
+Primer: finančna prevara z AI-generiranim glasom vodstva
+in nakazilom več deset milijonov evrov.
+</p>
+</section>
+
+<section>
+<h2>Rešitev: AI proti AI</h2>
+
+<div class="grid-2">
+<div class="feature-card">
+<h4>EDR</h4>
+<p>Globoka zaščita končnih točk in vedenjska analiza.</p>
+</div>
+
+<div class="feature-card">
+<h4>XDR</h4>
+<p>Povezovanje dogodkov iz e-pošte, identitet, oblaka in omrežja.</p>
+</div>
+</div>
+
+<div class="highlight-box">
+<p>
+AI-varnostni sistemi zaznajo in zadržijo vdore
+<strong>108 dni hitreje</strong> kot klasični pristopi.
+</p>
+</div>
+</section>
+
+<section>
+<h2>Microsoft Defender kot del XDR strategije</h2>
+
+<div class="tool-card">
+<ul>
+<li>86 %+ zaznava v MITRE ATT&CK testih</li>
+<li>Avtomatiziran odziv</li>
+<li>Integracija z Microsoft 365</li>
+<li>Cloud-native arhitektura</li>
+</ul>
+</div>
+
+<div class="info-box">
+<p>
+SIEM ostaja pomemben za skladnost in forenziko,
+vendar mora biti dopolnjen z EDR/XDR.
+</p>
+</div>
+</section>
+
+<section>
+<h2>3 koraki do učinkovitejše zaščite</h2>
+
+<ul class="checklist">
+<li>Analizirajte pokritost z MITRE ATT&CK</li>
+<li>Uvedite AI-gnano zaznavanje (EDR/XDR)</li>
+<li>Vzpostavite večplastno obrambo</li>
+</ul>
+</section>
+
+<section>
+<h2>Ključno vprašanje</h2>
+
+<div class="warning-box">
+<p>
+Vprašanje ni več, ali boste posodobili svojo varnostno strategijo.
+Vprašanje je, ali boste to storili <strong>pred napadom ali po njem</strong>.
+</p>
+</div>
+</section>
+
+</div>
+
+<div class="cta-section">
+<h2>Ali vaša varnost sledi sodobnim grožnjam?</h2>
+<p>Pomagamo vam oceniti stanje in zapreti varnostne vrzeli.</p>
+<a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+<a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+</div>
+
+<div class="footer">
+<img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png" class="footer-logo">
+<p>Skupina stroka.si, Stroka produkt d.o.o.</p>
+<p>ccc@stroka.si | www.stroka.si</p>
+<p style="font-size:0.85em;">© 2026 Stroka produkt d.o.o.</p>
+</div>
+
+</body>
+</html>
