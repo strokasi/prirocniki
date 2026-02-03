@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Forms: Zbirajte podatke pametno | Praktični vodič | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-top: 4px solid #50afb0;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            color: #333;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3, .highlight-box h4, .highlight-box p, .highlight-box ul, .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff8f0;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h4 {
+            color: #e74c3c;
+        }
+
+        .scenario-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .scenario-card h3 {
+            margin-top: 0;
+            color: #50afb0;
+        }
+
+        .scenario-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .step-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+
+            .scenario-card, .step-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>Microsoft Forms: Zbirajte podatke pametno, ne na pamet</h1>
+        <p class="hero-subtitle">Prekinite s spraševanjem po mailu in začnite zbirati strukturirane podatke</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Zadnjič ste spraševali po mailu</h2>
+            <p>Koliko mailov s predmetom "Prosim izpolnite ..." ste poslali v zadnjem mesecu? "Prosim potrdite udeležbo na dogodku", "Prosim izpolnite anketo zadovoljstva", "Prosim posredujte podatke za registracijo", "Prosim izberite datum za sestanek".</p>
+            <p>In potem čakate. Odgovori prihajajo v različnih formatih. Nekdo odgovori "Da", drugi "Bom prisoten", tretji pozabi in ga morate spomniti. Nato morate ročno prenašati odgovore v Excel, jih združevati, analizirati. <strong>Izgubite ure.</strong></p>
+            <p><strong>Microsoft Forms konča to moro.</strong> Je preprosto orodje za ustvarjanje anket, kvizov, registracij in obrazcev – in je že vključeno v vašo Microsoft 365 Business licenco.</p>
+        </div>
+
+        <!-- Key Benefits -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-label">Strukturirani podatki brez ročnega vnosa</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-label">Obrazec v 5 minutah</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-label">Avtomatska analiza rezultatov</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔗</div>
+                <div class="stat-label">Integracija z Excel, SharePoint, Power Automate</div>
+            </div>
+        </div>
+
+        <!-- Section 1: What is Forms -->
+        <section id="kaj-je-forms">
+            <h2>Kaj je Microsoft Forms in kdaj ga uporabiti?</h2>
+            
+            <p>Microsoft Forms je orodje za ustvarjanje spletnih obrazcev in anket. Ni kompleksen sistem kot Power Pages – je enostavno orodje za hitro zbiranje strukturiranih podatkov.</p>
+
+            <div class="highlight-box">
+                <h3>Kako deluje?</h3>
+                <ol>
+                    <li>Ustvarite obrazec z vprašanji</li>
+                    <li>Delite povezavo (ali QR kodo)</li>
+                    <li>Ljudje izpolnijo</li>
+                    <li>Vi dobite strukturirane odgovore v realnem času</li>
+                </ol>
+                <p style="margin-top: 20px;">Vse se avtomatsko zbira v Excelu, lahko pa tudi v SharePointu ali Dataverse-u.</p>
+            </div>
+
+            <div class="info-box">
+                <h4>Kako dostopate do Forms?</h4>
+                <ul>
+                    <li><strong>Spletni vmesnik:</strong> forms.office.com</li>
+                    <li><strong>Microsoft Teams:</strong> Direktno v Teamsih</li>
+                    <li><strong>Mobilne naprave:</strong> Deluje v katerem koli brskalniku</li>
+                </ul>
+                <p style="margin-top: 15px;">Obrazci delujejo na vseh napravah – računalnikih, tablicah, telefonih. Ne potrebujete nobene aplikacije, samo spletni brskalnik.</p>
+            </div>
+
+            <h3>Kdaj uporabiti Forms?</h3>
+            <p><strong>Vedno, ko potrebujete zbrati podatke od več ljudi na strukturiran način.</strong></p>
+        </section>
+
+        <!-- Section 2: Practical Scenarios -->
+        <section id="primeri-uporabe">
+            <h2>Kako podjetja uporabljajo Forms v praksi?</h2>
+
+            <div class="scenario-card">
+                <span class="scenario-number">1</span>
+                <h3>Registracija na dogodke in usposabljanja</h3>
+                
+                <p>HR organizira mesečna interna usposabljanja. Prej so pošiljali mail z vprašanjem "Kdo bo prisoten?" in dobili nestrukturirane odgovore.</p>
+
+                <h4>Sedaj ustvarijo Forms obrazec:</h4>
+                <ul>
+                    <li>Ime in priimek</li>
+                    <li>Oddelek</li>
+                    <li>Ali boste prisotni? (Da/Ne)</li>
+                    <li>Imate posebne zahteve za hrano? (Da/Ne – če da, katere?)</li>
+                    <li>Dodatna vprašanja ali teme, ki vas zanimajo</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Rezultati:</h4>
+                    <ul>
+                        <li>HR v realnem času vidi, koliko ljudi se je prijavilo</li>
+                        <li>Lahko načrtuje catering</li>
+                        <li>Vidi kako velik prostor potrebujejo</li>
+                        <li>Lahko pošljejo opomnik tistim, ki še niso odgovorili</li>
+                    </ul>
+                </div>
+
+                <p>Ko se usposabljanje konča, uporabijo drug Forms obrazec za zbiranje povratnih informacij – vsi izpolnijo na svojih telefonih, rezultati so takoj vidni.</p>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">2</span>
+                <h3>Anketa zadovoljstva strank</h3>
+                
+                <p>Prodajni oddelek želi po vsaki zaključeni storitvi dobiti povratne informacije od stranke.</p>
+
+                <h4>Kratek Forms obrazec:</h4>
+                <ul>
+                    <li>Kako bi ocenili storitev? (1-5 zvezdic)</li>
+                    <li>Kaj vam je bilo najbolj všeč?</li>
+                    <li>Kaj bi lahko izboljšali?</li>
+                    <li>Ali bi nas priporočili naprej? (Da/Ne)</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>Avtomatizacija s Power Automate</h4>
+                    <p>Ta obrazec avtomatsko pošljejo stranki preko Power Automate takoj po zaključku projekta. Stranke ga izpolnijo v minuti. Vsi odgovori se zbirajo v Excelu, kjer lahko analizirajo trende, vidijo povprečne ocene, identificirajo področja za izboljšave.</p>
+                    <p style="margin-top: 10px;"><strong>Če nekdo izbere oceno 1 ali 2, lahko nastavijo Power Automate, da takoj obvesti vodjo prodaje, ki lahko hitro reagira.</strong></p>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">3</span>
+                <h3>IT helpdesk zahtevki</h3>
+                
+                <p>IT ekipa prejema zahtevke za novo opremo, dostope, tehnično podporo. Namesto mailov ali telefonskih klicev ustvarijo različne Forms obrazce.</p>
+
+                <h4>Primer: "Zahtevek za novo opremo"</h4>
+                <ul>
+                    <li>Vaše ime</li>
+                    <li>Oddelek</li>
+                    <li>Kaj potrebujete? (Prenosnik / Monitor / Miška / Tipkovnica / Drugo)</li>
+                    <li>Zakaj potrebujete? (kratek opis)</li>
+                    <li>Prioriteta (Nujno / Visoka / Normalna)</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Avtomatski prenos v sistem</h4>
+                    <p>Ko uporabnik odda zahtevek, se ta avtomatsko zabeleži v SharePoint listo ali Planner nalogo. IT ekipa vidi vse zahtevke na enem mestu, lahko jih filtrira po prioriteti, oddelku, datumu. <strong>Nič več iskanja po mailih.</strong></p>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">4</span>
+                <h3>Kvizi in preverjanja znanja</h3>
+                
+                <p>Po zaključenem usposabljanju želi podjetje preveriti, ali so zaposleni razumeli ključne vsebine.</p>
+
+                <h4>Forms kviz funkcionalnosti:</h4>
+                <ul>
+                    <li>Vprašanja lahko so multiple choice, pravilno/napačno, kratek odgovor</li>
+                    <li>Za vsak odgovor nastavijo pravilno rešitev</li>
+                    <li>Določijo točke za vsako vprašanje</li>
+                    <li><strong>Forms avtomatsko oceni kviz in prikaže rezultat</strong></li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>Analitika za izboljšave</h4>
+                    <p>Udeleženec takoj po oddaji vidi svoj rezultat. Organizator pa vidi statistiko:</p>
+                    <ul>
+                        <li>Koliko jih je opravilo kviz</li>
+                        <li>Kakšna je povprečna ocena</li>
+                        <li>Katera vprašanja so bila najtežja (kje so delali največ napak)</li>
+                    </ul>
+                    <p style="margin-top: 10px;">To jim pomaga izboljšati prihodnja usposabljanja.</p>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">5</span>
+                <h3>Zbiranje predlogov in idej od zaposlenih</h3>
+                
+                <p>Vodstvo želi spodbujati inovativnost in zbirati predloge za izboljšave od zaposlenih.</p>
+
+                <h4>"Predlagaj izboljšavo" obrazec:</h4>
+                <ul>
+                    <li>Vaše ime (opcijsko – lahko dovolijo anonimnost)</li>
+                    <li>Na katero področje se predlog nanaša? (Procesi / Produkti / Kultura / Tehnologija / Drugo)</li>
+                    <li>Opišite vaš predlog</li>
+                    <li>Kakšne koristi bi prinesla ta sprememba?</li>
+                    <li>Ste pripravljeni sodelovati pri implementaciji? (Da/Ne)</li>
+                </ul>
+
+                <p>Obrazec je vedno dostopen preko intraneta ali Teamsov. Kadarkoli ima nekdo idejo, jo lahko odda. Management pregleduje predloge mesečno, najboljše nagradi ali implementira. <strong>Vsi predlogi so shranjeni strukturirano, niso več raztreseni po mailih.</strong></p>
+            </div>
+
+            <div class="scenario-card">
+                <span class="scenario-number">6</span>
+                <h3>Hitra glasovanja in izbire</h3>
+                
+                <p>Ekipa mora izbrati datum za ekipni dogodek.</p>
+
+                <h4>Forms z enim vprašanjem:</h4>
+                <p><strong>Kateri termin vam najbolj ustreza?</strong> (checkbox – lahko izberejo več)</p>
+                <ul>
+                    <li>15. december popoldne</li>
+                    <li>18. december dopoldne</li>
+                    <li>20. december cel dan</li>
+                    <li>22. december popoldne</li>
+                </ul>
+
+                <p>Pošlje preko Teamsov, vsi kliknejo in izberejo v 30 sekundah. Forms prikaže, kateri termin ima največ glasov. <strong>Odločitev v petih minutah, brez dolge verige mailov.</strong></p>
+            </div>
+        </section>
+
+        <!-- Section 3: Why Forms is Better -->
+        <section id="zakaj-forms">
+            <h2>Zakaj je Forms bistveno boljši od "spraševanja po mailu"?</h2>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>📋 Strukturirani podatki</h4>
+                    <p>Vsak odgovor je v isti obliki. Ne potrebujete interpretirati "ja", "v redu", "sem", "Da!!" – vsi vidijo isto vprašanje, vsi odgovarjajo na isti način.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📊 Avtomatska analiza</h4>
+                    <p>Forms ima vgrajeno analitiko. Vidite lahko rezultate v obliki grafov, odstotkov, povprečij. Ne potrebujete več ročno prenašati v Excel in delati pivot tabele.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>⏰ Prihranek časa</h4>
+                    <p>Obrazec ustvarite v petih minutah. Delite povezavo. Odgovori prihajajo v realnem času. Analiza je takojšnja. Namesto ur, porabite minute.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>✅ Sledljivost</h4>
+                    <p>Vedno veste, kdo je odgovoril in kdo ne (če obrazec ni anonimen). Lahko pošljete opomnike specifičnim ljudem, brez spraševanja "je kdo že odgovoril?"</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔗 Integracija z Microsoft 365</h4>
+                    <p>Rezultate lahko avtomatsko pošljete v Excel, SharePoint, Teams, lahko sprožite Power Automate, ki na podlagi odgovorov naredi določene akcije.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🎨 Profesionalen videz</h4>
+                    <p>Forms izgleda elegantno in profesionalno. Lahko dodate logotip, prilagodite barve, dodate slike. Ni videti kot Google Docs povezava iz leta 2010.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Copilot in Forms -->
+        <section id="copilot-v-forms">
+            <h2>Copilot v Forms: umetna inteligenca pri ustvarjanju anket</h2>
+
+            <div class="intro-box">
+                <h2>Umetna inteligenca vam pomaga</h2>
+                <p>Copilot v Microsoft Forms prinaša inteligenco pri oblikovanju vprašanj in analizi odgovorov.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Generiranje celotnih anket iz opisa</h3>
+                
+                <p>Namesto da ročno dodajate vsako vprašanje, lahko Copilotu poveste:</p>
+                
+                <div class="highlight-box">
+                    <p style="font-style: italic;">"Ustvari anketo zadovoljstva zaposlenih, ki pokriva delovno okolje, vodenje, razvoj kariere in work-life balance."</p>
+                </div>
+
+                <p>Copilot v nekaj sekundah pripravi kompleten obrazec z ustreznimi vprašanji, ločenimi po sekcijah, z različnimi tipi odgovorov (lestvice, odprta vprašanja, multiple choice).</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Izboljšave obstoječih vprašanj</h3>
+                
+                <p>Ko napišete vprašanje, lahko Copilot predlaga izboljšave:</p>
+                
+                <ul>
+                    <li>"To vprašanje je preveč kompleksno – predlagam, da ga razdelimo na dve enostavnejši vprašanji"</li>
+                    <li>"Dodajte možnost 'Drugo' za bolj celovite odgovore"</li>
+                    <li>"To vprašanje lahko povzroči dvoumne odgovore – predlagam spremembo formulacije"</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Predlogi dodatnih vprašanj</h3>
+                
+                <p>Ko ustvarjate anketo, lahko Copilot analizira vaša vprašanja in predlaga:</p>
+                
+                <ul>
+                    <li>"Glede na to, da sprašujete o zadovoljstvu s storitvijo, predlagam dodajanje vprašanja o verjetnosti priporočila (NPS)"</li>
+                    <li>"Manjka vprašanje o demografskih podatkih za segmentacijo rezultatov"</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Analiza odprtih odgovorov</h3>
+                
+                <p>Ko ljudje v anketi pustijo dolge opisne odgovore, lahko Copilot analizira vse odgovore in poda povzetek:</p>
+                
+                <div class="highlight-box">
+                    <h4>Primer analize:</h4>
+                    <ul>
+                        <li>"Glavne teme v odgovorih so: komunikacija (omenjeno 15x), orodja (omenjeno 12x), časovni pritiski (omenjeno 8x)"</li>
+                        <li>"Analiza kaže: 60 % pozitivnih, 25 % nevtralnih, 15 % negativnih komentarjev"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">5</span>
+                <h3>Identifikacija trendov</h3>
+                
+                <p>Copilot lahko analizira rezultate skozi čas:</p>
+                
+                <ul>
+                    <li>"V primerjavi s prejšnjo anketo je zadovoljstvo s komunikacijo padlo za 12 %"</li>
+                    <li>"Opažam, da mlajši zaposleni (pod 30 let) ocenjujejo work-life balance bistveno nižje od starejših"</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">6</span>
+                <h3>Generiranje poročil</h3>
+                
+                <p>Ko potrebujete predstaviti rezultate managementu, lahko Copilot generira:</p>
+                
+                <ul>
+                    <li>"Ustvari PowerPoint povzetek ključnih ugotovitev iz te ankete"</li>
+                    <li>"Napiši povzetek rezultatov v treh odstavkih"</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">7</span>
+                <h3>Optimizacija za boljšo odzivnost</h3>
+                
+                <p>Copilot lahko analizira vašo anketo pred objavo:</p>
+                
+                <ul>
+                    <li>"Ta anketa ima 25 vprašanj, kar je preveč – ljudje jo bodo opustili. Predlagam skrajšanje na 10-12 ključnih vprašanj"</li>
+                    <li>"Dodaj progress bar, da bodo ljudje vedeli, koliko je še do konca"</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 5: Best Practices -->
+        <section id="dobre-prakse">
+            <h2>Dobre prakse pri uporabi Forms</h2>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>⏱️ Kratko in jedrnato</h4>
+                    <p>Ljudje nimajo časa za 30-minutno anketo. Omejite se na najnujnejše. Če potrebujete več povratnih informacij, razmislite o razdelitvi na več krajših anket.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📋 Logična struktura</h4>
+                    <p>Uporabite sekcije za grupiranje podobnih vprašanj. Od splošnega k specifičnemu. Od enostavnega h kompleksnemu.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>⚠️ Razmislite o obveznih poljih</h4>
+                    <p>Ne označite vseh vprašanj kot obvezna. Če je nekaj res pomembno, naj bo obvezno. Ostalo naj bo opcijsko. Preveč obveznih polj odvrne ljudi.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🧪 Testirajte pred deljenjem</h4>
+                    <p>Vedno izpolnite obrazec sami, preden ga delite. Preverite, ali vprašanja dajejo smisel, ali logika deluje, ali je čas izpolnjevanja sprejemljiv.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📝 Jasna navodila</h4>
+                    <p>Na začetku obrazca povejte: zakaj ga izpolnjujejo, koliko časa bo trajalo, kaj se bo zgodilo z odgovori. Transparentnost poveča odzivnost.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔒 Anonimnost ko je smiselna</h4>
+                    <p>Za občutljive teme (anketa zadovoljstva, povratne informacije o vodenju) omogočite anonimne odgovore. Ljudje bodo bolj iskreni.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: When NOT to use Forms -->
+        <section id="kdaj-ne-uporabiti">
+            <h2>Kaj Forms ni in kdaj ga ni smiselno uporabiti</h2>
+
+            <p>Forms je odlično orodje za veliko stvari, a ne za vse:</p>
+
+            <div class="warning-box">
+                <h4>❌ Ne za kompleksne poslovne procese</h4>
+                <p>Če potrebujete večstopenjske odobritve, kompleksno logiko, integracijo z več sistemi – uporabite Power Apps ali Power Pages.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>❌ Ne za zbiranje občutljivih osebnih podatkov</h4>
+                <p>Za GDPR-občutljive podatke (zdravstveni podatki, finančni podatki) potrebujete bolj kontrolirano okolje. Forms ima osnovno varnost, a ni primeren za najvišjo stopnjo občutljivosti.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>❌ Ne za obsežne aplikacije</h4>
+                <p>Forms je obrazec, ne aplikacija. Če potrebujete dashboard, kompleksne izračune, večje količine podatkov – potrebujete Power Apps ali custom rešitev.</p>
+            </div>
+
+            <div class="warning-box">
+                <h4>❌ Ne za zunanje stranke s kompleksnimi potrebami</h4>
+                <p>Za portal, namenjen strankam, z dostopom do podatkov, zgodovine, dokumentov – uporabite Power Pages. Forms je namenjen enostavnim anketam in registracijam.</p>
+            </div>
+        </section>
+
+        <!-- Section 7: How to Start -->
+        <section id="kako-zaceti">
+            <h2>Kako začeti s Forms?</h2>
+
+            <p>Začetek je neverjetno enostaven:</p>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Pojdite na forms.office.com</h3>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Kliknite "Nov obrazec" ali "Nov kviz"</h3>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Dodajte vprašanja</h3>
+                <p>Izbirate lahko med različnimi tipi:</p>
+                <ul>
+                    <li>Multiple choice (izbira)</li>
+                    <li>Text (besedilo)</li>
+                    <li>Rating (ocenjevanje)</li>
+                    <li>Date (datum)</li>
+                    <li>In več drugih</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Prilagodite temo in barve</h3>
+                <p>Dodajte svoj logotip in prilagodite barve vaši blagovni znamki.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">5</span>
+                <h3>Kliknite "Deli" in kopirajte povezavo</h3>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">6</span>
+                <h3>Pošljite povezavo</h3>
+                <p>Po mailu, Teamsih ali jo objavite na intranetu.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">7</span>
+                <h3>Spremljajte odgovore</h3>
+                <p>V realnem času v zavihku "Odgovori".</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Res je tako enostavno</h3>
+                <p>Če znate napisati vprašanje, znate narediti Forms obrazec.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Stats Section Before CTA -->
+    <div style="background: #f8f9fa; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="text-align: center; color: #50afb0; margin-bottom: 50px;">Zakaj izbrati Skupino stroka.si za Microsoft 365?</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-label">Certificirani Microsoft partneri</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-label">Praktične delavnice in usposabljanja</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-label">Avtomatizacija procesov s Power Automate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔧</div>
+                    <div class="stat-label">Podpora pri digitalni transformaciji</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljen začeti zbirati podatke pametno?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Povežite se z nami za delavnico o Microsoft Forms in drugih Microsoft 365 orodjih, ki vam lahko prihranijo ure dela.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Naše storitve Microsoft 365</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">1️⃣ Delavnice</h4>
+                        <p>Praktična usposabljanja za Microsoft 365 orodja</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">2️⃣ Avtomatizacija</h4>
+                        <p>Povezava Forms s Power Automate za pametne procese</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">3️⃣ Svetovanje</h4>
+                        <p>Pomoč pri optimizaciji delovnih procesov</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">4️⃣ Podpora</h4>
+                        <p>Stalna pomoč in odgovori na vaša vprašanja</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Vaš partner za digitalno transformacijo in Microsoft 365 rešitve.</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+</html>
