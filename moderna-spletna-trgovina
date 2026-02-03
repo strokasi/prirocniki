@@ -1,0 +1,913 @@
+
+
+<!DOCTYPE html> <html lang="sl"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>5 korakov uspešne implementacije ERP PANTHEON | Skupina stroka.si</title> <style> * { margin: 0; paddi
+
+pasted
+
+
+Je vaša spletna trgovina zastarela?4. jan. 2026Spletne rešitve Je vaša spletna trgovina zastarela? V svetu, kjer se e-poslovanje hitro spreminja, je ključno, da vaša spletna trgovina ostane na voljo in konkurenčna. Zastarela spletna trgovina lahko privede do izgube strank in prihodkov, zato je
+
+pasted
+
+Sestaviti rabim priročnike, ki so zgrajeni po podobnem principu, kot ta dva, ki ti ju pošiljam. Pomembno je, da je header (naš logo-strokasi)+footer podobna, samo prilagojena glede na tematiko.
+Izgled naj bo isti, uporabljamo 
+#50afb0+belo+ćrno bravo. Po potrebi še tisto rdečo, ki je v m365 dokumentu (kodi).
+Zdaj rabimo pripraviti iz nekaj naših člankov še dodatne priročnike. Torej samo preoblikovati vsebino tako, da so v bistvu bolj priročniki. Bi mi to spravil v html priročnike? Pošiljala tib om vsak članek posebej, ki ga je potrebno preoblikovati v priročnike.
+
+6:14 PM
+Razumem! Pomagal vam bom pretvoriti vaše članke v HTML priročnike po istem principu kot prejšnja dva primera.
+
+Pripravljen sem ustvariti priročnike z:
+
+✅ Enotnim oblikovanjem:
+
+Header z logotipom stroka.si
+Footer z kontaktnimi podatki
+Barvna shema: 
+#50afb0 (turkizna), bela, črna + rdeča (
+#e74c3c) za opozorila
+✅ Strukturo priročnika:
+
+Hero sekcija z naslovom
+Uvodni povzetek v okvirju
+Jasno strukturirane vsebinske sekcije
+Highlight boxi, info boxi, warning boxi
+CTA sekcija s kontakti
+Statistike/številke kjer je smiselno
+✅ Responzivni dizajn:
+
+Prilagojen za vse naprave
+Profesionalen izgled
+Enostavna navigacija
+Pošljite mi prvi članek in ga bom pretvoril v HTML priročnik. Za vsak članek bom:
+
+Analiziral vsebino
+Strukturiral v priročnik format
+Dodal ustrezne vizualne elemente (boxi, kartice, grid)
+Zagotovil konsistentnost z obstoječimi priročniki
+Pripravljen sem začeti! 🚀
+
+Sem ti že poslala članek - je vaša spletna trgovina zastarela
+
+6:15 PM
+Imate prav! Oprostite, pregledala bom drugi dokument in ga pretvorim v HTML priročnik.
+
+
+Creating HTML guide about outdated online stores based on the article content
+Izvrstno! Pripravila sem HTML priročnik "Je vaša spletna trgovina zastarela?" po enakem principu kot prejšnja dva primera.
+
+
+Presented file
+Priročnik je pripravljen! 🎉
+
+Priročnik vključuje:
+
+✅ Enak header in footer z logotipom stroka.si
+✅ Barvno shemo (
+#50afb0 turkizna, bela, črna + 
+#e74c3c rdeča za opozorila)
+✅ Strukturirano vsebino z kontrolnimi seznami
+✅ Info, warning in highlight boxe
+✅ Statistične kartice
+✅ CTA sekcijo s kontakti
+✅ Responziven dizajn
+Pošljite mi naslednji članek, ki ga želite preoblikovati v priročnik! 📄
+
+Spletna trgovina zastarela prirucnik
+Code · HTML 
+
+
+Want to be notified when Claude responds?
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+Spletna trgovina zastarela prirucnik · HTML
+Copy
+
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Je vaša spletna trgovina zastarela? | Praktični vodič | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .intro-box ul {
+            margin-top: 15px;
+            margin-left: 20px;
+        }
+
+        .intro-box li {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-top: 4px solid #50afb0;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            color: #333;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .highlight-box h4 {
+            color: white;
+        }
+
+        .highlight-box p {
+            color: white;
+        }
+
+        .highlight-box ul,
+        .highlight-box ol {
+            color: white;
+        }
+
+        .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff8f0;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h4 {
+            color: #e74c3c;
+        }
+
+        .checklist-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .checklist-card h3 {
+            margin-top: 0;
+            color: #50afb0;
+        }
+
+        .checklist-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #50afb0;
+        }
+
+        .checklist-item h4 {
+            margin-top: 0;
+            color: #000;
+            font-size: 1.1em;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .step-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+
+            .step-card, .checklist-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>Je vaša spletna trgovina zastarela?</h1>
+        <p class="hero-subtitle">Praktični vodič za prepoznavanje in odpravo pomanjkljivosti vaše spletne trgovine</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Zakaj je moderna spletna trgovina ključna za uspeh?</h2>
+            <p>V svetu, kjer se e-poslovanje hitro spreminja, je ključno, da vaša spletna trgovina ostane aktualna in konkurenčna. Zastarela spletna trgovina lahko privede do izgube strank in prihodkov, zato je ključno prepoznati znake, da je čas za prenovo.</p>
+            <p><strong>V tem priročniku boste izvedeli:</strong></p>
+            <ul>
+                <li>Kako prepoznati znake zastarelosti vaše spletne trgovine</li>
+                <li>Razumeti povezavo med posodobitvijo trgovine in konkurenčnostjo</li>
+                <li>Izboljšati uporabniško izkušnjo z moderno obliko</li>
+                <li>Povečati prihodke z učinkovito spletno trgovino</li>
+                <li>Posodobiti svojo spletno trgovino za boljšo konkurenčnost</li>
+            </ul>
+        </div>
+
+        <!-- Key Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📱</div>
+                <div class="stat-label">Večina uporabnikov dostopa preko mobilnih naprav</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-label">Hitrost nalaganja vpliva na konverzijo</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔒</div>
+                <div class="stat-label">Varnost je ključna za zaupanje kupcev</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-label">Uporabniška izkušnja določa uspeh</div>
+            </div>
+        </div>
+
+        <!-- Section 1: Signs of Outdated Store -->
+        <section id="znaki-zastarelosti">
+            <h2>Znaki, da je vaša spletna trgovina potrebna prenove</h2>
+            
+            <p>Da bi ugotovili, če je vaša spletna trgovina zastarela, je pomembno pregledati tehnične in uporabniške vidike. Znaki zastarelosti so lahko tehnični ali uporabniški.</p>
+
+            <div class="checklist-card">
+                <h3>Kontrolni seznam - Tehnični znaki zastarelosti</h3>
+                
+                <div class="checklist-item">
+                    <h4>⏱️ Počasno nalaganje strani</h4>
+                    <p>Če se stran počasi nalaga, to vpliva na vključenost uporabnikov in zmanjšuje konverzijo. Uporabniki pričakujejo, da se stran naloži v manj kot 3 sekundah.</p>
+                </div>
+
+                <div class="checklist-item">
+                    <h4>📱 Neprilagojen prikaz za mobilne naprave</h4>
+                    <p>V času, ko večina uporabnikov uporablja mobilne naprave, je prilagojen prikaz bistven. Vaša trgovina mora biti odzivna (responsive) na vseh napravah.</p>
+                </div>
+
+                <div class="checklist-item">
+                    <h4>🔓 Varnostne pomanjkljivosti</h4>
+                    <p>Varnost je bistvena za vsako spletno trgovino. Varnostne pomanjkljivosti lahko ogrožajo vaše podatke in podatke obiskovalcev vaše spletne trgovine.</p>
+                </div>
+            </div>
+
+            <div class="checklist-card">
+                <h3>Kontrolni seznam - Uporabniška izkušnja</h3>
+                
+                <p>Uporabniška izkušnja je enako pomembna kot tehnični vidiki. Naslednji elementi lahko negativno vplivajo na uporabnike:</p>
+
+                <div class="checklist-item">
+                    <h4>🎨 Zastarela vizualna podoba</h4>
+                    <p>Moderna in sveža vizualna podoba je ključna za privabljanje in zadrževanje uporabnikov. Dizajn mora odražati sodobne trende in vašo blagovno znamko.</p>
+                </div>
+
+                <div class="checklist-item">
+                    <h4>🧭 Zapletena navigacija</h4>
+                    <p>Enostavna in intuitivna navigacija pomaga uporabnikom hitro najti, kar iščejo. Če morajo uporabniki razmišljati, kako najti izdelek, je navigacija preveč zapletena.</p>
+                </div>
+
+                <div class="checklist-item">
+                    <h4>💳 Omejene možnosti plačila</h4>
+                    <p>Raznovrstne možnosti plačila lahko izboljšajo uporabniško izkušnjo in povečajo konverzijo. Ponudite več različnih načinov plačila.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Why Modern Store Matters -->
+        <section id="zakaj-moderna">
+            <h2>Zakaj je moderna spletna trgovina ključna za uspeh</h2>
+
+            <p>V današnjem digitalnem svetu je moderna spletna trgovina ključna za vsak poslovni subjekt, ki želi na trgu uspeti. Ključ do izboljšanja konkurenčnosti na spletu je vaša spletna trgovina, njena vrhunska uporabniška izkušnja pa je bistvena za izstopanje.</p>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>🤝 Vpliv na zaupanje in zadovoljstvo kupcev</h4>
+                    <p>Moderna spletna trgovina močno vpliva na zaupanje in zadovoljstvo kupcev. Sodobni dizajn in intuitivna navigacija izboljšata uporabniško izkušnjo, kar povečuje verjetnost nakupa.</p>
+                    <p>Zaupanje kupcev je ključnega pomena za dolgoročne odnose in ponavljajoče se nakupe.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📈 Povezava med sodobnim dizajnom in konverzijo</h4>
+                    <p>Sodobni dizajn spletne trgovine neposredno vpliva na konverzijo. Spletna trgovina, ki je vizualno privlačna in enostavna za uporabo, poveča stopnjo konverzije.</p>
+                    <p>Ključnega pomena je, da je vaša spletna trgovina optimizirana za različne naprave, vključno z mobilnimi telefoni.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🏆 Konkurenčna prednost na slovenskem trgu</h4>
+                    <p>Na konkurenčnem slovenskem trgu je moderna spletna trgovina ključna za to, da ostanete korak pred konkurenco.</p>
+                    <p>Spletna trgovina, ki je posodobljena in nudi edinstveno uporabniško izkušnjo, izboljša vaš položaj na trgu. Investicija v moderno spletno trgovino se dolgoročno izplača.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>💡 Uporabniška izkušnja kot temelj</h4>
+                    <p><em>"Uporabniška izkušnja je vse, kar vpliva na interakcijo uporabnika s proizvodom ali storitvijo."</em></p>
+                    <p style="text-align: right; font-style: italic; margin-top: 10px;">— Jakob Nielsen, strokovnjak za uporabniško izkušnjo</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Key Features -->
+        <section id="kljucne-funkcionalnosti">
+            <h2>Ključne funkcionalnosti moderne spletne trgovine</h2>
+
+            <p>Da bi vaša spletna trgovina ostala konkurenčna, je ključno, da sledi trendom najnovejših tehnologij. Sodobna spletna trgovina mora vključevati številne funkcionalnosti, ki izboljšajo uporabniško izkušnjo in zagotavljajo varnost.</p>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Tehnološke inovacije</h3>
+
+                <h4>📱 Prilagodljivost za vse naprave (responsive design)</h4>
+                <p>Spletna trgovina mora biti prilagojena različnim napravam - računalnikom, tabličnim računalnikom in mobilnim telefonom. Prilagodljivost zagotavlja, da uporabniki lahko brez težav prebirajo in navigirajo po strani.</p>
+
+                <h4>🔍 Napredni sistemi za iskanje in filtriranje izdelkov</h4>
+                <p>Napredni sistemi za iskanje in filtriranje izdelkov kupcem omogočajo hitro iskanje. To izboljša njihovo izkušnjo in poveča verjetnost nakupa.</p>
+
+                <h4>⚡ Hitrost in optimizacija delovanja</h4>
+                <p>Hitrost nalaganja strani je ključna za zadrževanje obiskovalcev. Spletna trgovina mora biti optimizirana za hitro delovanje. To vključuje:</p>
+                <ul>
+                    <li>Optimizacijo slik in medijev</li>
+                    <li>Uporabo hitrih strežnikov</li>
+                    <li>Implementacijo CDN (Content Delivery Network)</li>
+                    <li>Minimizacijo kode in virov</li>
+                </ul>
+
+                <h4>🔒 Varnost in skladnost z zakonodajo</h4>
+                <p>Varnost je ključnega pomena za zaščito osebnih podatkov kupcev. Spletna trgovina mora biti skladna z varnostnimi standardi:</p>
+                <ul>
+                    <li>Uporaba SSL certifikata</li>
+                    <li>Skladnost z GDPR zakonodajo</li>
+                    <li>Varne metode plačila</li>
+                    <li>Redne varnostne posodobitve</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Izboljšana uporabniška izkušnja</h3>
+
+                <p>Izboljšanje uporabniške izkušnje je ključnega pomena za povečanje konverzije in zadovoljstva kupcev.</p>
+
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h4>🎯 Personalizacija nakupne poti</h4>
+                        <p>Personalizacija omogoča prilagoditev ponudbe posameznemu kupcu, kar povečuje verjetnost nakupa. Priporočila izdelkov, prilagojena vsebina in personalizirane akcije.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>📱 Integracija s socialnimi omrežji</h4>
+                        <p>Integracija omogoča deljenje nakupovalnih izkušenj, promocijo izdelkov med prijatelji, retargetiranje ciljne publike in izpostavitev promocij.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>🔄 Večkanalni pristop (omnichannel)</h4>
+                        <p>Večkanalni pristop zagotavlja enotno izkušnjo preko različnih kanalov - spletne strani, mobilne aplikacije in fizične trgovine.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>✅ Poenostavljen postopek nakupa</h4>
+                        <p>Poenostavljen postopek nakupa zmanjšuje število korakov in možnost, da kupci prekinejo nakup. Manj klikov do zaključka nakupa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Practical Steps -->
+        <section id="prakticni-koraki">
+            <h2>Praktični koraki za posodobitev vaše spletne trgovine</h2>
+
+            <p>Za ohranjanje konkurencije je ključno, da posodobite svojo spletno trgovino. Posodobitev zahteva temeljito pripravo, ki vključuje analizo trenutnega stanja, določanje ciljev in izbiro prave platforme.</p>
+
+            <div class="highlight-box">
+                <h3>Priprava na prenovo</h3>
+                <p>Pred posodobitvijo je pomembno, da analizirate trenutno stanje vaše spletne trgovine. Pregledajte funkcionalnosti, dizajn in uporabniško izkušnjo.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Analiza trenutnega stanja in konkurence</h3>
+                
+                <p>Analiza vaše spletne trgovine in primerjava s konkurenco vam bo pomagala prepoznati prednosti in slabosti ter določiti, kje so možnosti za izboljšavo.</p>
+
+                <div class="info-box">
+                    <h4>Kaj analizirati?</h4>
+                    <ul>
+                        <li>Hitrost nalaganja strani</li>
+                        <li>Odzivnost na mobilnih napravah</li>
+                        <li>Uporabniško izkušnjo in navigacijo</li>
+                        <li>Varnostne protokole</li>
+                        <li>Stopnjo konverzije</li>
+                        <li>Statistiko obiska in obnašanja uporabnikov</li>
+                        <li>Konkurenčne spletne trgovine v vaši panogi</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Določanje ciljev in proračuna</h3>
+                
+                <p>Jasno določite cilje za posodobitev in proračun za prenovo.</p>
+
+                <h4>Primeri ciljev:</h4>
+                <ul>
+                    <li>Povečanje prodaje za X %</li>
+                    <li>Izboljšanje stopnje konverzije</li>
+                    <li>Zmanjšanje števila opuščenih nakupovalnih košaric</li>
+                    <li>Izboljšanje uporabniške izkušnje</li>
+                    <li>Povečanje povprečne vrednosti naročila</li>
+                    <li>Izboljšanje mobilne izkušnje</li>
+                </ul>
+
+                <div class="warning-box">
+                    <h4>⚠️ Pomembno pri določanju proračuna</h4>
+                    <p>Upoštevajte vse stroške: razvoj, dizajn, migracija podatkov, testiranje, izobraževanje zaposlenih in vzdrževanje. Predvidite tudi rezervo za nepredvidene stroške.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Izbira prave platforme za e-poslovanje</h3>
+                
+                <p>Izbira prave platforme za e-poslovanje je ključna. Pomembno je, da dejavniki, kot so funkcionalnosti, razširljivost in integracija, vplivajo na vašo odločitev.</p>
+
+                <h4>Kaj upoštevati pri izbiri platforme?</h4>
+                <ul>
+                    <li>Funkcionalnosti, ki jih potrebujete</li>
+                    <li>Možnosti prilagoditve in razširitve</li>
+                    <li>Integracije s plačilnimi sistemi</li>
+                    <li>Integracije z logističnimi partnerji</li>
+                    <li>Podpora in vzdrževanje</li>
+                    <li>Stroški licence in vzdrževanja</li>
+                    <li>Varnostni standardi</li>
+                    <li>SEO možnosti</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Izvedba posodobitve</h3>
+                <p>Ko je priprava zaključena, je čas za izvedbo posodobitve. To vključuje načrtovanje nove podobe, implementacijo in migracijo podatkov, testiranje ter optimizacijo.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Načrtovanje in oblikovanje nove podobe</h3>
+                
+                <p>Načrtovanje in oblikovanje nove podobe mora biti usmerjeno k izboljšanju uporabniške izkušnje in privlačnosti za nakupovalce.</p>
+
+                <h4>Ključni elementi novega dizajna:</h4>
+                <ul>
+                    <li>Sodobna vizualna identiteta</li>
+                    <li>Intuitivna navigacija</li>
+                    <li>Jasni pozivi k dejanju (CTA)</li>
+                    <li>Kakovostne fotografije izdelkov</li>
+                    <li>Pregledna struktura kategorij</li>
+                    <li>Optimizirana nakupna košarica</li>
+                    <li>Trust elementi (ocene, certifikati, garancije)</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">5</span>
+                <h3>Implementacija in migracija podatkov</h3>
+                
+                <p>Implementacija nove platforme in migracija podatkov zahteva skrbno načrtovanje. Tako se izognete izgubi podatkov ali težavam z delovanjem.</p>
+
+                <div class="warning-box">
+                    <h4>⚠️ Kritični koraki pri migraciji</h4>
+                    <ul>
+                        <li>Ustvarite varnostno kopijo vseh podatkov</li>
+                        <li>Načrtujte migracijo v fazah</li>
+                        <li>Preverite celovitost prenesenih podatkov</li>
+                        <li>Testirajte vse funkcionalnosti</li>
+                        <li>Preverite povezave in preusmerjanja (301 redirects)</li>
+                        <li>Zagotovite kontinuiteto SEO</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">6</span>
+                <h3>Testiranje in optimizacija</h3>
+                
+                <p>Testiranje vaše posodobljene spletne trgovine je ključnega pomena. Zagotovite, da vse funkcionalnosti delujejo pravilno in da je uporabniška izkušnja optimalna.</p>
+
+                <h4>Vrste testiranja:</h4>
+                <ul>
+                    <li><strong>Funkcionalnostno testiranje</strong> - preverjanje vseh funkcij</li>
+                    <li><strong>Testiranje uporabnosti</strong> - preizkus z resničnimi uporabniki</li>
+                    <li><strong>Testiranje hitrosti</strong> - merjenje časa nalaganja</li>
+                    <li><strong>Varnostno testiranje</strong> - preverjanje varnostnih protokolov</li>
+                    <li><strong>Testiranje plačil</strong> - preizkus vseh plačilnih metod</li>
+                    <li><strong>Testiranje na različnih napravah</strong> - mobilni, tablični, desktop</li>
+                    <li><strong>A/B testiranje</strong> - optimizacija konverzij</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>💡 Nasvet</h4>
+                    <p>Testiranje naj izvajajo tudi osebe, ki niso bile vključene v razvoj - tako dobite objektivno povratno informacijo o uporabniški izkušnji.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Checklist -->
+        <section id="checklist-uspeha">
+            <h2>Kontrolni seznam za uspešno posodobitev</h2>
+
+            <div class="checklist-card">
+                <h3>✅ Pred zagonom preverite</h3>
+                
+                <div class="checklist-item">
+                    <h4>Tehnična pripravljenost</h4>
+                    <ul>
+                        <li>SSL certifikat je nameščen in aktiven</li>
+                        <li>Vse strani se nalagajo v manj kot 3 sekundah</li>
+                        <li>Spletna trgovina je odzivna na vseh napravah</li>
+                        <li>Varnostne kopije so pripravljene</li>
+                    </ul>
+                </div>
+
+                <div class="checklist-item">
+                    <h4>Vsebinska pripravljenost</h4>
+                    <ul>
+                        <li>Vsi izdelki so pravilno uvoženi</li>
+                        <li>Cene in zalogo so ažurne</li>
+                        <li>Fotografije so optimizirane</li>
+                        <li>Opisi izdelkov so popolni</li>
+                    </ul>
+                </div>
+
+                <div class="checklist-item">
+                    <h4>Funkcionalna pripravljenost</h4>
+                    <ul>
+                        <li>Plačilni sistemi delujejo</li>
+                        <li>E-poštna obvestila se pošiljajo</li>
+                        <li>Iskanje deluje pravilno</li>
+                        <li>Filtriranje in sortiranje delujeta</li>
+                    </ul>
+                </div>
+
+                <div class="checklist-item">
+                    <h4>SEO pripravljenost</h4>
+                    <ul>
+                        <li>301 preusmerjanja so nastavljena</li>
+                        <li>Meta podatki so optimizirani</li>
+                        <li>Sitemap je posodobljen</li>
+                        <li>Google Analytics je povezan</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Stats Section Before CTA -->
+    <div style="background: #f8f9fa; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="text-align: center; color: #50afb0; margin-bottom: 50px;">Zakaj izbrati Skupino stroka.si za vašo spletno trgovino?</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-label">30+ let izkušenj s spletnimi rešitvami</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-label">Certificirani strokovnjaki za e-poslovanje</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💼</div>
+                    <div class="stat-label">Več kot 800 zadovoljnih strank</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-label">Celovita podpora od načrtovanja do zagona</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljena za posodobitev vaše spletne trgovine?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Povežite se z nami za brezplačno analizo vaše trenutne spletne trgovine in pridobite ponudbo za posodobitev, prilagojeno vašim potrebam.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Vaša pot do moderne spletne trgovine</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">1️⃣ Brezplačna analiza</h4>
+                        <p>Pregledamo vašo trenutno spletno trgovino in identificiramo priložnosti</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">2️⃣ Prilagojena ponudba</h4>
+                        <p>Pripravimo ponudbo, ki ustreza vašim potrebam in proračunu</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">3️⃣ Načrtovanje prenove</h4>
+                        <p>Skupaj pripravimo načrt posodobitve z jasnimi mejniki</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">4️⃣ Izvedba in zagon</h4>
+                        <p>Izvedemo posodobitev in zagotovimo nemoten prehod</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Strokovnjaki za spletne rešitve in e-poslovanje z več kot 30-letnimi izkušnjami.</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+</html>
+
