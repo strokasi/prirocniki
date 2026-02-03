@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priročnik za avtomatizacijo s Power Automate | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .stats-box {
+            background: linear-gradient(135deg, rgba(80, 175, 176, 0.1) 0%, rgba(61, 140, 141, 0.1) 100%);
+            border: 2px solid #50afb0;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 900px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stats-box .big-number {
+            font-size: 4em;
+            color: #50afb0;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stats-box p {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .use-case-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 12px;
+            padding: 35px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .use-case-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .use-case-card h3 {
+            margin-top: 0;
+            color: #50afb0;
+            font-size: 1.7em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .highlight-box h4 {
+            color: white;
+        }
+
+        .highlight-box p {
+            color: white;
+        }
+
+        .highlight-box ul,
+        .highlight-box ol {
+            color: white;
+        }
+
+        .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .benefit-box {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+            border-left: 5px solid #27ae60;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .benefit-box h4 {
+            color: #27ae60;
+        }
+
+        .scenario-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .scenario-section h4 {
+            margin-top: 0;
+        }
+
+        .solution-section {
+            background: linear-gradient(135deg, rgba(80, 175, 176, 0.1) 0%, rgba(61, 140, 141, 0.1) 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #50afb0;
+        }
+
+        .solution-section h4 {
+            margin-top: 0;
+            color: #50afb0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .step-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .step-card h4 {
+            color: #50afb0;
+            margin-top: 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .use-case-card {
+                padding: 25px;
+            }
+
+            .stats-box .big-number {
+                font-size: 3em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>Microsoft Power Automate</h1>
+        <p class="hero-subtitle">Vaš digitalni asistent za avtomatizacijo vsakdanjih opravil</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Od ponavljajočih se nalog do pametne avtomatizacije</h2>
+            <p>Predstavljajte si, da bi lahko vaš računalnik sam prepoznal prejeto fakturo, jo shranil v pravilno mapo in vas obvestil o roku plačila. Ali da bi se po končanem sestanku samodejno ustvarili opomniki in naloge za vse udeležence. To ni znanstvena fantastika – to je Microsoft Power Automate.</p>
+        </div>
+
+        <div class="stats-box">
+            <span class="big-number">10-25%</span>
+            <p><strong>Raziskave kažejo, da zaposleni porabijo 10-25 % delovnega časa za ponavljajoča se opravila, ki bi jih lahko avtomatizirali.</strong></p>
+        </div>
+
+        <!-- Section 1: What is Power Automate -->
+        <section id="what-is">
+            <h2>1. Kaj je Power Automate?</h2>
+            
+            <p>Power Automate je orodje za avtomatizacijo poslovnih procesov, ki je najverjetneje že del vašega M365 paketa. Gre za platformo, ki povezuje aplikacije in storitve ter omogoča avtomatizacijo ponavljajočih se opravil brez programiranja.</p>
+
+            <div class="info-box">
+                <h4>Če ste kdaj pomislili "to bi lahko računalnik naredil namesto mene" – odgovor je Power Automate.</h4>
+            </div>
+
+            <h3>Kako deluje?</h3>
+            
+            <p>Orodje deluje po principu <strong>"če se zgodi A, naredi B"</strong> (v strokovnem jeziku: trigger in action). Ko se sproži določen dogodek, Power Automate samodejno izvede vnaprej določene korake.</p>
+
+            <div class="highlight-box">
+                <h4>Osnovna logika avtomatizacije</h4>
+                <div class="grid-2">
+                    <div>
+                        <h4 style="color: white;">🎯 Trigger (Sprožilec)</h4>
+                        <p style="color: white;">Dogodek, ki sproži avtomatizacijo:</p>
+                        <ul style="color: white;">
+                            <li style="color: white;">Prejem e-pošte</li>
+                            <li style="color: white;">Nova datoteka v mapi</li>
+                            <li style="color: white;">Oddan obrazec</li>
+                            <li style="color: white;">Določen čas ali datum</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: white;">⚡ Action (Dejanje)</h4>
+                        <p style="color: white;">Kaj naj se samodejno izvede:</p>
+                        <ul style="color: white;">
+                            <li style="color: white;">Pošlji obvestilo</li>
+                            <li style="color: white;">Ustvari nalogo</li>
+                            <li style="color: white;">Shrani datoteko</li>
+                            <li style="color: white;">Posodobi zapis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Use Cases -->
+        <section id="use-cases">
+            <h2>2. Konkretni primeri uporabe v poslovnem okolju</h2>
+
+            <!-- Use Case 1 -->
+            <div class="use-case-card">
+                <span class="use-case-number">1</span>
+                <h3>Avtomatizacija obdelave dokumentov</h3>
+                
+                <div class="scenario-section">
+                    <h4>📋 Scenarij</h4>
+                    <p>Vaša ekipa prejema ponudbe od dobaviteljev po e-pošti. Vsako ponudbo je potrebno shraniti, dodeliti odgovorni osebi in obvestiti ekipo.</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>✨ Rešitev s Power Automate</h4>
+                    <ol>
+                        <li>Prejmete e-pošto z določeno zadevo ali priponko</li>
+                        <li>Power Automate samodejno shrani priponko v določeno mapo na SharePointu ali v OneDrive</li>
+                        <li>Ustvari opravilo v Plannerju za odgovorno osebo</li>
+                        <li>Pošlje obvestilo v Teams kanal</li>
+                    </ol>
+                </div>
+
+                <div class="benefit-box">
+                    <h4>💰 Dodana vrednost</h4>
+                    <p>Prihranite <strong>15-20 minut dnevno</strong> pri ročnem sortiranju e-pošte in zagotovite, da nobena ponudba ni spregledana.</p>
+                </div>
+            </div>
+
+            <!-- Use Case 2 -->
+            <div class="use-case-card">
+                <span class="use-case-number">2</span>
+                <h3>Onboarding novih zaposlenih</h3>
+                
+                <div class="scenario-section">
+                    <h4>📋 Scenarij</h4>
+                    <p>V podjetje pride nov sodelavec. Postopek uvajanja vključuje več korakov, ki se pogosto pozabljajo ali zamujajo.</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>✨ Rešitev s Power Automate</h4>
+                    <ol>
+                        <li>V HR sistemu se doda nov zaposleni</li>
+                        <li>Samodejno se pošlje dobrodošlica preko e-pošte z vsemi pomembnimi informacijami</li>
+                        <li>Novo zaposlenega se avtomatsko dodeli v ustrezne Teams skupine</li>
+                        <li>Ustvari se kontrolni seznam nalog za IT ekipo (aktivacija računov, dostopi, oprema)</li>
+                        <li>Načrtuje se serija uvodnih sestankov</li>
+                    </ol>
+                </div>
+
+                <div class="benefit-box">
+                    <h4>💰 Dodana vrednost</h4>
+                    <p>Standardiziran proces zagotavlja, da vsak zaposleni dobi enako kakovostno uvajanje, HR ekipa pa lahko pozornost nameni odnosom namesto administraciji.</p>
+                </div>
+            </div>
+
+            <!-- Use Case 3 -->
+            <div class="use-case-card">
+                <span class="use-case-number">3</span>
+                <h3>Spremljanje odzivov strank</h3>
+                
+                <div class="scenario-section">
+                    <h4>📋 Scenarij</h4>
+                    <p>Pošiljate ankete o zadovoljstvu strank, vendar ročno preverjanje odgovorov in odzivanje traja predolgo.</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>✨ Rešitev s Power Automate</h4>
+                    <ol>
+                        <li>Stranka odda Microsoft Forms anketo</li>
+                        <li>Če je ocena zadovoljstva nizka (pod 3 od 5), se samodejno ustvari prioritetno opravilo za vodjo odnosov s strankami</li>
+                        <li>Podatki se shranijo v Excel tabelo za mesečno analizo</li>
+                        <li>Pozitivni odzivi se avtomatsko delijo v Teams kanalu za motivacijo ekipe</li>
+                    </ol>
+                </div>
+
+                <div class="benefit-box">
+                    <h4>💰 Dodana vrednost</h4>
+                    <p>Hitrejši odziv na nezadovoljne stranke in boljši vpogled v trende zadovoljstva. Možnost takojšnjega ukrepanja namesto čakanja na mesečno analizo.</p>
+                </div>
+            </div>
+
+            <!-- Use Case 4 -->
+            <div class="use-case-card">
+                <span class="use-case-number">4</span>
+                <h3>Upravljanje potnih nalogov</h3>
+                
+                <div class="scenario-section">
+                    <h4>📋 Scenarij</h4>
+                    <p>Zaposleni odhajajo na službene poti. Postopek odobritve, načrtovanja in povračila stroškov je zapleten in časovno potraten.</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>✨ Rešitev s Power Automate</h4>
+                    <ol>
+                        <li>Zaposleni odda obrazec za potni nalog</li>
+                        <li>Workflow samodejno pošlje zahtevo ustrezni odobritveni osebi</li>
+                        <li>Po odobritvi se ustvari dogodek v Outlook koledarju</li>
+                        <li>Pošlje se povzetek z rezervacijskimi informacijami</li>
+                        <li>Po končani poti se zaposlenega avtomatsko opomni na oddajo potnih stroškov</li>
+                    </ol>
+                </div>
+
+                <div class="benefit-box">
+                    <h4>💰 Dodana vrednost</h4>
+                    <p>Zmanjšanje administrativnega bremena in pregleden proces za vse udeležene. Ni več izgubljenih zahtevkov ali pozabljenih povračil.</p>
+                </div>
+            </div>
+
+            <!-- Use Case 5 -->
+            <div class="use-case-card">
+                <span class="use-case-number">5</span>
+                <h3>Sinhronizacija podatkov med sistemi</h3>
+                
+                <div class="scenario-section">
+                    <h4>📋 Scenarij</h4>
+                    <p>Uporabljate več različnih sistemov (CRM, ERP, projektni management). Isti podatki se morajo ročno vnašati večkrat.</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>✨ Rešitev s Power Automate</h4>
+                    <ol>
+                        <li>V CRM-ju se posodobi status poslovne priložnosti</li>
+                        <li>Samodejno se posodobi tudi projektni status v Plannerju</li>
+                        <li>Avtomatsko se obvesti ustrezne ekipe</li>
+                        <li>Posodobijo se povezane Excel tabele za poročanje</li>
+                    </ol>
+                </div>
+
+                <div class="benefit-box">
+                    <h4>💰 Dodana vrednost</h4>
+                    <p>Vedno ažurni podatki v vseh sistemih, brez ročnega vnašanja. Zmanjšanje napak zaradi nekonsistentnih podatkov.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Copilot Integration -->
+        <section id="copilot">
+            <h2>3. Kako vam Copilot pomaga pri Power Automate?</h2>
+            
+            <p>Microsoft Copilot v Power Automate revolucionira način ustvarjanja avtomatizacij. Namesto da bi ročno sestavljali posamezne korake, lahko Copilotu v naravnem jeziku opišete, kaj želite doseči.</p>
+
+            <div class="highlight-box">
+                <h3>🤖 Copilot kot vaš AI pomočnik</h3>
+                <p>Namesto tehničnega poznavanja platforme potrebujete samo jasno predstavo o tem, kaj želite avtomatizirati. Copilot poskrbi za tehnično implementacijo.</p>
+            </div>
+
+            <h3>Praktični primeri uporabe Copilota</h3>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>1️⃣ Ustvarjanje novega workflow-a</h4>
+                    <p><strong>Namesto:</strong> Ročnega izbiranja triggerjev, povezav in dejanj</p>
+                    <p><strong>Napišete:</strong> "Ko prejmem e-pošto z besedo 'nujno' v zadevi, jo označi kot pomembno, posreduj vodji in ustvari opravilo v Planneru."</p>
+                    <p><strong>Copilot:</strong> Samodejno sestavi celoten workflow z vsemi potrebnimi koraki in povezavami.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>2️⃣ Razlaga obstoječih procesov</h4>
+                    <p><strong>Vprašate:</strong> "Kaj ta avtomatizacija počne in kdaj se sproži?"</p>
+                    <p><strong>Copilot:</strong> Vam v razumljivem jeziku razloži kompleksen proces, tudi če ga niste ustvarili sami.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>3️⃣ Odpravljanje napak</h4>
+                    <p><strong>Problem:</strong> Flow ne deluje kot bi moral</p>
+                    <p><strong>Copilot analizira:</strong> "Vidim, da pride do napake pri koraku 5, ker manjka dovoljenje za dostop do SharePointa. Naj dodam potrebne korake?"</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>4️⃣ Optimizacija</h4>
+                    <p><strong>Copilot pregleda:</strong> Vaše avtomatizacije in predlaga izboljšave</p>
+                    <p><strong>Primer:</strong> "Ta workflow bi lahko poenostavili tako, da združimo koraka 3 in 4, kar bo zmanjšalo čas izvajanja za 30 %."</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h4>💡 Ključna prednost</h4>
+                <p>S Copilotom ni več izgovorov o pomanjkanju tehničnega znanja. Če znate opisati, kaj želite doseči, lahko Copilot ustvari avtomatizacijo za vas.</p>
+            </div>
+        </section>
+
+        <!-- Section 4: Getting Started -->
+        <section id="getting-started">
+            <h2>4. Kako začeti?</h2>
+
+            <div class="step-card">
+                <h4>Korak 1: Preglejte svoje vsakodnevne naloge</h4>
+                <p>Postavite si naslednja vprašanja:</p>
+                <ul>
+                    <li>Katere stvari dnevno počnete večkrat?</li>
+                    <li>Katere e-pošte vedno posredujete istim osebam?</li>
+                    <li>Kateri podatki se vedno kopirajo iz enega mesta na drugo?</li>
+                    <li>Kateri procesi zahtevajo vedno iste korake?</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <h4>Korak 2: Začnite s preprostim</h4>
+                <p>Izberite eno ponavljajočo se nalogo in ustvarite svoj prvi flow. Power Automate ponuja predloge za najpogostejše scenarije:</p>
+                <ul>
+                    <li>Shranjevanje e-poštnih priponk</li>
+                    <li>Obveščanje o novih datotekah</li>
+                    <li>Odobritev dokumentov</li>
+                    <li>Zbiranje povratnih informacij</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <h4>Korak 3: Uporabite Copilot</h4>
+                <p>Opišite, kaj želite avtomatizirati. Ni vam treba imeti tehničnega znanja – pišite kot bi razlagali sodelavcu.</p>
+                <p><strong>Primer:</strong> "Vsak petek ob 15:00 pošlji vsem v ekipi e-pošto s povzetkom nalog iz Plannerja, ki so še odprte."</p>
+            </div>
+
+            <div class="step-card">
+                <h4>Korak 4: Testirajte in prilagajajte</h4>
+                <p>Vsaka avtomatizacija potrebuje nekaj prilagajanja:</p>
+                <ul>
+                    <li>Testirajte flow s testnimi podatki</li>
+                    <li>Spremljajte rezultate prvih izvedb</li>
+                    <li>Prilagodite korake glede na povratne informacije</li>
+                    <li>Izboljšujte proces postopoma</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 5: Benefits -->
+        <section id="benefits">
+            <h2>5. Zakaj je Power Automate pomemben za vaše podjetje?</h2>
+
+            <p>V današnjem poslovnem okolju ni vprašanje, ali avtomatizirati, ampak kaj avtomatizirati najprej. Power Automate omogoča:</p>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>⏱️ Prihranek časa</h4>
+                    <p>Raziskave kažejo, da zaposleni porabijo 10-25 % delovnega časa za ponavljajoča se opravila, ki bi jih lahko avtomatizirali.</p>
+                    <p><strong>Rezultat:</strong> Več časa za strateško delo in kreativne naloge.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>✅ Manj napak</h4>
+                    <p>Avtomatizirani procesi so dosledni in zmanjšajo človeške napake, ki nastanejo pri ročnem delu.</p>
+                    <p><strong>Rezultat:</strong> Večja zanesljivost procesov in kakovost dela.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔗 Boljše izkoriščenje M365</h4>
+                    <p>Povezuje vsa vaša obstoječa orodja (Teams, SharePoint, Outlook, Excel) v enoten ekosistem.</p>
+                    <p><strong>Rezultat:</strong> Maksimalna vrednost iz obstoječih investicij.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📈 Skalabilnost</h4>
+                    <p>Ko proces deluje za eno ekipo, ga lahko hitro razširite na celotno organizacijo.</p>
+                    <p><strong>Rezultat:</strong> Standardizacija procesov v celotnem podjetju.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>💰 Vključeno v M365</h4>
+                    <p>Power Automate je že vključen v M365 Business paket – to pomeni, da imate orodje najverjetneje že na voljo.</p>
+                    <p><strong>Rezultat:</strong> Brez dodatnih stroškov licenciranja.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🎯 Fokus na pomembno</h4>
+                    <p>Avtomatizacija rutinskih nalog omogoča zaposlenim, da se osredotočijo na delo, ki prinaša največjo vrednost.</p>
+                    <p><strong>Rezultat:</strong> Višja produktivnost in zadovoljstvo zaposlenih.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Common Scenarios -->
+        <section id="scenarios">
+            <h2>6. Najpogostejši scenariji avtomatizacije</h2>
+
+            <div class="highlight-box">
+                <h3>Katere procese naj avtomatiziram najprej?</h3>
+                <p>Začnite s procesi, ki jih ponavljate pogosto in so relativno preprosti. Tukaj je seznam najpogostejših priložnosti:</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>📧 E-poštna komunikacija</h4>
+                    <ul>
+                        <li>Samodejno sortiranje dohodne pošte</li>
+                        <li>Shranjevanje pomembnih prilog</li>
+                        <li>Pošiljanje avtomatskih opomnikov</li>
+                        <li>Eskalacija nujnih sporočil</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📁 Upravljanje dokumentov</h4>
+                    <ul>
+                        <li>Avtomatsko arhiviranje datotek</li>
+                        <li>Odobritev dokumentov</li>
+                        <li>Obveščanje o spremembah</li>
+                        <li>Sinhronizacija map</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📊 Zbiranje podatkov</h4>
+                    <ul>
+                        <li>Avtomatski izvozi iz sistemov</li>
+                        <li>Konsolidacija podatkov</li>
+                        <li>Priprava poročil</li>
+                        <li>Obveščanje o mejnih vrednostih</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>👥 Sodelovanje</h4>
+                    <ul>
+                        <li>Ustvarjanje nalog iz e-pošte</li>
+                        <li>Obveščanje ekip</li>
+                        <li>Sledenje projektnim mejnikom</li>
+                        <li>Koordinacija sestankov</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>✅ Odobritve</h4>
+                    <ul>
+                        <li>Potni nalogi</li>
+                        <li>Dopusti</li>
+                        <li>Nabava</li>
+                        <li>Dokumenti</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📅 Časovni triggerji</h4>
+                    <ul>
+                        <li>Dnevni povzetki</li>
+                        <li>Tedenski pregledi</li>
+                        <li>Mesečna poročila</li>
+                        <li>Opomniki o rokih</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Best Practices -->
+        <section id="best-practices">
+            <h2>7. Najboljše prakse pri avtomatizaciji</h2>
+
+            <div class="info-box">
+                <h4>📌 Pravila za uspešno avtomatizacijo</h4>
+            </div>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>1. Začnite majhno</h4>
+                    <p>Ne poskušajte avtomatizirati celotnega procesa naenkrat. Začnite z enim korakom in postopoma dodajajte funkcionalnosti.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>2. Dokumentirajte</h4>
+                    <p>Dodajte opise svojim workflow-om. Ko boste čez pol leta želeli prilagoditi avtomatizacijo, boste hvaležni za dokumentacijo.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>3. Testirajte pred produkcijo</h4>
+                    <p>Vedno testirajte avtomatizacije s testnimi podatki preden jih aktivirate za redno uporabo.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>4. Načrtujte napake</h4>
+                    <p>Dodajte korake za obravnavo napak – kaj naj se zgodi, če nekaj ne deluje kot pričakovano?</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>5. Spremljajte uporabo</h4>
+                    <p>Power Automate ponuja analitiko izvajanja. Redno pregledujte, ali avtomatizacije delujejo kot je načrtovano.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>6. Delite znanje</h4>
+                    <p>Ko ustvarite uspešen workflow, ga delite s sodelavci. Morda imajo podobne potrebe.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Next Steps -->
+        <section id="next-steps">
+            <h2>8. Vaši naslednji koraki</h2>
+
+            <div class="highlight-box">
+                <h3>🚀 Pripravljeni na začetek?</h3>
+                <p>Vsaka minuta, ki jo danes vložite v avtomatizacijo, se bo vrnila v urah prihranjenega časa v prihodnosti. In s Copilotom ob strani ni več izgovorov o pomanjkanju tehničnega znanja.</p>
+            </div>
+
+            <div class="step-card">
+                <h4>✅ Akcijski načrt za prvi teden</h4>
+                <ol>
+                    <li><strong>Dan 1-2:</strong> Identificirajte 3 ponavljajoče se naloge, ki vas najbolj motijo</li>
+                    <li><strong>Dan 3:</strong> Prijavite se v Power Automate in raziščite predloge</li>
+                    <li><strong>Dan 4:</strong> Ustvarite svoj prvi preprost flow (npr. shranjevanje priponk)</li>
+                    <li><strong>Dan 5:</strong> Testirajte in prilagodite flow</li>
+                    <li><strong>Dan 6-7:</strong> Spremljajte delovanje in razmislite o naslednji avtomatizaciji</li>
+                </ol>
+            </div>
+
+            <div class="info-box">
+                <h4>💡 Pomemben nasvet</h4>
+                <p>Ne pričakujte popolnosti pri prvem poskusu. Avtomatizacija je iterativen proces – ustvarite osnovno verzijo, jo testirajte in izboljšujte na podlagi izkušenj.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljeni avtomatizirati vaše poslovanje?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Pomagamo vam identificirati priložnosti za avtomatizacijo, načrtovati implementacijo in usposobiti zaposlene za učinkovito uporabo Power Automate.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Kako vam lahko pomagamo?</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🔍 Analiza procesov</h4>
+                        <p>Identificiramo priložnosti za avtomatizacijo v vašem podjetju</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">⚙️ Razvoj avtomatizacij</h4>
+                        <p>Ustvarimo prilagojene workflow-e za vaše specifične potrebe</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🎓 Usposabljanje</h4>
+                        <p>Usposobimo vašo ekipo za samostojno ustvarjanje avtomatizacij</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🔧 Podpora</h4>
+                        <p>Nudimo kontinuirano podporo in optimizacijo obstoječih procesov</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 50px; font-size: 1.15em;">Vaš računalnik čaka, da mu dovolite, da vam olajša delo. Ali ste pripravljeni narediti prvi korak?</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Z več kot 30-letnimi izkušnjami vam pomagamo avtomatizirati procese in povečati produktivnost.</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+</html>
