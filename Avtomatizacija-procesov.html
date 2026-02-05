@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pred avtomatizacijo razumite proces | Praktični vodič | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-top: 4px solid #50afb0;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            color: #50afb0;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #333;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3, .highlight-box h4, .highlight-box p, .highlight-box ul, .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff8f0;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h4 {
+            color: #e74c3c;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .step-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #50afb0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .quote-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 1.15em;
+            color: #333;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .stat-number {
+                font-size: 2.5em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+
+            .step-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>Pred avtomatizacijo razumite proces</h1>
+        <p class="hero-subtitle">Zakaj AI projekti brez trdnih temeljev propadejo in kako zagotoviti uspeh</p>
+    </div>
+
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>Zaskrbljujoča resnica o AI projektih</h2>
+            <p>V svetu, obsedenim z avtomatizacijo in umetno inteligenco, obstaja skušnjava, da bi vse procese čim hitreje digitalizirali. Vendar raziskave kažejo zaskrbljujočo resnico: <strong>95 % AI projektov ne doseže merljivih rezultatov.</strong></p>
+            <p>Razlog za neuspeh pogosto ni v tehnologiji sami, temveč v temeljnem pristopu—podjetja poskušajo avtomatizirati procese, ki jih sama ne razumejo v celoti.</p>
+        </div>
+
+        <!-- Key Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">AI projektov ne doseže merljivih rezultatov</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">90%</div>
+                <div class="stat-label">zaposlenih uporablja "Shadow AI" orodja</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2x</div>
+                <div class="stat-label">večja stopnja uspeha s pravim partnerjem</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2-10M $</div>
+                <div class="stat-label">letni prihranki pri uspešnih implementacijah</div>
+            </div>
+        </div>
+
+        <div class="quote-box">
+            "Avtomatizacija bi morala pomnožiti tisto, kar deluje, ne pa skrivati tisto, kar ne deluje."
+            <br><br>
+            <span style="font-style: normal; font-weight: 600;">— MIT Research</span>
+        </div>
+
+        <!-- Section 1: The Problem -->
+        <section id="problem">
+            <h2>Avtomatizacija brez razumevanja: recept za katastrofo</h2>
+            
+            <p>Predstavljajte si podjetje, ki se odloči avtomatizirati proces obdelave naročil. Sistem je zgrajen, integracije so vzpostavljene, AI model je naučen. Vendar že prvi teden se pojavijo težave:</p>
+
+            <div class="warning-box">
+                <h4>Tipične težave pri slabo načrtovani avtomatizaciji:</h4>
+                <ul>
+                    <li>Sistem ne zna pravilno obdelati mednarodnih naročil</li>
+                    <li>Ne prepozna VIP strank</li>
+                    <li>Spregleduje posebne zahteve v komentarjih</li>
+                    <li>Ne obvladuje izjem in robnih primerov</li>
+                    <li>Ponavlja iste napake brez učenja</li>
+                </ul>
+            </div>
+
+            <h3>Zakaj se to zgodi?</h3>
+            <p>Ker ekipa, ki je gradila avtomatizacijo, nikoli ni resnično razumela, kako proces deluje v praksi. Niso:</p>
+            <ul>
+                <li>Opazili vseh robnih primerov</li>
+                <li>Razumeli konteksta posameznih korakov</li>
+                <li>Prepoznali subtilnih odločitev, ki jih zaposleni sprejemajo vsak dan</li>
+                <li>Dokumentirali tacitnega znanja izkušenih sodelavcev</li>
+            </ul>
+
+            <div class="info-box">
+                <h4>MIT-ova raziskava "State of AI in Business 2025" potrjuje:</h4>
+                <p>Največja ovira uspešne AI implementacije ni kakovost modelov, temveč <strong>pomanjkanje prilagodljivosti in globokega razumevanja procesov</strong>.</p>
+                <p style="margin-top: 10px;">Sistemi pozabijo kontekst, se ne učijo iz povratnih informacij in ponavljajo iste napake.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Value of Manual Work -->
+        <section id="vrednost-manualnega">
+            <h2>Vrednost manualnega dela v digitalni dobi</h2>
+
+            <p><strong>Manualno delo ni zastarelo—je učilnica.</strong> Ko zaposleni izvajajo proces ročno, opazijo detajle, ki bi jih avtomatizirani sistem spregledal.</p>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>🗣️ Komunikacija s strankami</h4>
+                    <p>Kako stranke dejansko komunicirajo svoje potrebe – ne le kar pišejo v obrazcih, ampak tudi kontekst, ton in implicitne zahteve.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>⚠️ Nejasnosti in napake</h4>
+                    <p>Kje se pojavljajo nejasnosti in napake – točke v procesu, kjer je potrebna razjasnitev ali dodatna pozornost.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🧠 Človeška presoja</h4>
+                    <p>Kateri koraki zahtevajo človeško presojo – situacije, kjer standardne procedur ne zadostujejo in je potrebna ocena izkušenega sodelavca.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔄 Pogoste izjeme</h4>
+                    <p>Katere izjeme se pojavljajo najpogosteje – robni primeri, ki niso dokumentirani, a se dogajajo dovolj pogosto, da vplivajo na proces.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Ti vpogledi so zlati rudnik informacij</h3>
+                <p>Ti vpogledi so ključni za kasnejšo avtomatizacijo. Podjetja, ki preskočijo to fazo, <strong>avtomatizirajo kaos namesto učinkovitosti</strong>.</p>
+            </div>
+        </section>
+
+        <!-- Section 3: Shadow AI -->
+        <section id="shadow-ai">
+            <h2>"Shadow AI": kaj lahko naučimo od zaposlenih</h2>
+
+            <p>Zanimiv fenomen, ki ga razkriva MIT-ova raziskava, je t.i. <strong>"Shadow AI"</strong>:</p>
+
+            <div class="info-box">
+                <h4>Ključni podatki:</h4>
+                <ul>
+                    <li><strong>90 % zaposlenih</strong> redno uporablja osebna AI orodja (kot je ChatGPT) za službene naloge</li>
+                    <li>Le <strong>40 % podjetij</strong> ima uradne naročnine na AI orodja</li>
+                    <li>To pomeni, da več kot polovica uporabe poteka "v senci"</li>
+                </ul>
+            </div>
+
+            <h3>To ni grožnja, temveč priložnost</h3>
+            
+            <p>Zaposleni uporabljajo AI orodja, ker:</p>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>1. Razumejo svoje procese</h4>
+                    <p>Vedo, kje jim AI lahko pomaga in kako ga uporabiti za konkretne naloge.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>2. Iščejo prilagodljiva orodja</h4>
+                    <p>Potrebujejo sisteme, ki se učijo iz njihovih potreb in se prilagajajo njihovemu načinu dela.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>3. Potrebujejo iterativnost</h4>
+                    <p>Želijo možnost hitrega preizkušanja in prilagajanja brez čakanja na IT oddelek.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>4. Želijo takojšnje rezultate</h4>
+                    <p>Ne morejo čakati mesece na uradno rešitev, ko lahko problem rešijo danes.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Kako izkoristiti Shadow AI?</h3>
+                <p>Namesto prepovedi ali ignoriranja "Shadow AI", naj podjetja izkoristijo te vzorce uporabe:</p>
+                <ul>
+                    <li><strong>Analizirajte</strong> kje in kako zaposleni že uporabljajo AI</li>
+                    <li><strong>Identificirajte</strong> najbolj pogoste primere uporabe</li>
+                    <li><strong>Formalizirajte</strong> uspešne prakse v uradno rešitev</li>
+                    <li><strong>Zagotovite</strong> varno in skladnost s predpisi</li>
+                </ul>
+                <p style="margin-top: 15px;">Ti vzorci razkrivajo realne potrebe in priložnosti za formalno implementacijo.</p>
+            </div>
+        </section>
+
+        <!-- Section 4: Role of Partner -->
+        <section id="vloga-partnerja">
+            <h2>Vloga partnerja: razumevanje pred implementacijo</h2>
+
+            <div class="info-box">
+                <h4>MIT-ovi podatki so jasni:</h4>
+                <p><strong>Partnerstva z zunanjimi ponudniki imajo dvakrat večjo stopnjo uspeha</strong> kot interni razvoj.</p>
+                <p style="margin-top: 10px;">Vendar ni vseeno, kakega partnerja izberete.</p>
+            </div>
+
+            <h3>Pravi partner ne prodaja le tehnologije</h3>
+            
+            <p>Pravi partner investira čas v razumevanje vaših procesov. Pred kakršnokoli avtomatizacijo si mora vzeti čas za:</p>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Opazovanje obstoječih delovnih tokov</h3>
+                <p>Ne zadostuje zgolj prebrati dokumentacijo. Partner mora videti, kako procesi dejansko potekajo v vsakdanjem delu.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Pogovori z ljudmi, ki procese izvajajo</h3>
+                <p>Zaposleni poznajo vse podrobnosti, izjeme in načine obvladovanja težav. Njihov vpogled je neprecenljiv.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Identifikacija ozkih grl in priložnosti</h3>
+                <p>Kje se proces ustavi? Kje so podvajanja? Kje so priložnosti za avtomatizacijo z največjim vplivom?</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Razumevanje poslovnega konteksta in ciljev</h3>
+                <p>Avtomatizacija ni cilj sama po sebi. Mora podpirati strateške cilje podjetja.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Ključno načelo</h3>
+                <p>Šele ko partner resnično razume, kako stvari delujejo danes, lahko gradi rešitve, ki bodo delovale jutri.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: Three Steps -->
+        <section id="trije-koraki">
+            <h2>Trije koraki do uspešne AI implementacije</h2>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Dokumentirajte obstoječe procese</h3>
+                
+                <p>Preden začnete avtomatizirati, natančno dokumentirajte, kako procesi delujejo danes.</p>
+
+                <div class="warning-box">
+                    <h4>⚠️ Pomembno</h4>
+                    <p>Ne le idealizirana verzija iz priročnikov, temveč <strong>dejanski, vsakodnevni potek dela</strong>.</p>
+                </div>
+
+                <h4>Kako dokumentirati?</h4>
+                <ul>
+                    <li>Vključite zaposlene, ki procese izvajajo</li>
+                    <li>Dokumentirajte vse izjeme in robne primere</li>
+                    <li>Zabeležite obvozne poti in tihe dogovore</li>
+                    <li>Opazujte proces v različnih situacijah (normalno delovanje, obremenitev, izjeme)</li>
+                    <li>Uporabite video ali procesne diagrame za vizualizacijo</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>💡 Nasvet</h4>
+                    <p>Oni poznajo vse izjeme, obvozne poti in tihe dogovore – to je tacitno znanje, ki ga ni v nobeni dokumentaciji.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Identificirajte priložnosti za "hitre dobičke"</h3>
+                
+                <p>Ne začnite z najkompleksnejšim procesom. Poiščite manjše, jasno definirane naloge z merljivim ROI.</p>
+
+                <h4>Primer: Avtomatizacija kategorizacije stroškov v nabavi</h4>
+                <p>Gre za majhen projekt, ki:</p>
+                <ul>
+                    <li>Hitro pokaže rezultate</li>
+                    <li>Pridobi organizacijsko podporo</li>
+                    <li>Zgraditi zaupanje v tehnologijo</li>
+                    <li>Daje učne izkušnje za večje projekte</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>MIT raziskava kaže:</h4>
+                    <p>Najuspešnejša podjetja so začela z <strong>back-office funkcijami</strong>:</p>
+                    <ul>
+                        <li>Avtomatizacija dokumentacije</li>
+                        <li>Poenostavitev administrativnih opravil</li>
+                        <li>Zmanjšanje stroškov zunanjega izvajanja</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Prihranki: 2–10 milijonov dolarjev letno.</strong></p>
+                </div>
+
+                <h4>Kriteriji za izbiro prvega projekta:</h4>
+                <ul>
+                    <li><strong>Jasna merila uspeha</strong> – lahko izmerite ROI</li>
+                    <li><strong>Nizka kompleksnost</strong> – malo odvisnosti in integracij</li>
+                    <li><strong>Visoka frekvenca</strong> – proces se izvaja pogosto</li>
+                    <li><strong>Nizko tveganje</strong> – napaka ne povzroči velikih težav</li>
+                    <li><strong>Visoka vidnost</strong> – uspeh je opazen in cenjen</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Gradite sisteme, ki se učijo in prilagajajo</h3>
+                
+                <p>Naslednja generacija AI orodij—t.i. <strong>"agentic AI"</strong>—ne bo le generirala besedila, ampak bo delovala kot avtonomni agenti z dolgotrajnim spominom in sposobnostjo učenja.</p>
+
+                <div class="highlight-box">
+                    <h4>Ti sistemi se prilagajajo vašim procesom, ne obratno</h4>
+                    <p>To je ključna razlika med uspešnimi in neuspešnimi AI implementacijami.</p>
+                </div>
+
+                <h4>Izbirajte rešitve, ki:</h4>
+
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h4>🔗 Se integrirajo z obstoječimi sistemi</h4>
+                        <p>CRM, ERP, Teams, SharePoint – sistem mora delovati z orodji, ki jih že uporabljate.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>📚 Se učijo iz povratnih informacij</h4>
+                        <p>Ko uporabnik popravi napako, sistem zapomni in se prilagodi. Vsaka interakcija izboljša model.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>🎨 Omogočajo prilagajanje brez programiranja</h4>
+                        <p>Poslovni uporabniki morajo biti sposobni prilagoditi proces brez pomoči IT ekipe.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>⚖️ Zagotavljajo skladnost z regulativami</h4>
+                        <p>GDPR, AI Act, industrijski standardi – sistem mora biti skladen s slovenskimi in evropskimi predpisi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Our Approach -->
+        <section id="nas-pristop">
+            <h2>Pristop "AI ljudem"</h2>
+
+            <p>Pri implementaciji AI rešitev v Skupini stroka.si sledimo načelu <strong>"AI ljudem"</strong>. To pomeni:</p>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>👥 Najprej razumemo</h4>
+                    <p>Razumemo vaše procese in ljudi, ki jih izvajajo, preden predlagamo katero koli tehnologijo.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🤝 Dopolnjujemo, ne nadomeščamo</h4>
+                    <p>Gradimo rešitve, ki dopolnjujejo človeške sposobnosti, ne pa jih nadomeščajo.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📊 Merljivi rezultati</h4>
+                    <p>Osredotočamo se na merljive rezultate in postopen napredek z jasnim ROI.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔒 Varnost in skladnost</h4>
+                    <p>Zagotavljamo varnost podatkov in skladnost z GDPR ter slovensko regulativo.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Ključno sporočilo</h3>
+                <p>Ne gre za to, da bi AI zamenjala ljudi, temveč da bi jih osvobodila rutinskih nalog in jim omogočila osredotočenje na tisto, kar resnično šteje:</p>
+                <ul>
+                    <li>Inovacije</li>
+                    <li>Strategijo</li>
+                    <li>Rast</li>
+                    <li>Odnose s strankami</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 7: Conclusion -->
+        <section id="zakljucek">
+            <h2>Gradite najprej, avtomatizirajte potem</h2>
+
+            <div class="quote-box">
+                "Avtomatizacija bi morala pomnožiti tisto, kar deluje—ne pa skrivati tisto, kar ne deluje. In če ne veste, kaj deluje, še niste pripravljeni avtomatizirati."
+            </div>
+
+            <p>Ključno sporočilo je jasno: avtomatizacija je močno orodje, vendar le tedaj, ko jo uporabite na pravih temeljih.</p>
+
+            <h3>Namesto da pohitite z implementacijo najnovejše tehnologije, si vzemite čas za:</h3>
+
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h3>Globoko razumevanje vaših procesov</h3>
+                <p>V njihovi manualni obliki, vključno z vsemi izjemami in tacitnim znanjem.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h3>Identifikacijo dejanskih potreb</h3>
+                <p>Ne zgolj tehnoloških želja, ampak resničnih poslovnih priložnosti.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h3>Partnerstvo z ekipo, ki razume</h3>
+                <p>Partner, ki investira čas v razumevanje vašega poslovanja, ne pa prodaja samo tehnologijo.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">4</span>
+                <h3>Postopno implementacijo</h3>
+                <p>Z merljivimi rezultati, jasnim ROI in učenjem iz vsake faze.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Zapomnite si</h3>
+                <p style="font-size: 1.2em;">Avtomatizacija bi morala pomnožiti tisto, kar deluje—ne pa skrivati tisto, kar ne deluje.</p>
+                <p style="margin-top: 20px;">In če ne veste, kaj deluje, še niste pripravljeni avtomatizirati.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Stats Section Before CTA -->
+    <div style="background: #f8f9fa; padding: 60px 20px;">
+        <div class="container">
+            <h2 style="text-align: center; color: #50afb0; margin-bottom: 50px;">Zakaj izbrati Skupino stroka.si za AI in avtomatizacijo?</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">let izkušenj s poslovnimi procesi</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">800+</div>
+                    <div class="stat-label">zadovoljnih strank</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">skladnost z GDPR in slovensko zakonodajo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">AI</div>
+                    <div class="stat-label">ljudem, ne namesto njih</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljeni na pametno avtomatizacijo?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Povežite se z nami za pogovor o vaših procesih in možnostih za AI avtomatizacijo z razumevanjem, ne na pamet.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Naš pristop k AI implementaciji</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">1️⃣ Razumevanje procesov</h4>
+                        <p>Globoka analiza vaših delovnih tokov in potreb</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">2️⃣ Pilot projekti</h4>
+                        <p>Začnemo z majhnimi projekti z merljivim ROI</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">3️⃣ Postopno skaliranje</h4>
+                        <p>Širitev uspešnih rešitev na celotno organizacijo</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">4️⃣ Stalna podpora</h4>
+                        <p>Spremljanje, optimizacija in učenje iz rezultatov</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Vaš partner za pametno avtomatizacijo in AI implementacijo s pristopom "AI ljudem".</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
+
+</body>
+</html>
