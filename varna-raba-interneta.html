@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dan varne rabe interneta | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        /* BSOD Screen Styles */
+        #bsod-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #50afb0;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 5% 10%;
+            z-index: 10000;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        #bsod-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .sad-face {
+            font-size: clamp(60px, 15vw, 120px);
+            margin-bottom: clamp(20px, 5vh, 40px);
+            font-weight: 300;
+        }
+
+        .bsod-text {
+            font-size: clamp(18px, 4vw, 28px);
+            margin-bottom: clamp(30px, 8vh, 60px);
+            max-width: 90%;
+        }
+
+        .bsod-qr {
+            width: clamp(80px, 15vw, 150px);
+            height: clamp(80px, 15vw, 150px);
+            background: white;
+            padding: 10px;
+            margin-bottom: clamp(20px, 5vh, 40px);
+        }
+
+        .bsod-info {
+            font-size: clamp(12px, 2.5vw, 16px);
+            line-height: 1.8;
+            max-width: 90%;
+        }
+
+        .bsod-progress {
+            font-size: clamp(14px, 3vw, 20px);
+            margin-top: clamp(20px, 5vh, 40px);
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            animation: glitch 0.3s infinite;
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(-2px, -2px);
+            }
+            60% {
+                transform: translate(2px, 2px);
+            }
+            80% {
+                transform: translate(2px, -2px);
+            }
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        /* Main Content Styles */
+        #main-content {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        #main-content.visible {
+            opacity: 1;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .warning-intro {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
+
+        .warning-intro h2 {
+            color: #000;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .warning-intro p {
+            font-size: 1.1em;
+            color: #000;
+            line-height: 1.7;
+        }
+
+        .danger-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .danger-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .highlight-box p,
+        .highlight-box ul,
+        .highlight-box li {
+            color: white;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding-left: 35px;
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #50afb0;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .danger-checklist li:before {
+            content: "✗";
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .bsod-screen {
+                padding: 5%;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- BSOD Screen -->
+    <div id="bsod-screen">
+        <div class="sad-face">:(</div>
+        <div class="bsod-text">Your PC ran into a problem and needs to restart. We'll restart for you.</div>
+        
+        <div class="bsod-qr">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Simple QR code representation -->
+                <rect x="0" y="0" width="20" height="20" fill="black"/>
+                <rect x="0" y="25" width="20" height="20" fill="black"/>
+                <rect x="0" y="75" width="20" height="20" fill="black"/>
+                <rect x="25" y="0" width="20" height="20" fill="black"/>
+                <rect x="25" y="75" width="20" height="20" fill="black"/>
+                <rect x="75" y="0" width="20" height="20" fill="black"/>
+                <rect x="75" y="25" width="20" height="20" fill="black"/>
+                <rect x="75" y="75" width="20" height="20" fill="black"/>
+                <rect x="50" y="50" width="20" height="20" fill="black"/>
+                <rect x="35" y="35" width="10" height="10" fill="black"/>
+                <rect x="60" y="35" width="10" height="10" fill="black"/>
+            </svg>
+        </div>
+        
+        <div class="bsod-info">
+            For more information about this issue and possible fixes, visit https://www.windows.com/stopcode<br><br>
+            If you call a support person, give them this info:<br>
+            Stop code: BAD_SYSTEM_CONFIG_INFO
+        </div>
+        
+        <div class="bsod-progress">
+            <span id="progress">0</span>% complete
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <div class="hero">
+            <a href="https://www.stroka.si" target="_blank">
+                <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+            </a>
+            <h1>Dan varne rabe interneta 2026</h1>
+            <p class="hero-subtitle">Niso vsi gumbi namenjeni klikanju</p>
+        </div>
+
+        <!-- Warning Intro -->
+        <div class="container">
+            <div class="warning-intro">
+                <h2>⚠️ Ste pravkar kliknili na povezavo v e-sporočilu?</h2>
+                <p><strong>Čestitamo! Tokrat je bila povezava varna.</strong></p>
+                <p>A kaj če ne bi bila? Zlonamerni hekerji vsakodnevno pošiljajo tisoče lažnih sporočil, ki vsebujejo nevarne povezave. Te povezave lahko:</p>
+                <ul style="margin-top: 20px; color: #000;">
+                    <li>Ukradejo vaše geslo in občutljive podatke</li>
+                    <li>Namestijo zlonamerno programsko opremo</li>
+                    <li>Blokirajo dostop do vaših datotek (ransomware)</li>
+                    <li>Ogrozijo celotno poslovanje vašega podjetja</li>
+                </ul>
+                <p style="margin-top: 20px; font-weight: 600; font-size: 1.2em;">Vedno preverite, preden kliknete!</p>
+            </div>
+
+            <!-- Main Threats Section -->
+            <section id="threats">
+                <h2>🎯 Najpogostejše grožnje v letu 2026</h2>
+                
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h4>🎣 Phishing napadi</h4>
+                        <p>Prevarantska sporočila, ki se pretvarjajo, da so od zaupanja vrednih organizacij (banke, pošta, davčna uprava, IT oddelek ...).</p>
+                        <div class="danger-box" style="margin-top: 20px; padding: 20px;">
+                            <strong>Statistika 2025:</strong> 94 % zlonamerne programske opreme je dostavljene preko e-pošte
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>🔒 Ransomware</h4>
+                        <p>Zlonamerna programska oprema, ki zaklene vaše podatke in zahteva odkupnino za njihovo sprostitev.</p>
+                        <div class="danger-box" style="margin-top: 20px; padding: 20px;">
+                            <strong>Povprečna odkupnina:</strong> 350.000 EUR<br>
+                            <strong>Čas izpada:</strong> 21 dni
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>📱 Napadi preko SMS (Smishing)</h4>
+                        <p>Lažna SMS sporočila z nevarnimi povezavami - zdaj še bolj sofisticirana z uporabo AI tehnologije.</p>
+                        <div class="danger-box" style="margin-top: 20px; padding: 20px;">
+                            <strong>Rast v 2025:</strong> +400 % v primerjavi z 2023
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>🤖 AI-generirane prevare</h4>
+                        <p>Uporaba umetne inteligence za ustvarjanje prepričljivih lažnih videoposnetkov, glasovnih sporočil in tekstov.</p>
+                        <div class="danger-box" style="margin-top: 20px; padding: 20px;">
+                            <strong>Nova grožnja!</strong> Deepfake klici direktorjev podjetij
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Recognize Section -->
+            <section id="recognize">
+                <h2>🔍 Kako prepoznati nevarne povezave in sporočila?</h2>
+
+                <div class="highlight-box">
+                    <h3 style="color: white;">Rdečе zastavice - na to bodite pozorni</h3>
+                    <ul class="checklist danger-checklist" style="list-style: none; margin-left: 0;">
+                        <li style="color: white; padding-left: 35px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ffeb3b;">✗</span>
+                            <strong>Nujnost in strah:</strong> "Vaš račun bo blokiran!", "Nepooblaščen dostop zaznan!"
+                        </li>
+                        <li style="color: white; padding-left: 35px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ffeb3b;">✗</span>
+                            <strong>Sumljivi pošiljatelj:</strong> nepravilna e-pošta (npr. support@arnazonnconfirm.com)
+                        </li>
+                        <li style="color: white; padding-left: 35px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ffeb3b;">✗</span>
+                            <strong>Slovnične napake:</strong> čudna slovenščina, tuje besede
+                        </li>
+                        <li style="color: white; padding-left: 35px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ffeb3b;">✗</span>
+                            <strong>Nenavadni URL naslovi:</strong> preverite, kam dejansko vodi povezava (lebdite z miško)
+                        </li>
+                        <li style="color: white; padding-left: 35px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ffeb3b;">✗</span>
+                            <strong>Zahteva po osebnih podatkih:</strong> legitimne organizacije tega ne počnejo preko e-pošte
+                        </li>
+                        <li style="color: white; padding-left: 35px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ffeb3b;">✗</span>
+                            <strong>Nepričakovana priponka:</strong> še posebej .exe, .zip, .scr datoteke
+                        </li>
+                        <li style="color: white; padding-left: 35px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ffeb3b;">✗</span>
+                            <strong>Predobra ponudba:</strong> "Osvojili ste nagrado!", "Izjemna prilika!"
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="grid-2" style="margin-top: 40px;">
+                    <div class="info-box">
+                        <h4>✓ Primer varne povezave</h4>
+                        <code style="display: block; background: #e9ecef; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                            https://www.stroka.si/kontakt
+                        </code>
+                        <ul style="margin-top: 15px;">
+                            <li>✓ HTTPS protokol (varna povezava)</li>
+                            <li>✓ Prava domena podjetja</li>
+                            <li>✓ Brez sumljivih znakov</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box" style="border-left-color: #000;">
+                        <h4>✗ Primer nevarne povezave</h4>
+                        <code style="display: block; background: #f8d7da; padding: 10px; border-radius: 5px; margin: 10px 0; color: #000;">
+                            http://str0ka-si.verification.tk/login
+                        </code>
+                        <ul style="margin-top: 15px;">
+                            <li>✗ HTTP (ni varna)</li>
+                            <li>✗ Sumljiva domena (.tk)</li>
+                            <li>✗ Številka "0" namesto črke "o"</li>
+                            <li>✗ Dodaten "verification" URL</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Best Practices Section -->
+            <section id="best-practices">
+                <h2>🛡️ 10 zlatih pravil varne rabe interneta</h2>
+
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h4>1. Preden kliknete, preverite</h4>
+                        <p>Lebdite z miško nad povezavo in preverite dejanski URL naslov. Nikoli ne klikajte impulzivno.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>2. Uporabljajte močna gesla</h4>
+                        <p>Najmanj 12 znakov, kombinacija velikih/malih črk, številk in simbolov. Uporabite upravitelja gesel.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>3. Večfaktorska avtentikacija (2FA)</h4>
+                        <p>Vklopite 2FA povsod, kjer je možno - to je vaša druga obrambna linija.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>4. Posodabljajte programsko opremo</h4>
+                        <p>Redno nameščajte varnostne posodobitve za operacijski sistem in aplikacije.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>5. Varnostno kopirajte podatke</h4>
+                        <p>Sledite pravilu 3-2-1: 3 kopije, 2 različna medija, 1 zunaj lokacije.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>6. Pazite na javnem WiFi omrežju</h4>
+                        <p>Uporabite VPN pri delu na javnih omrežjih. Nikoli ne dostopajte do občutljivih podatkov.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>7. Ne delite preveč informacij</h4>
+                        <p>Bodite previdni, kaj objavljate na družbenih omrežjih - hekerji lahko to uporabijo za napade.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>8. Preverite zasebnostne nastavitve</h4>
+                        <p>Redno preglejte in prilagodite nastavitve zasebnosti v aplikacijah in storitvah.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>9. Pazite na priponke</h4>
+                        <p>Nikoli ne odpirajte nepričakovanih priponk, tudi če izgledajo, da so od znanega pošiljatelja.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>10. V dvomih - vprašajte!</h4>
+                        <p>Če niste prepričani o legitimnosti sporočila, pokličite pošiljatelja direktno (NE na številko iz sumljivega sporočila).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- For Employees Section -->
+            <section id="for-employees">
+                <h2>👥 Nasveti za zaposlene</h2>
+
+                <div class="info-box">
+                    <h3>Vi ste najpomembnejša obrambna linija vašega podjetja</h3>
+                    <p>95 % uspešnih kibernetskih napadov se zgodi zaradi človeške napake. Vaša pozornost in ozaveščenost sta ključnega pomena.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3 style="color: white;">Kaj storiti, če posumite na napad?</h3>
+                    <ol style="color: white;">
+                        <li style="color: white;"><strong style="color: white;">NE KLIKAJTE</strong> na sumljive povezave ali priponke</li>
+                        <li style="color: white;"><strong style="color: white;">TAKOJ OBVESTITE</strong> IT oddelek ali svojega vodjo</li>
+                        <li style="color: white;"><strong style="color: white;">NE IZBRIŠITE</strong> sumljivega sporočila - shranite ga za analizo</li>
+                        <li style="color: white;"><strong style="color: white;">SPREMENITE GESLA</strong>, če ste že kliknili na povezavo</li>
+                        <li style="color: white;"><strong style="color: white;">ODKLOPITE NAPRAVO</strong> od omrežja, če sumite okužbo</li>
+                    </ol>
+                </div>
+
+                <div class="grid-2" style="margin-top: 40px;">
+                    <div class="info-box">
+                        <h4>📧 Varna uporaba e-pošte</h4>
+                        <ul>
+                            <li>VEDNO preverite pošiljatelja</li>
+                            <li>Bodite skeptični do nujnih zahtev</li>
+                            <li>Ne odgovarjajte na sumljiva sporočila</li>
+                            <li>Uporabite "Prijavi kot neželeno pošto" ali "Prijavi lažno predstavljanje"</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>🔐 Varovanje gesel</h4>
+                        <ul>
+                            <li>Vsaka storitev = unikаtno geslo</li>
+                            <li>Nikoli ne delite gesel</li>
+                            <li>Ne shranjujte v brskalniku na službenih napravah</li>
+                            <li>Uporabite upravitelja gesel</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>💼 Delo od doma</h4>
+                        <ul>
+                            <li>Uporabljajte VPN za dostop do podjetniških sistemov</li>
+                            <li>Zaščitite domače WiFi omrežje</li>
+                            <li>Zaklenite računalnik, ko odidete</li>
+                            <li>Ne uporabljajte osebnih naprav za službeno delo</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>📱 Mobilne naprave</h4>
+                        <ul>
+                            <li>Vklopite zaklepanje z geslom/biometrijo</li>
+                            <li>Nameščajte aplikacije samo iz uradnih trgovin</li>
+                            <li>Bodite previdni z dovoljenji aplikacij</li>
+                            <li>TAKOJ poročajte o izgubi ali kraji</li>
+                        </ul> 
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section id="statistics">
+                <h2>📊 Dejstva in številke za leto 2025/2026</h2>
+
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h4>⚠️ Grožnje</h4>
+                        <ul>
+                            <li><strong>560.000</strong> novih variant zlonamerne programske opreme DNEVNO</li>
+                            <li><strong>3,4 milijarde</strong> lažnih e-sporočil poslanih DNEVNO</li>
+                            <li><strong>1 od 4.200</strong> e-sporočil vsebuje phishing povezavo</li>
+                            <li><strong>68 %</strong> organizacij je doživelo kibernetski napad v 2025</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>💰 Stroški</h4>
+                        <ul>
+                            <li><strong>4,88 milijona USD</strong> - povprečna cena kršitve podatkov</li>
+                            <li><strong>287 dni</strong> - povprečen čas za odkritje kršitve</li>
+                            <li><strong>21 dni</strong> - povprečen čas izpada po ransomware napadu</li>
+                            <li><strong>50.000 EUR/dan</strong> - izguba med izpadom za srednje podjetje</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>✓ Zaščita deluje</h4>
+                        <ul>
+                            <li><strong>99 %</strong> napadov je preprečenih z osnovnimi varnostnimi ukrepi</li>
+                            <li><strong>70 %</strong> znižanje tveganja z rednim usposabljanjem</li>
+                            <li><strong>50 %</strong> manjši stroški s proaktivnim pristopom</li>
+                            <li><strong>2FA blokira 99,9 %</strong> avtomatiziranih napadov</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4>🇸🇮 Slovenija</h4>
+                        <ul>
+                            <li><strong>+45 %</strong> porast kibernetskih napadov v 2025</li>
+                            <li><strong>850+</strong> prijavljenih resnih incidentov</li>
+                            <li><strong>35 %</strong> MSP žrtev phishing napadov</li>
+                            <li><strong>12 milijonov EUR</strong> skupna škoda v 2025</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resources Section -->
+            <section id="resources">
+                <h2>📚 Dodatni viri in pomoč</h2>
+
+                <div class="grid-2">
+                    <div class="info-box">
+                        <h4>🇸🇮 Slovenske institucije</h4>
+                        <ul>
+                            <li><strong>SI-CERT:</strong> Nacionalni odzivni center za omrežno varnost<br>
+                            <a href="https://www.cert.si" target="_blank" style="color: #50afb0;">www.cert.si</a></li>
+                            <li><strong>Varni na internetu:</strong> Portal za ozaveščanje<br>
+                            <a href="https://www.varninainternetu.si" target="_blank" style="color: #50afb0;">www.varninainternetu.si</a></li>
+                            <li><strong>IP:</strong> Informacijski pooblaščenec<br>
+                            <a href="https://www.ip-rs.si" target="_blank" style="color: #50afb0;">www.ip-rs.si</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>🌍 Mednarodni viri</h4>
+                        <ul>
+                            <li><strong>ENISA:</strong> Evropska agencija za kibernetsko varnost<br>
+                            <a href="https://www.enisa.europa.eu" target="_blank" style="color: #50afb0;">www.enisa.europa.eu</a></li>
+                            <li><strong>SaferInternet Day:</strong> Mednarodni dan varne rabe interneta<br>
+                            <a href="https://www.saferinternetday.org" target="_blank" style="color: #50afb0;">www.saferinternetday.org</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>🛠️ Uporabna orodja</h4>
+                        <ul>
+                            <li><strong>Have I Been Pwned:</strong> Preverite, če so vaši podatki bili ukradeni<br>
+                            <a href="https://haveibeenpwned.com" target="_blank" style="color: #50afb0;">haveibeenpwned.com</a></li>
+                            <li><strong>VirusTotal:</strong> Skeniranje sumljivih datotek in URL-jev<br>
+                            <a href="https://www.virustotal.com" target="_blank" style="color: #50afb0;">www.virustotal.com</a></li>
+                            <li><strong>Password Strength Checker:</strong> Preverjanje moči gesla<br>
+                            <a href="https://www.security.org/how-secure-is-my-password/" target="_blank" style="color: #50afb0;">security.org/password-checker</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>📞 V sili kontaktirajte</h4>
+                        <ul>
+                            <li><strong>SI-CERT:</strong> <a href="mailto:incidenti@cert.si" style="color: #50afb0;">incidenti@cert.si</a></li>
+                            <li><strong>Policija - spletna kazniva dejanja:</strong><br>
+                            <a href="https://www.policija.si/nase-naloge/druge-naloge/policija-za-otroke-in-mladostnike/varnejši-internet/spletna-prijava-suma-kaznivih-dejanj" target="_blank" style="color: #50afb0;">Prijava suma</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <div class="container">
+                <h2>Potrebujete pomoč pri zaščiti vašega podjetja?</h2>
+                <p style="font-size: 1.2em; margin: 30px 0;">Skupina stroka.si vam ponuja celovite rešitve kibernetske varnosti, prilagojene vašim potrebam.</p>
+                
+                <div class="cta-buttons">
+                    <a href="https://www.stroka.si/Zaupajte-nam-svoj-izziv?zanimanje=Upravljanje%20informacijske%20infrastrukture" target="_blank" class="btn btn-primary">Kontaktirajte nas</a>
+                    <a href="https://www.stroka.si/Kaj-delamo/Upravljanje-informacijske-infrastrukture" target="_blank" class="btn btn-secondary">Več o naših storitvah</a>
+                </div>
+
+                <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                    <h3 style="color: white; margin-bottom: 30px;">Naše storitve kibernetske varnosti</h3>
+                    <div class="grid-2">
+                        <div style="text-align: left;">
+                            <h4 style="color: white;">🛡️ Zaščita infrastrukture</h4>
+                            <p>Požarni zidovi, protivirusna zaščita, omrežna varnost</p>
+                        </div>
+                        <div style="text-align: left;">
+                            <h4 style="color: white;">👥 Usposabljanje zaposlenih</h4>
+                            <p>Ozaveščanje o grožnjah, simulacije phishing napadov</p>
+                        </div>
+                        <div style="text-align: left;">
+                            <h4 style="color: white;">📊 Revizije in testiranje</h4>
+                            <p>Ocena tveganj, penetracijsko testiranje, ISO 27001</p>
+                        </div>
+                        <div style="text-align: left;">
+                            <h4 style="color: white;">🔄 Neprekinjeno poslovanje</h4>
+                            <p>Varnostno kopiranje, načrti obnovitve, 24/7 monitoring</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <a href="https://www.stroka.si" target="_blank">
+                <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+            </a>
+            <p style="margin: 20px 0;">Z več kot 30-letnimi izkušnjami vas ščitimo pred kibernetskimi grožnjami.</p>
+            <p style="margin: 20px 0; color: #888; font-size: 0.9em;">Stroka produkt d.o.o. | Ljubljana, Slovenija</p>
+            <p style="margin: 20px 0; color: #888; font-size: 0.85em;">Dan varne rabe interneta - 10. februar 2026</p>
+            <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+        </div>
+    </div>
+
+    <script>
+        // BSOD Screen Logic
+        const bsodScreen = document.getElementById('bsod-screen');
+        const mainContent = document.getElementById('main-content');
+        const progressElement = document.getElementById('progress');
+        
+        let progress = 0;
+        let glitchInterval;
+        let progressInterval;
+
+        // Progress counter
+        progressInterval = setInterval(() => {
+            if (progress < 100) {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                progressElement.textContent = Math.floor(progress);
+            }
+        }, 150);
+
+        // Random glitch effect
+        function addGlitch() {
+            bsodScreen.classList.add('glitch');
+            setTimeout(() => {
+                bsodScreen.classList.remove('glitch');
+            }, 100);
+        }
+
+        // Add glitches randomly
+        glitchInterval = setInterval(() => {
+            if (Math.random() > 0.7) {
+                addGlitch();
+            }
+        }, 500);
+
+        // Transition to main content after 8 seconds
+        setTimeout(() => {
+            // Extra glitch before transition
+            addGlitch();
+            setTimeout(addGlitch, 200);
+            setTimeout(addGlitch, 400);
+            
+            setTimeout(() => {
+                clearInterval(progressInterval);
+                clearInterval(glitchInterval);
+                
+                // Hide BSOD
+                bsodScreen.classList.add('hidden');
+                
+                // Show main content after BSOD fades
+                setTimeout(() => {
+                    bsodScreen.style.display = 'none';
+                    mainContent.classList.add('visible');
+                }, 500);
+            }, 600);
+        }, 8000);
+    </script>
+</body>
+</html>
