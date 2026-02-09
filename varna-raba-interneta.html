@@ -168,6 +168,29 @@
             line-height: 1.7;
         }
 
+        .test-cta {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 900px;
+            padding: 40px;
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            border-radius: 8px;
+        }
+
+        .test-cta h3 {
+            color: white;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .test-cta-note {
+            font-style: italic;
+            color: white;
+            font-size: 0.95em;
+            margin-top: 15px;
+            opacity: 0.9;
+        }
+
         .danger-box {
             background: #50afb0;
             color: white;
@@ -317,6 +340,18 @@
             color: #50afb0;
         }
 
+        .btn-test {
+            background: #000;
+            color: white;
+            border: 2px solid #000;
+        }
+
+        .btn-test:hover {
+            background: white;
+            color: #000;
+            border: 2px solid #000;
+        }
+
         .footer {
             background: #000;
             color: white;
@@ -382,6 +417,10 @@
             .btn {
                 width: 80%;
             }
+
+            .test-cta {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
@@ -445,6 +484,14 @@
                 <p style="margin-top: 20px; font-weight: 600; font-size: 1.2em;">Vedno preverite, preden kliknete!</p>
             </div>
 
+            <!-- Test CTA -->
+            <div class="test-cta">
+                <h3>🎯 Preizkusite svoje znanje prepoznavanja phishing napadov</h3>
+                <p style="color: white; font-size: 1.1em; margin: 20px 0;">Ali bi prepoznali nevaren email? Rešite test in preverite.</p>
+                <a href="#https://strokasi.github.io/igra/kibernetska-varnost.html" class="btn btn-test">Začni test prepoznavanja phishinga</a>
+                <p class="test-cta-note">💡 Priporočamo, da pred reševanjem testa preberete priročnik spodaj</p>
+            </div>
+
             <!-- Main Threats Section -->
             <section id="threats">
                 <h2>🎯 Najpogostejše grožnje v letu 2026</h2>
@@ -490,7 +537,7 @@
                 <h2>🔍 Kako prepoznati nevarne povezave in sporočila?</h2>
 
                 <div class="highlight-box">
-                    <h3 style="color: white;">Rdečе zastavice - na to bodite pozorni</h3>
+                    <h3 style="color: white;">Rdeče zastavice - na to bodite pozorni</h3>
                     <ul class="checklist danger-checklist" style="list-style: none; margin-left: 0;">
                         <li style="color: white; padding-left: 35px; position: relative;">
                             <span style="position: absolute; left: 0; color: #ffeb3b;">✗</span>
@@ -776,6 +823,7 @@
                 <p style="font-size: 1.2em; margin: 30px 0;">Skupina stroka.si vam ponuja celovite rešitve kibernetske varnosti, prilagojene vašim potrebam.</p>
                 
                 <div class="cta-buttons">
+                    <a href="https://strokasi.github.io/igra/kibernetska-varnost.html" class="btn btn-test">Preizkusite svoj znanje - Test prepoznavanja phishinga</a>
                     <a href="https://www.stroka.si/Zaupajte-nam-svoj-izziv?zanimanje=Upravljanje%20informacijske%20infrastrukture" target="_blank" class="btn btn-primary">Kontaktirajte nas</a>
                     <a href="https://www.stroka.si/Kaj-delamo/Upravljanje-informacijske-infrastrukture" target="_blank" class="btn btn-secondary">Več o naših storitvah</a>
                 </div>
