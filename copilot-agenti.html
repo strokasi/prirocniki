@@ -1,333 +1,667 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Copilot agenti – od asistenta do avtonomnih procesov | Skupina stroka.si</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priročnik za Copilot agente | Skupina stroka.si</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-  line-height:1.6;
-  color:#000;
-  background:#fff;
-}
-.hero{
-  background:linear-gradient(135deg,#50afb0 0%,#3d8c8d 100%);
-  color:#fff;
-  padding:80px 20px;
-  text-align:center;
-}
-.hero-logo{
-  max-width:250px;
-  margin-bottom:40px;
-}
-.hero h1{font-size:2.5em;margin-bottom:20px}
-.hero-subtitle{font-size:1.3em;max-width:900px;margin:0 auto}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+        }
 
-.container{max-width:1200px;margin:0 auto;padding:20px}
+        .hero {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
 
-.intro-box{
-  background:#f8f9fa;
-  border-left:5px solid #50afb0;
-  padding:30px 40px;
-  margin:60px auto;
-  max-width:900px;
-  border-radius:8px;
-}
+        .hero-logo {
+            max-width: 250px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
 
-section{margin:80px 0}
-h2{
-  color:#50afb0;
-  font-size:2.2em;
-  margin-bottom:30px;
-  border-bottom:3px solid #50afb0;
-  padding-bottom:15px;
-}
-h3{font-size:1.6em;margin:30px 0 15px}
-h4{color:#50afb0;margin:20px 0 10px}
-p{margin-bottom:15px}
+        .hero-logo:hover {
+            opacity: 0.8;
+        }
 
-.tool-card{
-  background:#fff;
-  border:2px solid #50afb0;
-  border-radius:12px;
-  padding:40px;
-  margin:40px 0;
-  box-shadow:0 4px 15px rgba(0,0,0,0.1);
-}
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
 
-.highlight-box{
-  background:#50afb0;
-  color:#fff;
-  padding:30px;
-  border-radius:8px;
-  margin:30px 0;
-}
+        .hero-subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-.info-box{
-  background:#f8f9fa;
-  border-left:5px solid #50afb0;
-  padding:25px;
-  margin:25px 0;
-  border-radius:5px;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-.warning-box{
-  background:#fff8f0;
-  border-left:5px solid #e74c3c;
-  padding:25px;
-  margin:25px 0;
-  border-radius:5px;
-}
+        .intro-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 30px 40px;
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 8px;
+        }
 
-.grid-2{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
-  margin:30px 0;
-}
+        .intro-box h2 {
+            color: #50afb0;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
 
-.feature-card{
-  background:#f8f9fa;
-  padding:25px;
-  border-radius:8px;
-  border-top:4px solid #50afb0;
-}
+        .intro-box p {
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.7;
+        }
 
-.checklist{
-  list-style:none;
-}
-.checklist li{
-  padding-left:35px;
-  position:relative;
-  margin-bottom:12px;
-}
-.checklist li:before{
-  content:"✓";
-  position:absolute;
-  left:0;
-  color:#50afb0;
-  font-weight:700;
-  font-size:1.3em;
-}
+        .stats-box {
+            background: linear-gradient(135deg, rgba(80, 175, 176, 0.1) 0%, rgba(61, 140, 141, 0.1) 100%);
+            border: 2px solid #50afb0;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 900px;
+            border-radius: 8px;
+            text-align: center;
+        }
 
-.cta-section{
-  background:linear-gradient(135deg,#50afb0 0%,#3d8c8d 100%);
-  color:#fff;
-  padding:80px 20px;
-  text-align:center;
-}
+        .stats-box .big-number {
+            font-size: 4em;
+            color: #50afb0;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
 
-.btn{
-  padding:15px 40px;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:600;
-  display:inline-block;
-  margin:10px;
-}
-.btn-primary{background:#fff;color:#50afb0}
-.btn-secondary{border:2px solid #fff;color:#fff}
+        .stats-box p {
+            font-size: 1.2em;
+            color: #333;
+        }
 
-.footer{
-  background:#000;
-  color:#ccc;
-  text-align:center;
-  padding:60px 20px 30px;
-}
-.footer-logo{max-width:200px;margin-bottom:30px}
-</style>
+        section {
+            margin: 80px 0;
+        }
+
+        h2 {
+            color: #50afb0;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #50afb0;
+            padding-bottom: 15px;
+        }
+
+        h3 {
+            color: #000;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+        }
+
+        h4 {
+            color: #50afb0;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 40px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #50afb0;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .highlight-box h4 {
+            color: white;
+        }
+
+        .highlight-box p, .highlight-box li {
+            color: white;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 5px solid #50afb0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff8f0;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box h4 {
+            color: #e74c3c;
+        }
+
+        .benefit-box {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+            border-left: 5px solid #27ae60;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .benefit-box h4 {
+            color: #27ae60;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 4px solid #50afb0;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h4 {
+            margin-top: 0;
+        }
+
+        .phase-card {
+            background: white;
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 25px 0;
+        }
+
+        .phase-card h4 {
+            color: #50afb0;
+            margin-top: 0;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, rgba(80, 175, 176, 0.05) 0%, rgba(61, 140, 141, 0.05) 100%);
+            border: 2px solid #50afb0;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .example-card h4 {
+            color: #50afb0;
+            margin-top: 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #50afb0;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #50afb0;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 30px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            max-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer p {
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8em; }
+            .hero-subtitle { font-size: 1em; }
+            h2 { font-size: 1.8em; }
+            .stats-box .big-number { font-size: 3em; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 80%; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="hero">
-  <a href="https://www.stroka.si" target="_blank">
-    <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png" class="hero-logo">
-  </a>
-  <h1>Copilot agenti</h1>
-  <p class="hero-subtitle">
-    Od osebnega asistenta do avtonomnih AI procesov
-  </p>
-</div>
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="https://www.stroka.si" target="_blank">
+            <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+        </a>
+        <h1>Microsoft Copilot Agenti</h1>
+        <p class="hero-subtitle">Od osebnega asistenta do avtomatizacije celotnih poslovnih procesov</p>
+    </div>
 
-<div class="container">
+    <!-- Intro Box -->
+    <div class="container">
+        <div class="intro-box">
+            <h2>AI, ki je prerastla osebnega asistenta</h2>
+            <p>Umetna inteligenca v poslovnem okolju je v zadnjih dveh letih prešla pomembno prelomnico. Kar se je začelo kot orodje za hitrejše pisanje e-poštnih sporočil in povzemanje dokumentov, se zdaj razvija v sisteme, ki samostojno koordinirajo delovne procese, sprožajo akcije in sprejemajo odločitve.</p>
+        </div>
 
-<div class="intro-box">
-<h2>Zakaj Copilot agenti niso več prihodnost, ampak realnost</h2>
-<p>
-Umetna inteligenca v poslovnem okolju je prešla iz faze osebne pomoči v fazo
-<strong>samostojnega izvajanja procesov</strong>.
-Microsoft Copilot Studio agenti niso zgolj nadgradnja Copilota,
-temveč povsem nova kategorija digitalnih sodelavcev.
-</p>
-<p>
-Po napovedih Gartnerja bodo do leta 2028 AI agenti sodelovali pri
-<strong>15 % vsakodnevnih poslovnih odločitev</strong>.
-</p>
-</div>
+        <div class="stats-box">
+            <span class="big-number">15 %</span>
+            <p><strong>Gartner napoveduje, da bodo do leta 2028 AI agenti odgovorni za 15 % vsakodnevnih poslovnih odločitev.</strong></p>
+            <p style="margin-top: 15px;">Leta 2024 je bila ta številka 0 %. Sprememba se dogaja zdaj.</p>
+        </div>
 
-<section>
-<h2>Copilot ≠ Copilot agent</h2>
+        <!-- Section 1: Razlika med Copilotom in agenti -->
+        <section id="razlika">
+            <h2>1. Copilot ni agent – in obratno</h2>
 
-<div class="grid-2">
-<div class="feature-card">
-<h4>Microsoft Copilot</h4>
-<ul>
-<li>Podpira posameznika</li>
-<li>Generira besedila in povzetke</li>
-<li>Povečuje osebno produktivnost</li>
-<li>Reagira na zahtevo uporabnika</li>
-</ul>
-</div>
+            <p>Če že uporabljate Microsoft Copilot, poznate njegovo prednost pri osebni produktivnosti. Pomaga iskati prave dokumente, generira povzetke sestankov in pospešuje komunikacijo znotraj Microsoft 365 okolja. Deluje kot osebni asistent, ki spremlja posameznika skozi delovni dan.</p>
 
-<div class="feature-card">
-<h4>Copilot agenti</h4>
-<ul>
-<li>Pokrijejo celoten proces</li>
-<li>Izvajajo naloge samostojno</li>
-<li>Delujejo med sistemi</li>
-<li>Sprožajo se ob dogodkih</li>
-</ul>
-</div>
-</div>
+            <div class="warning-box">
+                <h4>⚠️ Ključna razlika</h4>
+                <ul>
+                    <li><strong>Copilot</strong> pomaga <em>posamezniku</em> pri opravljanju dela</li>
+                    <li><strong>Copilot Studio agenti</strong> delo <em>opravijo sami</em> za celotne procese</li>
+                    <li>Vsak zaposleni ima lahko Copilota – vsak <em>proces</em> pa bo kmalu imel agenta</li>
+                </ul>
+            </div>
 
-<div class="highlight-box">
-<p>
-<strong>Vsak zaposleni ima Copilota. Vsak proces ima lahko agenta.</strong>
-</p>
-</div>
-</section>
+            <div class="info-box">
+                <h4>💡 Preprosta razlaga</h4>
+                <p>Copilot je kot osebni asistent, ki vam pomaga pri vašem delu. Agent je kot digitalni član ekipe, ki prevzame vlogo koordinatorja ali operativnega vodje in celoten proces vodi samostojno.</p>
+            </div>
+        </section>
 
-<section>
-<h2>Stopnje Copilot agentov</h2>
+        <!-- Section 2: Vrste agentov -->
+        <section id="vrste">
+            <h2>2. Kaj agenti dejansko zmorejo?</h2>
 
-<div class="tool-card">
-<h3>1️⃣ Agenti za informacije</h3>
-<p>
-Vračajo preverjene odgovore iz zaupanja vrednih virov
-(SharePoint, interne politike, dokumentacija).
-</p>
-</div>
+            <p>Agenti niso enaki. Glede na konfiguracijo segajo od preprostih iskalnikov informacij do popolnoma avtonomnih sistemov, ki delujejo preko aplikacij, ekip in delovnih tokov.</p>
 
-<div class="tool-card">
-<h3>2️⃣ Agenti za izvajanje nalog</h3>
-<p>
-Izpolnjujejo obrazce, odpirajo tikete, usmerjajo odobritve,
-posodabljajo poslovne sisteme.
-</p>
-</div>
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>🔍 Agenti za pridobivanje informacij</h4>
+                    <p><strong>Osnovna raven delovanja.</strong> Ti agenti iščejo informacije iz vnaprej odobrenih virov.</p>
+                    <p>Nov zaposleni vpraša: "Kakšna je naša politika dopustov?" Agent takoj vrne natančen, preverjeni odgovor – brez iskanja po e-poštnih nitih ali internih dokumentih.</p>
+                </div>
 
-<div class="tool-card">
-<h3>3️⃣ Avtonomni agenti</h3>
-<p>
-Delujejo brez neposredne zahteve uporabnika.
-Dogodki sprožijo zaporedje dejanj preko Teams, Dynamics, SAP ali drugih sistemov.
-</p>
-</div>
-</section>
+                <div class="feature-card">
+                    <h4>⚙️ Agenti za izvajanje nalog</h4>
+                    <p><strong>Stopnja višje.</strong> Ti agenti ne samo odgovarjajo, temveč tudi delujejo.</p>
+                    <ul>
+                        <li>Izpolnjujejo obrazce</li>
+                        <li>Usmerjajo odobritve</li>
+                        <li>Odpirajo tikete</li>
+                        <li>Posodabljajo CRM zapise</li>
+                    </ul>
+                </div>
 
-<section>
-<h2>Praktični primeri uporabe</h2>
+                <div class="feature-card">
+                    <h4>🤖 Avtonomni agenti</h4>
+                    <p><strong>Najvišja stopnja samostojnosti.</strong> Ti sistemi ne čakajo na ukaze.</p>
+                    <p>Delujejo na podlagi dogodkov: sprememba v zalogi, nov potencialni kupec, posodobitev SharePoint seznama – karkoli sproži agenta.</p>
+                </div>
 
-<div class="grid-2">
-<div class="feature-card">
-<h4>👥 HR</h4>
-<p>Odgovori na vprašanja o dopustih, pravilnikih, povračilih stroškov.</p>
-</div>
+                <div class="feature-card">
+                    <h4>📦 Upravljani agenti</h4>
+                    <p><strong>Pripravljene rešitve.</strong> Microsoft in partnerji jih ponujajo kot že konfigurirane sisteme.</p>
+                    <p>Organizacije jih lahko uvedejo brez razvoja in jih dodatno prilagodijo s podporo internih IT ekip.</p>
+                </div>
+            </div>
 
-<div class="feature-card">
-<h4>💼 Prodaja</h4>
-<p>Iskanje ponudb, referenc in prezentacij glede na kontekst povpraševanja.</p>
-</div>
+            <div class="benefit-box">
+                <h4>💡 Agenti se učijo</h4>
+                <p>Več kot delujejo, več konteksta pridobijo. Sčasoma se prilagajajo vzorcem in personalizirajo odzive, kar naredi interakcije manj mehanske in bolj intuitivne.</p>
+            </div>
+        </section>
 
-<div class="feature-card">
-<h4>🛠️ IT podpora</h4>
-<p>Samodejno odpiranje, kategorizacija in reševanje tiketov.</p>
-</div>
+        <!-- Section 3: Praktični primeri -->
+        <section id="primeri">
+            <h2>3. Praktični primeri uporabe agentov</h2>
 
-<div class="feature-card">
-<h4>📦 Nabava</h4>
-<p>Avtomatske odobritve in spremljanje nabavnih zahtevkov.</p>
-</div>
-</div>
-</section>
+            <div class="example-card">
+                <h4>👥 HR oddelek: vprašanja o politikah podjetja</h4>
+                <p><strong>Namen:</strong> Takojšnji odgovori na pogosta vprašanja zaposlenih</p>
+                <p><strong>Kako deluje:</strong> Agent odgovarja na vprašanja o dopustih, bolniških odsotnostih in povračilih stroškov. Uporablja interno regulativo kot vir in vrača natančne, posodobljene odgovore.</p>
+                <div class="benefit-box">
+                    <h4>💰 Vrednost</h4>
+                    <p>Zaposleni dobijo informacijo v 30 sekundah namesto v treh e-poštnih sporočilih. HR ekipa se sprosti od ponavljajočih se vprašanj.</p>
+                </div>
+            </div>
 
-<section>
-<h2>Kdo lahko gradi agente?</h2>
+            <div class="example-card">
+                <h4>💼 Prodaja: dostop do ponudb in prezentacij</h4>
+                <p><strong>Namen:</strong> Hitro iskanje po prodajnih materialih</p>
+                <p><strong>Kako deluje:</strong> Agent išče po SharePoint okolju in vrača relevantne prodajne materiale glede na kontekst povpraševanja.</p>
+                <p><strong>Primer:</strong> "Potrebujem ponudbo za IT podjetje s 50 zaposlenimi" sproži iskanje po pravih dokumentih, kategorijah in uspešnih študijah primerov.</p>
+                <div class="benefit-box">
+                    <h4>💰 Vrednost</h4>
+                    <p>Prodajalci porabijo manj časa za iskanje materialov in več časa za stranke. Vsi materiali so vedno aktualni.</p>
+                </div>
+            </div>
 
-<ul class="checklist">
-<li>Poslovni uporabniki – agenti znanja</li>
-<li>Power Platform uporabniki – agenti nalog</li>
-<li>IT in razvijalci – avtonomni agenti</li>
-<li>Partnerji – upravljani agenti</li>
-</ul>
-</section>
+            <div class="example-card">
+                <h4>🎫 IT podpora: odpiranje in sledenje tiketom</h4>
+                <p><strong>Namen:</strong> Avtomatizacija helpdesk procesov</p>
+                <p><strong>Kako deluje:</strong> Agent sprejme zahtevo, odpre tiket v help desk sistemu, ga kategorizira glede na vsebino in sproži ustrezni delovni tok. Pri ponavljajočih se težavah predlaga rešitve iz baze znanja, preden eskalira na človeka.</p>
+                <div class="benefit-box">
+                    <h4>💰 Vrednost</h4>
+                    <p>Manj ročnega vnosa, hitrejše reševanje, boljša izkušnja za uporabnike. IT ekipa se osredotoči na kompleksnejše težave.</p>
+                </div>
+            </div>
 
-<section>
-<h2>Razvojni modeli</h2>
+            <div class="example-card">
+                <h4>🛒 Nabava: avtomatizacija odobritev</h4>
+                <p><strong>Namen:</strong> Pospešitev nabavnih procesov</p>
+                <p><strong>Kako deluje:</strong> Ko zaposleni odda zahtevek za nakup, agent preveri znesek glede na odobritvena pravila, usmeri dokument pravemu odobritelju in pošlje opomnik, če odobritev zastane.</p>
+                <div class="benefit-box">
+                    <h4>💰 Vrednost</h4>
+                    <p>Proces, ki je trajal tri dni, se skrajša na tri ure. Manj zamud, manj ročnega sledenja.</p>
+                </div>
+            </div>
+        </section>
 
-<div class="grid-2">
-<div class="feature-card">
-<h4>Low-code / Declarative</h4>
-<p>Hitro uvajanje, minimalna konfiguracija.</p>
-</div>
+        <!-- Section 4: Koristi -->
+        <section id="koristi">
+            <h2>4. Zakaj podjetja stavijo na agente?</h2>
 
-<div class="feature-card">
-<h4>Copilot Studio</h4>
-<p>Nadzor, integracije, varnost, lifecycle management.</p>
-</div>
+            <p>Organizacije ugotavljajo, da agentska AI ni samo novost, temveč skalabilen način izboljšanja učinkovitosti, natančnosti in odzivnosti.</p>
 
-<div class="feature-card">
-<h4>Pro-code (Azure)</h4>
-<p>Popolna prilagoditev, skalabilnost, napredno opazovanje.</p>
-</div>
-</div>
-</section>
+            <div class="grid-2">
+                <div class="feature-card" style="border-top-color: #27ae60;">
+                    <h4>✅ Konsistentnost</h4>
+                    <p>Konsistentni, skladni odgovori iz zaupanja vrednih virov – brez razlik med zaposlenimi ali oddelki.</p>
+                </div>
 
-<section>
-<h2>Kaj to pomeni za slovenska podjetja</h2>
+                <div class="feature-card" style="border-top-color: #27ae60;">
+                    <h4>⚡ Hitrost</h4>
+                    <p>Hitrejša obdelava velikih količin manj kompleksnih nalog – kar je prej trajalo ure, zdaj traja minute.</p>
+                </div>
 
-<div class="info-box">
-<ul>
-<li>Brez migracije podatkov</li>
-<li>Slovenščina kot primarni jezik</li>
-<li>Vgrajena varnost in GDPR skladnost</li>
-<li>Uporaba obstoječega Microsoft 365 okolja</li>
-</ul>
-</div>
-</section>
+                <div class="feature-card" style="border-top-color: #27ae60;">
+                    <h4>🎯 Natančnost</h4>
+                    <p>Zmanjšanje človeških napak z avtomatiziranimi delovnimi tokovi. Manj napak pri ročnem vnašanju podatkov.</p>
+                </div>
 
-<section>
-<h2>Ključna vprašanja pred uvedbo</h2>
+                <div class="feature-card" style="border-top-color: #27ae60;">
+                    <h4>😊 Izkušnja</h4>
+                    <p>Izboljšana izkušnja zaposlenih z manj zapravljenega časa za navigacijo po sistemih in iskanje informacij.</p>
+                </div>
 
-<div class="warning-box">
-<ul class="checklist">
-<li>Katere procese želimo avtomatizirati?</li>
-<li>Kdo je lastnik podatkov?</li>
-<li>Kakšna so tveganja in omejitve?</li>
-<li>Kdo upravlja agente?</li>
-</ul>
-</div>
-</section>
+                <div class="feature-card" style="border-top-color: #27ae60;">
+                    <h4>🧠 Prerazporeditev energije</h4>
+                    <p>Ekipe se namesto koordinacije in administrativnih opravil osredotočijo na strategijo, kreativnost in odločanje.</p>
+                </div>
 
-</div>
+                <div class="feature-card" style="border-top-color: #27ae60;">
+                    <h4>📊 Strukturiranost</h4>
+                    <p>Agenti strukturirajo nestrukturirano delo in standardizirajo procese brez omejevanja ljudi s togimi pravili.</p>
+                </div>
+            </div>
+        </section>
 
-<div class="cta-section">
-<h2>Ste pripravljeni na agentsko prihodnost?</h2>
-<p>Pomagamo vam od prvega agenta do strateške avtomatizacije.</p>
-<a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
-<a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
-</div>
+        <!-- Section 5: Kdo gradi agente -->
+        <section id="gradnja">
+            <h2>5. Kdo lahko gradi agente?</h2>
 
-<div class="footer">
-<img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png" class="footer-logo">
-<p>Skupina stroka.si, Stroka produkt d.o.o.</p>
-<p>ccc@stroka.si | www.stroka.si</p>
-<p style="font-size:0.85em;">© 2026 Stroka produkt d.o.o.</p>
-</div>
+            <p>Ena glavnih prednosti Copilot Studia je dostopnost. Microsoft je zasnoval platformo tako, da podpira različne stopnje tehnične usposobljenosti.</p>
+
+            <div class="phase-card">
+                <h4>👤 Poslovni uporabniki – Agenti znanja</h4>
+                <p>Pogosto jih ustvarijo poslovni uporabniki z orodji kot sta SharePoint ali Agent Builder. Ti agenti so zasnovani za pridobitev zanesljivih odgovorov iz zaupanja vrednih podatkovnih virov z minimalno konfiguracijo.</p>
+                <p><strong>Primerni za:</strong> HR vprašanja, interne politike, baze znanja.</p>
+            </div>
+
+            <div class="phase-card">
+                <h4>⚙️ Power Platform uporabniki – Agenti nalog</h4>
+                <p>Gradijo jih uporabniki z izkušnjami v Power Apps in Power Automate. Ti agenti lahko delujejo, avtomatizirajo delovne tokove in se integrirajo v poslovne aplikacije.</p>
+                <p><strong>Primerni za:</strong> Odobritve, obveščanje, posodabljanje sistemov.</p>
+            </div>
+
+            <div class="phase-card">
+                <h4>🔧 IT strokovnjaki – Avtonomni agenti</h4>
+                <p>Gradijo jih razvijalci ali napredni uporabniki. Ti agenti delujejo neodvisno in zahtevajo bolj sofisticirano logiko, orkestriranje in obvladovanje tveganj.</p>
+                <p><strong>Primerni za:</strong> Kompleksni end-to-end procesi, integracije z zunanjimi sistemi.</p>
+            </div>
+
+            <div class="phase-card">
+                <h4>📦 Upravljani agenti – Pripravljene rešitve</h4>
+                <p>Microsoft in partnerji ponujajo že pripravljene rešitve. Organizacije jih uvedejo brez razvoja in jih prilagodijo s podporo internih ekip ali zunanjih strokovnjakov.</p>
+                <p><strong>Primerni za:</strong> Hiter začetek brez obsežnega razvoja.</p>
+            </div>
+        </section>
+
+        <!-- Section 6: Varnost in slovensko okolje -->
+        <section id="varnost">
+            <h2>6. Varnost, jezik in slovensko okolje</h2>
+
+            <div class="highlight-box">
+                <h3>🇸🇮 Slovenščina kot prednost</h3>
+                <p>Slovenščina kot primarni jezik vmesnika ni zgolj tehnična lastnost. Omogoča ohranjanje jezikovne identitete organizacije ob hkratnem izkoriščanju naprednih tehnologij. Interno poslovanje poteka v slovenščini, medtem ko agenti omogočajo prevode za mednarodno komunikacijo brez dodatnih prevajalskih storitev.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4>🔐 Varnostna arhitektura</h4>
+                    <p>Varnostna arhitektura spoštuje obstoječe hierarhije dostopa. Agent ne more pridobiti podatkov, do katerih uporabnik nima pravic.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📋 Skladnost s predpisi</h4>
+                    <p>Skladnost z GDPR in drugimi regulativami je vgrajena v sistem, ne dodana naknadno.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>🔗 Obstoječa infrastruktura</h4>
+                    <p>Za podjetja z Microsoft 365 agenti predstavljajo naravno evolucijo. Ni potrebe po migraciji podatkov ali kompleksnih integracijah.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4>📈 Skalabilnost</h4>
+                    <p>Začnete s preprostimi primeri, razširite na avtomatizacijo nalog in sčasoma uvedete avtonomne delovne tokove.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Kako začeti -->
+        <section id="zacetek">
+            <h2>7. Kako začeti z agenti?</h2>
+
+            <div class="info-box">
+                <h4>📌 Ključno pravilo</h4>
+                <p>Vprašanje ni, ali bo vaše podjetje uporabljalo agente. Vprašanje je, kdaj jih boste začeli uporabljati strateško in z namenom.</p>
+            </div>
+
+            <div class="phase-card">
+                <h4>Korak 1: Identificirajte ponavljajoče se procese</h4>
+                <ul>
+                    <li>Katera vprašanja zaposleni postavljajo najpogosteje?</li>
+                    <li>Kateri procesi zahtevajo največ ročnega dela?</li>
+                    <li>Kje prihaja do zamud ali napak?</li>
+                    <li>Kateri oddelek bi imel največ koristi?</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Korak 2: Začnite z agentom znanja</h4>
+                <ul>
+                    <li>Izberite en vir znanja (interni pravilniki, FAQ, dokumentacija)</li>
+                    <li>Ustvarite agenta z Agent Builder orodjem v SharePointu</li>
+                    <li>Testirajte z manjšo skupino uporabnikov</li>
+                    <li>Zberite povratne informacije in prilagodite</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Korak 3: Razširite na agente nalog</h4>
+                <ul>
+                    <li>Identificirajte proces z največ ročnih korakov</li>
+                    <li>Avtomatizirajte z Power Automate</li>
+                    <li>Povežite z obstoječimi aplikacijami</li>
+                    <li>Merite prihranek časa in napake</li>
+                </ul>
+            </div>
+
+            <div class="phase-card">
+                <h4>Korak 4: Strategija upravljanja</h4>
+                <ul>
+                    <li>Definirajte jasna pravila dostopa do podatkov</li>
+                    <li>Določite postopke za preverjanje točnosti odgovorov</li>
+                    <li>Vzpostavite kanal za poročanje napak</li>
+                    <li>Redno pregledujte in posodabljajte agente</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🔑 Ključni dejavniki uspeha</h3>
+                <ul>
+                    <li><strong>Jasna strategija:</strong> Vsak agent mora biti usklajen s poslovnimi cilji</li>
+                    <li><strong>Upravljanje dostopa:</strong> Natančno definirajte, katere podatke agent sme videti</li>
+                    <li><strong>Vključevanje uporabnikov:</strong> Brez sprejetja s strani zaposlenih agenti ostanejo neuporabljeni</li>
+                    <li><strong>Postopnost:</strong> Začnite preprosto, gradite kompleksnost postopoma</li>
+                    <li><strong>Merjenje:</strong> Definirajte KPI-je za vsak agent – prihranek časa, manj napak, zadovoljstvo</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Pripravljeni na uvedbo Copilot agentov?</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">Pomagamo vam od analize procesov do polno delujočih agentov. Naša ekipa ima izkušnje z implementacijo v različnih panogah in velikostih podjetij.</p>
+
+            <div class="cta-buttons">
+                <a href="mailto:ccc@stroka.si" class="btn btn-primary">Kontaktirajte nas</a>
+                <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.3);">
+                <h3 style="color: white; margin-bottom: 30px;">Naše storitve</h3>
+                <div class="grid-2">
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🔍 Analiza procesov</h4>
+                        <p>Identificiramo priložnosti za agente v vašem podjetju</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">⚙️ Razvoj agentov</h4>
+                        <p>Ustvarimo agente po meri vaših poslovnih potreb</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🔗 Integracija</h4>
+                        <p>Povežemo agente z vašimi obstoječimi sistemi</p>
+                    </div>
+                    <div style="text-align: left;">
+                        <h4 style="color: white;">🎓 Usposabljanje</h4>
+                        <p>Usposobimo vašo ekipo za upravljanje in razvoj agentov</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 50px; font-size: 1.15em;">Procesi že tečejo v vašem podjetju. Vprašanje je le, ali tečejo tako učinkovito, kot bi lahko.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+        <p style="margin: 20px 0;">Z več kot 30-letnimi izkušnjami vam pomagamo do učinkovitejšega poslovanja z umetno inteligenco.</p>
+        <p style="margin: 20px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+        <p style="margin: 20px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+        <p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+    </div>
 
 </body>
 </html>
