@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spoznaj PANTHEON - Interaktivni priročnik za module | Skupina stroka.si</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #000; background: #fff; }
+.hero { background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%); color: white; padding: 80px 20px; text-align: center; }
+.hero-logo { max-width: 250px; margin-bottom: 40px; cursor: pointer; transition: opacity 0.3s ease; }
+.hero-logo:hover { opacity: 0.8; }
+.hero h1 { font-size: 2.5em; margin-bottom: 20px; font-weight: 700; }
+.hero-subtitle { font-size: 1.3em; font-weight: 300; max-width: 800px; margin: 0 auto; }
+.demo-link { display: inline-block; background: rgba(255,255,255,0.2); padding: 15px 30px; border-radius: 50px; color: white; text-decoration: none; font-weight: 600; margin-top: 20px; transition: all 0.3s ease; }
+.demo-link:hover { background: white; color: #50afb0; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.intro-box { background: #f8f9fa; border-left: 5px solid #50afb0; padding: 30px 40px; margin: 60px auto; max-width: 900px; border-radius: 8px; }
+.intro-box h2 { color: #50afb0; font-size: 1.6em; margin-bottom: 20px; }
+.intro-box p { font-size: 1.05em; color: #333; line-height: 1.7; }
+section { margin: 80px 0; }
+h2 { color: #50afb0; font-size: 2.2em; margin-bottom: 30px; border-bottom: 3px solid #50afb0; padding-bottom: 15px; }
+h3 { color: #000; font-size: 1.8em; margin: 40px 0 20px 0; }
+h4 { color: #50afb0; font-size: 1.4em; margin: 30px 0 15px 0; }
+p { margin-bottom: 15px; font-size: 1.05em; }
+ul, ol { margin: 20px 0 20px 40px; }
+li { margin-bottom: 10px; font-size: 1.05em; }
+.highlight-box { background: #50afb0; color: white; padding: 30px; border-radius: 8px; margin: 30px 0; }
+.highlight-box h3, .highlight-box h4 { color: white; }
+.highlight-box ul, .highlight-box ol { color: white; margin-left: 20px; }
+.highlight-box li { color: white; }
+.info-box { background: #f8f9fa; border-left: 5px solid #50afb0; padding: 25px; margin: 25px 0; border-radius: 5px; }
+.warning-box { background: #fff8f0; border-left: 5px solid #e74c3c; padding: 25px; margin: 25px 0; border-radius: 5px; }
+.module-card { background: white; border: 2px solid #50afb0; border-radius: 12px; padding: 40px; margin: 40px 0; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.module-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+.module-icon { display: inline-block; background: linear-gradient(135deg, #50afb0, #3d8c8d); color: white; width: 80px; height: 80px; border-radius: 50%; text-align: center; line-height: 80px; font-size: 2em; margin-bottom: 20px; font-weight: 700; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin: 40px 0; }
+.youtube-container { position: relative; padding-bottom: 56.25%; height: 0; margin: 30px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.youtube-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px; }
+.video-label { background: #50afb0; color: white; padding: 12px 20px; border-radius: 25px; display: inline-block; margin: 20px 0; font-weight: 600; }
+.cta-section { background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%); color: white; padding: 80px 20px; text-align: center; margin-top: 80px; }
+.cta-section h2 { color: white; border: none; margin-bottom: 30px; }
+.cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+.btn { padding: 15px 40px; font-size: 1.1em; border-radius: 50px; text-decoration: none; display: inline-block; transition: all 0.3s ease; font-weight: 600; }
+.btn-primary { background: white; color: #50afb0; }
+.btn-primary:hover { background: #000; color: white; }
+.btn-secondary { background: transparent; color: white; border: 2px solid white; }
+.btn-secondary:hover { background: white; color: #50afb0; }
+.footer { background: #000; color: white; padding: 60px 20px 30px 20px; text-align: center; }
+.footer-logo { max-width: 200px; margin-bottom: 30px; }
+.footer p { color: #ccc; }
+@media (max-width: 768px) {
+.hero h1 { font-size: 1.8em; }
+.hero-subtitle { font-size: 1em; }
+h2 { font-size: 1.8em; }
+.module-card { padding: 25px; margin: 30px 0; }
+.cta-buttons { flex-direction: column; align-items: center; }
+.btn { width: 90%; max-width: 300px; }
+.grid-2 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<!-- Hero Section -->
+<div class="hero">
+<a href="https://www.stroka.si" target="_blank">
+<img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="Stroka.si Logo" class="hero-logo">
+</a>
+<h1>Spoznaj PANTHEON</h1>
+<p class="hero-subtitle">Interaktivni priročnik za ključne module poslovnega sistema PANTHEON</p>
+<a href="https://www.stroka.si/PANTHEON-demo" target="_blank" class="demo-link">🔥 POSKUSI PANTHEON DEMO BREZPLAČNO</a>
+</div>
+
+<!-- Intro Box -->
+<div class="container">
+<div class="intro-box">
+<h2>Zakaj spoznati PANTHEON module?</h2>
+<p>PANTHEON je modularni poslovni sistem, ki povezuje vse ključne poslovne procese v enotno celoto. Vsak modul je zasnovan za specifične potrebe oddelkov, hkrati pa deluje v popolni povezavi z ostalimi. Ta interaktivni priročnik vam omogoča praktičen vpogled v funkcionalnosti z uradnimi video vadnicami.</p>
+<p>Začnite z <a href="https://www.stroka.si/PANTHEON-demo" target="_blank" style="color: #50afb0; font-weight: 600;">brezplačnim DEMO okoljem</a> in takoj preizkusite vse module v realnem okolju.</p>
+</div>
+
+<!-- Modul 1: Naročila -->
+<section id="modul-narocila">
+<div class="module-card">
+<div class="module-icon">📋</div>
+<h3>Modul Naročila</h3>
+<p>Modul Naročila/Ponudbe omogoča enostavno ustvarjanje ponudb kupcem in naročil dobaviteljem. Optimizira nabavni in prodajni proces ter zmanjšuje tveganje napak pri vnosu podatkov.</p>
+<div class="video-label">🎥 Praktični prikaz: Naročilo kupca</div>
+<div class="youtube-container">
+<iframe src="https://www.youtube.com/embed/y00VIW8VBZY" title="Naročilo kupca v PANTHEON" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+</div>
+<div class="grid-2">
+<div>
+<h4>🔑 Ključne funkcionalnosti</h4>
+<ul>
+<li>Kreiranje naročil in ponudb</li>
+<li>Generiranje avansnih dokumentov</li>
+<li>Samodejna pretvorba v izdane dokumente</li>
+<li>Načrtovanje naročil</li>
+</ul>
+</div>
+<div>
+<h4>✅ Prednosti</h4>
+<ul>
+<li>Hitrejše potrjevanje naročil</li>
+<li>Bolši pregled stanja</li>
+<li>Zmanjšanje napak</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Modul 2: Blago -->
+<section id="modul-blago">
+<div class="module-card">
+<div class="module-icon">📦</div>
+<h3>Modul Blago</h3>
+<p>Modul Blago pokriva celoten tok blaga - od prevzema, zalog, prodaje do inventure. Omogoča optimalno upravljanje zalog in zmanjšanje nepotrebnih stroškov.</p>
+<div class="video-label">🎥 Praktični prikaz: Pregled zalog</div>
+<div class="youtube-container">
+<iframe src="https://www.youtube.com/embed/Sv9JnNYRs4E" title="Pregled zalog v PANTHEON" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+</div>
+<div class="highlight-box">
+<h4>Glavne funkcionalnosti</h4>
+<ul>
+<li>Upravljanje zalog po skladiščih</li>
+<li>Inventura in vrednotenje</li>
+<li>Spremljanje serijskih številk</li>
+<li>Prenosi med skladišči</li>
+<li>Maloprodaja</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- Modul 3: Proizvodnja -->
+<section id="modul-proizvodnja">
+<div class="module-card">
+<div class="module-icon">⚙️</div>
+<h3>Modul Proizvodnja</h3>
+<p>Modul Proizvodnja omogoča natančen nadzor nad delovnimi nalogi, porabo materialov in stroški. Razpoložljivi sta osnovna in razširjena licenca z naprednim planiranjem.</p>
+<div class="video-label">🎥 Praktični prikaz: Proizvodnja</div>
+<div class="youtube-container">
+<iframe src="https://www.youtube.com/embed/USg9cSToIrA" title="Proizvodnja v PANTHEON" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+</div>
+<div class="info-box">
+<h4>Za napredne uporabnike</h4>
+<p>Planiranje proizvodnje, dnevni plan, resursi, pokalkulacija in analiza opravljenega dela.</p>
+</div>
+</div>
+</section>
+
+<!-- Modul 4: Dokumenti -->
+<section id="modul-dokumenti">
+<div class="module-card">
+<div class="module-icon">📄</div>
+<h3>Dobavnice, fakture in avansi</h3>
+<p>Enostavno kreiranje in obdelava vseh poslovnih dokumentov z avtomatsko povezavo na zaloge in računovodstvo.</p>
+<div class="grid-2">
+<div>
+<div class="video-label">🎥 Kreiranje dobavnice in fakture</div>
+<div class="youtube-container">
+<iframe src="https://www.youtube.com/embed/iL8LTesphy4" title="Kreiranje dobavnice in fakture" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+</div>
+</div>
+<div>
+<div class="video-label">🎥 Generiranje avansnega računa</div>
+<div class="youtube-container">
+<iframe src="https://www.youtube.com/embed/UyX5fvqdJFw" title="Generiranje avansnega računa" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Modul 5: Denar -->
+<section id="modul-denar">
+<div class="module-card">
+<div class="module-icon">💰</div>
+<h3>Modul Denar</h3>
+<p>Enostavno vodenje plačilnega prometa, blagajne in finančnega obračunavanja z avtomatskim knjiženjem.</p>
+<div class="video-label">🎥 Praktični prikaz: Modul Denar</div>
+<div class="youtube-container">
+<iframe src="https://www.youtube.com/embed/wEn26e528xA" title="Modul Denar v PANTHEON" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+</div>
+<h4>Obsežna poročila</h4>
+<ul>
+<li>Dnevnik knjiženja, konto kartice</li>
+<li>Bilance, AJPES poročila</li>
+<li>SFR, SKV poročila</li>
+<li>Načrtovanje po oddelkih</li>
+</ul>
+</div>
+</section>
+
+<!-- Modul 6: Analitika + Power BI -->
+<section id="modul-analitika">
+<div class="module-card">
+<div class="module-icon">📊</div>
+<h3>Modul Analitika & Power BI</h3>
+<p>Modul Analitika omogoča osnovne analize, vendar za celovito poslovno analitiko priporočamo <strong>Power BI</strong> - napredno orodje za vizualizacije in KPI spremljanje v realnem času.</p>
+<div class="highlight-box">
+<h4>Zakaj Power BI namesto klasične analitike?</h4>
+<ul>
+<li>Interaktivne vizualizacije in dashboardi</li>
+<li>Realnočasno spremljanje KPI-jev</li>
+<li>AI napovedi in trend analize</li>
+<li>100% povezljivost z vsemi PANTHEON moduli</li>
+</ul>
+</div>
+<div style="text-align: center; margin: 30px 0;">
+<a href="https://www.stroka.si/powerbi-demo" target="_blank" class="btn btn-primary" style="display: inline-block; max-width: 400px;">📈 PRENESI POWER BI DEMO</a>
+</div>
+</div>
+</section>
+
+<!-- Ostali moduli -->
+<section id="ostali-moduli">
+<h2>Ostali ključni moduli</h2>
+<div class="grid-2">
+<div class="module-card" style="padding: 30px;">
+<div class="module-icon">👥</div>
+<h4>Modul Kadri</h4>
+<ul>
+<li>Beleženje zaposlenih in delovnega časa</li>
+<li>Potni nalogi in obračuni</li>
+<li>Ocenjevanje in dopusti</li>
+</ul>
+</div>
+<div class="module-card" style="padding: 30px;">
+<div class="module-icon">🔑</div>
+<h4>Modul Šifranti</h4>
+<ul>
+<li>Enoten šifrant subjektov in artiklov</li>
+<li>Pogodbeni ceniki</li>
+<li>Slike in tehnični opisi</li>
+</ul>
+</div>
+<div class="module-card" style="padding: 30px;">
+<div class="module-icon">🔧</div>
+<h4>Modul Servis</h4>
+<ul>
+<li>Servisni nalogi in garancije</li>
+<li>Sledenje popravilom</li>
+<li>Zadovoljstvo strank</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+</div>
+<div class="cta-section">
+<div class="container">
+<h2>Pripravljeni na transformacijo poslovanja?</h2>
+<p style="font-size: 1.2em; margin: 30px 0;">Preizkusite PANTHEON v realnem okolju ali se povežite z našimi strokovnjaki za brezplačno svetovanje.</p>
+<div class="cta-buttons">
+<a href="https://www.stroka.si/PANTHEON-demo" class="btn btn-primary">🚀 POSKUSI PANTHEON DEMO</a>
+<a href="mailto:ccc@stroka.si" class="btn btn-secondary">📧 KONTAKTIRAJ NAS</a>
+<a href="tel:+38628879780" class="btn btn-secondary">📞 +386 (0)2 88 79 780</a>
+</div>
+<p style="margin-top: 40px; opacity: 0.9;">Začnite z brezplačnim DEMO in takoj začutite razliko!</p>
+</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+<img src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774" alt="stroka.si Logo" class="footer-logo">
+<p style="margin: 20px 0;">Vaš partner za uspešno implementacijo PANTHEON z več kot 25 leti izkušenj.</p>
+<p style="margin: 20px 0; color: #888;">ccc@stroka.si | +386 (0)2 88 79 780 | <a href="https://www.stroka.si" style="color: #ccc;">www.stroka.si</a></p>
+<p style="margin: 20px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+</div>
+
+</body>
+</html>
