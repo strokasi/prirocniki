@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spoznavanje ERP PANTHEON modulov | Skupina stroka.si</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #000;
+      background: #fff;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .hero-logo {
+      max-width: 250px;
+      margin-bottom: 30px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+    .hero-logo:hover { opacity: 0.85; }
+
+    .hero h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2em;
+      font-weight: 300;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .intro-box {
+      background: #f8f9fa;
+      border-left: 5px solid #50afb0;
+      padding: 30px 40px;
+      margin: 60px auto 30px auto;
+      max-width: 980px;
+      border-radius: 8px;
+    }
+
+    .intro-box h2 {
+      color: #50afb0;
+      font-size: 1.6em;
+      margin-bottom: 15px;
+    }
+
+    .intro-box p {
+      font-size: 1.05em;
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .btn {
+      padding: 14px 32px;
+      font-size: 1.05em;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .btn-primary { background: white; color: #50afb0; }
+    .btn-primary:hover { background: #000; color: white; }
+
+    .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+    .btn-secondary:hover { background: white; color: #50afb0; }
+
+    .btn-outline {
+      background: transparent;
+      color: #50afb0;
+      border: 2px solid #50afb0;
+    }
+    .btn-outline:hover { background: #50afb0; color: white; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin: 30px 0 60px 0;
+    }
+
+    .stat-card {
+      background: white;
+      border-top: 4px solid #50afb0;
+      padding: 34px 26px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+    .stat-card:hover { transform: translateY(-4px); }
+
+    .stat-number {
+      font-size: 2.6em;
+      color: #50afb0;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .stat-label { color: #666; font-size: 1.05em; }
+
+    section { margin: 80px 0; }
+
+    h2 {
+      color: #50afb0;
+      font-size: 2.2em;
+      margin-bottom: 26px;
+      border-bottom: 3px solid #50afb0;
+      padding-bottom: 12px;
+    }
+
+    h3 { color: #000; font-size: 1.6em; margin: 36px 0 16px 0; }
+
+    h4 { color: #50afb0; font-size: 1.25em; margin: 24px 0 12px 0; }
+
+    p { margin-bottom: 12px; font-size: 1.05em; }
+
+    ul, ol { margin: 16px 0 16px 34px; }
+    li { margin-bottom: 8px; font-size: 1.05em; }
+
+    .highlight-box {
+      background: #50afb0;
+      color: white;
+      padding: 26px;
+      border-radius: 8px;
+      margin: 22px 0;
+    }
+    .highlight-box h3, .highlight-box h4, .highlight-box p, .highlight-box li { color: white; }
+
+    .info-box {
+      background: #f8f9fa;
+      border-left: 5px solid #50afb0;
+      padding: 22px;
+      margin: 22px 0;
+      border-radius: 5px;
+    }
+
+    .warning-box {
+      background: #fff8f0;
+      border-left: 5px solid #e74c3c;
+      padding: 22px;
+      margin: 22px 0;
+      border-radius: 5px;
+    }
+
+    .step-card {
+      background: white;
+      border: 2px solid #50afb0;
+      border-radius: 8px;
+      padding: 38px;
+      margin: 34px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .step-number {
+      display: inline-block;
+      background: #50afb0;
+      color: white;
+      width: 56px;
+      height: 56px;
+      line-height: 56px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 1.9em;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .step-card h3 { margin-top: 0; color: #50afb0; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 26px;
+      margin: 22px 0;
+    }
+
+    .feature-card {
+      padding: 24px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-top: 4px solid #50afb0;
+    }
+
+    .toc {
+      background: #fff;
+      border: 2px solid #50afb0;
+      border-radius: 8px;
+      padding: 22px;
+      margin: 18px 0 36px 0;
+    }
+    .toc h3 { margin: 0 0 10px 0; color: #50afb0; }
+    .toc a {
+      color: #3d8c8d;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .toc a:hover { text-decoration: underline; }
+
+    /* Responsive YouTube iframe */
+    .video-block {
+      margin: 22px 0 10px 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      background: #000;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-caption {
+      padding: 14px 16px;
+      background: #f8f9fa;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      font-size: 0.98em;
+      color: #333;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f1f5f5;
+      color: #2b6d6e;
+      border: 1px solid rgba(80,175,176,0.35);
+      font-weight: 600;
+      font-size: 0.95em;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #50afb0 0%, #3d8c8d 100%);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .cta-section h2 { color: white; border: none; margin-bottom: 18px; }
+
+    .footer {
+      background: #000;
+      color: white;
+      padding: 60px 20px 30px 20px;
+      text-align: center;
+    }
+
+    .footer-logo { max-width: 200px; margin-bottom: 26px; }
+    .footer p { color: #ccc; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.8em; }
+      .hero-subtitle { font-size: 1em; }
+      h2 { font-size: 1.75em; }
+      .stat-number { font-size: 2.2em; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 90%; text-align: center; }
+      .step-card { padding: 24px; }
+      .intro-box { padding: 24px; margin-top: 40px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Hero -->
+  <div class="hero">
+    <a href="https://www.stroka.si" target="_blank" rel="noopener">
+      <img
+        src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774"
+        alt="Stroka.si Logo"
+        class="hero-logo"
+      />
+    </a>
+    <h1>Spoznavanje ERP PANTHEON: moduli in ključne funkcionalnosti</h1>
+    <p class="hero-subtitle">
+      Interaktivni priročnik za hitro razumevanje modulov PANTHEON-a – z video prikazi, primeri uporabe in povezavami do DEMO okolij.
+    </p>
+
+    <div class="cta-buttons">
+      <a class="btn btn-primary" href="https://www.stroka.si/PANTHEON-demo" target="_blank" rel="noopener">Odpri DEMO PANTHEON</a>
+      <a class="btn btn-secondary" href="https://www.stroka.si/powerbi-demo" target="_blank" rel="noopener">Odpri DEMO Power BI</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Intro -->
+    <div class="intro-box">
+      <h2>A ti si pa samo podaljšana roka računovodje?</h2>
+      <p>
+        Danes upravljavec poslovnega informacijskega sistema ni več “samo pomoč računovodstvu”, ampak povezovalec procesov:
+        od naročil, zalog in proizvodnje do financ, kadrov in analitike.
+      </p>
+      <p>
+        PANTHEON je modularna platforma, zato lahko podjetje začne z osnovnimi moduli (npr. Naročila + Blago) in nato postopno
+        dodaja funkcionalnosti, ko rastejo potrebe.
+      </p>
+
+      <div class="pill-row">
+        <span class="pill">Prodaja in nabava</span>
+        <span class="pill">Zaloge in skladišča</span>
+        <span class="pill">Proizvodnja</span>
+        <span class="pill">Finance</span>
+        <span class="pill">Kadri</span>
+        <span class="pill">Analitika + Power BI</span>
+      </div>
+
+      <div class="info-box" style="margin-top: 18px;">
+        <h4>Namig za uporabo priročnika</h4>
+        <p>
+          Spodaj izberite modul, nato sledite: <b>Opis in izzivi → Ključne funkcionalnosti → Ključne prednosti → Video prikaz (kjer je na voljo)</b>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">8</div>
+        <div class="stat-label">ključnih modulov v tem vodiču</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">6</div>
+        <div class="stat-label">video prikazov funkcionalnosti</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2</div>
+        <div class="stat-label">DEMO okolji za takojšen “hands-on”</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">1</div>
+        <div class="stat-label">cilj: bolj tekoč proces, manj napak</div>
+      </div>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+      <h3>Vsebina priročnika</h3>
+      <ul>
+        <li><a href="#modul-narocila">1. Modul Naročila</a></li>
+        <li><a href="#modul-blago">2. Modul Blago (Zaloge / Pregled zalog)</a></li>
+        <li><a href="#modul-proizvodnja">3. Modul Proizvodnja</a></li>
+        <li><a href="#modul-servis">4. Modul Servis</a></li>
+        <li><a href="#modul-denar">5. Modul Denar</a></li>
+        <li><a href="#modul-kadri">6. Modul Kadri</a></li>
+        <li><a href="#modul-analitika">7. Modul Analitika + Power BI</a></li>
+        <li><a href="#modul-sifranti">8. Modul Šifranti</a></li>
+      </ul>
+    </div>
+
+    <!-- 1: Naročila -->
+    <section id="modul-narocila">
+      <div class="step-card">
+        <span class="step-number">1</span>
+        <h3>Modul Naročila</h3>
+
+        <h4>Opis in izzivi</h4>
+        <p>
+          Modul Naročila (Ponudbe / Naročila kupcev / Naročila dobaviteljem) omogoča urejeno vodenje prodajnega in nabavnega toka,
+          od prve ponudbe do realizacije. Najpogostejši izzivi so nepregleden status naročil, podvajanje vnosa in napake pri dokumentih.
+        </p>
+
+        <h4>Ključne funkcionalnosti</h4>
+        <ul>
+          <li>Kreiranje ponudb in naročil za kupce ter naročil dobaviteljem</li>
+          <li>Pregled, filtriranje in statusi naročil (v pripravi, potrjeno, realizirano ipd.)</li>
+          <li>Samodejno pretvarjanje naročil v izdane ali nabavne dokumente</li>
+          <li>Načrtovanje naročil in pregled potreb</li>
+          <li>Generiranje avansnih dokumentov (kjer je procesno smiselno)</li>
+        </ul>
+
+        <div class="highlight-box">
+          <h4>Ključne prednosti</h4>
+          <ul>
+            <li>Optimizacija nabavnega in prodajnega procesa</li>
+            <li>Hitrejše potrjevanje in manj ročnega dela</li>
+            <li>Boljši pregled nad stanjem naročil in ponudb</li>
+          </ul>
+        </div>
+
+        <div class="grid-2">
+          <div class="feature-card">
+            <h4>Video: Naročilo kupca</h4>
+            <p>Kratek prikaz ustvarjanja in dela z naročilom kupca.</p>
+            <div class="video-block">
+              <div class="video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/y00VIW8VBZY"
+                  title="PANTHEON - Naročilo kupca"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </div>
+              <div class="video-caption">Namig: po ogledu preizkusite isti scenarij še v DEMO PANTHEON okolju.</div>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h4>Video: Generiranje avansnega računa</h4>
+            <p>Kako pripravite avansni dokument kot del prodajnega procesa.</p>
+            <div class="video-block">
+              <div class="video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/UyX5fvqdJFw"
+                  title="PANTHEON - Generiranje avansnega računa"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </div>
+              <div class="video-caption">Avansni račun je tipičen v B2B scenarijih (predplačila) – postopek prilagodite praksi podjetja.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <h4>Korak naprej</h4>
+          <p>
+            V praksi se modul Naročila najpogosteje povezuje z modulom <b>Blago</b> (rezervacije, dobavnice, prevzemi) ter
+            s financami (knjiženja, zapiranje).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2: Blago / Zaloge -->
+    <section id="modul-blago">
+      <div class="step-card">
+        <span class="step-number">2</span>
+        <h3>Modul Blago (Zaloge / Pregled zalog)</h3>
+
+        <h4>Opis in izzivi</h4>
+        <p>
+          Modul Blago pokriva celoten tok materiala in artiklov: prevzem, zaloge, prodajo, premike med skladišči in inventuro.
+          Izzivi so običajno: “neujemanje zalog”, zamude pri dobavi, prekomerne zaloge ali pomanjkanje ključnih artiklov.
+        </p>
+
+        <h4>Ključne funkcionalnosti</h4>
+        <ul>
+          <li>Izdaja in prevzem blaga</li>
+          <li>Upravljanje zalog po skladiščih, lokacijah ali serijah (kjer je relevantno)</li>
+          <li>Inventura in vrednotenje zalog</li>
+          <li>Spremljanje serijskih številk</li>
+          <li>Prenosi med skladišči</li>
+          <li>Maloprodaja (po potrebi)</li>
+          <li>Periodično fakturiranje (kjer je relevantno)</li>
+        </ul>
+
+        <div class="highlight-box">
+          <h4>Ključne prednosti</h4>
+          <ul>
+            <li>Večja preglednost zalog in hitrejše odzivanje</li>
+            <li>Znižanje stroškov zaradi prekomernih zalog ali pomanjkanja</li>
+            <li>Povezava z ostalimi moduli (računovodstvo, proizvodnja, servis)</li>
+          </ul>
+        </div>
+
+        <div class="grid-2">
+          <div class="feature-card">
+            <h4>Video: Pregled zalog</h4>
+            <p>Kako hitro preveriti stanje zalog in ključne informacije.</p>
+            <div class="video-block">
+              <div class="video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/Sv9JnNYRs4E"
+                  title="PANTHEON - Pregled zalog"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </div>
+              <div class="video-caption">Namig: preverite tudi “premike” in “rezervacije” – pogosto razložijo odstopanja v zalogi.</div>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <h4>Video: Kreiranje dobavnice in fakture</h4>
+            <p>Praktični prikaz dokumentnega toka: dobavnica → faktura.</p>
+            <div class="video-block">
+              <div class="video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/iL8LTesphy4"
+                  title="PANTHEON - Kreiranje dobavnice in fakture"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </div>
+              <div class="video-caption">Priporočilo: standardizirajte postopek (kdo, kdaj in po katerih pravilih kreira dokumente).</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <h4>Najbolj pogosta “hitro-zmaga”</h4>
+          <p>
+            Ureditev šifrantov (artikli, klasifikacije, enote mere) + dogovorjena pravila za prevzeme in izdaje
+            pogosto najbolj izboljšata zanesljivost zalog.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3: Proizvodnja -->
+    <section id="modul-proizvodnja">
+      <div class="step-card">
+        <span class="step-number">3</span>
+        <h3>Modul Proizvodnja</h3>
+
+        <h4>Opis in izzivi</h4>
+        <p>
+          Modul Proizvodnja omogoča spremljanje delovnih nalogov, poročanje o izdanem materialu ter prevzem končnih izdelkov v skladišče.
+          Cilj je natančen nadzor nad proizvodnimi procesi, porabo materiala in stroški.
+        </p>
+        <div class="warning-box">
+          <h4>Opomba o licencah</h4>
+          <p>
+            Obstajata različni vrsti licenc: osnovna za kreiranje in spremljanje delovnih nalogov ter razširjena, ki vključuje dodatne funkcionalnosti (planiranje, resurse, analize ipd.).
+          </p>
+        </div>
+
+        <h4>Ključne funkcionalnosti</h4>
+        <ul>
+          <li>Upravljanje delovnih nalogov</li>
+          <li>Poročanje o opravljenem delu in porabi materiala</li>
+          <li>Prevzem končnih izdelkov v skladišče</li>
+          <li>Sledenje materialom in proizvodnim stroškom</li>
+          <li>Pokalkulacija, analiza proizvodnje</li>
+          <li>Resursi, planiranje proizvodnje, dnevni plan</li>
+        </ul>
+
+        <div class="highlight-box">
+          <h4>Ključne prednosti</h4>
+          <ul>
+            <li>Optimizacija proizvodnje in zmanjšanje napak</li>
+            <li>Boljša sledljivost materialov in izdelkov</li>
+            <li>Večja produktivnost z avtomatizacijo poročanja</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h4>Video: Proizvodnja</h4>
+          <p>Osnovni prikaz dela s proizvodnim procesom v PANTHEON-u.</p>
+          <div class="video-block">
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/USg9cSToIrA"
+                title="PANTHEON - Proizvodnja"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">Namig: pri uvedbi začnite s standardnim tokom (DN → izdaja → prevzem), nato dodajte planiranje in analize.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4: Servis -->
+    <section id="modul-servis">
+      <div class="step-card">
+        <span class="step-number">4</span>
+        <h3>Modul Servis</h3>
+
+        <h4>Opis in izzivi</h4>
+        <p>
+          Modul Servis omogoča vodenje servisnih nalogov, upravljanje garancij in spremljanje popravil.
+          Pomaga standardizirati servisni proces in izboljšati pregled nad statusi ter stroški.
+        </p>
+
+        <h4>Ključne funkcionalnosti</h4>
+        <ul>
+          <li>Upravljanje servisnih naročil</li>
+          <li>Beleženje garancijskih zahtevkov</li>
+          <li>Sledenje popravilom in zaključkom nalogov</li>
+        </ul>
+
+        <div class="highlight-box">
+          <h4>Ključne prednosti</h4>
+          <ul>
+            <li>Hitrejša obravnava servisnih zahtevkov</li>
+            <li>Natančno spremljanje garancij in popravil</li>
+            <li>Večje zadovoljstvo strank</li>
+          </ul>
+        </div>
+
+        <div class="info-box">
+          <h4>Priporočilo</h4>
+          <p>
+            Servis naj bo povezan z zalogami (rezervni deli) ter po potrebi s financami (obračun storitev/materiala).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5: Denar -->
+    <section id="modul-denar">
+      <div class="step-card">
+        <span class="step-number">5</span>
+        <h3>Modul Denar</h3>
+
+        <h4>Opis in izzivi</h4>
+        <p>
+          Modul Denar omogoča vodenje plačilnega prometa in blagajniškega poslovanja ter pomaga pri nadzoru denarnih tokov.
+          Tipični izzivi so: nepregledne odprte postavke, zamude pri plačilih in ročno knjiženje.
+        </p>
+
+        <h4>Ključne funkcionalnosti</h4>
+        <ul>
+          <li>Kreiranje in spremljanje plačilnih nalogov</li>
+          <li>Blagajna (prejemki, izdatki, obračuni)</li>
+          <li>Izpisi denarnih transakcij</li>
+          <li>Knjiženje, zapiranje, časovne razmejitve</li>
+          <li>Avtomatsko knjiženje – prenos faktur v glavno knjigo z enim klikom</li>
+        </ul>
+
+        <div class="highlight-box">
+          <h4>Ključne prednosti</h4>
+          <ul>
+            <li>Optimizacija likvidnosti</li>
+            <li>Lažje sledenje finančnim tokovom</li>
+            <li>Boljša evidenca plačilnih in blagajniških dokumentov</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h4>Video: Denar</h4>
+          <p>Prikaz osnovnih funkcionalnosti modula Denar.</p>
+          <div class="video-block">
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/wEn26e528xA"
+                title="PANTHEON - Denar"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">Namig: nastavite jasna pravila za zapiranje/odprte postavke – največ prihrankov je v rutini.</div>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <h4>Modul Denar: funkcionalnosti (podrobno – okvirno)</h4>
+          <p>V praksi podjetja najpogosteje uporabljajo naslednje sklope pregledov in izpisov:</p>
+          <ul>
+            <li>Dnevnik knjiženja, konto kartica, odprte postavke, struktura odprtih postavk</li>
+            <li>Bruto bilanca, bilance, kontrolni izpisi</li>
+            <li>Letna poročila (AJPES) in davčna poročila (FURS) – odvisno od nastavitev in procesa</li>
+            <li>Opomini, obresti, izterjava</li>
+            <li>Načrtovanje (npr. letni plan bilance po oddelkih/stroškovnih nosilcih)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6: Kadri -->
+    <section id="modul-kadri">
+      <div class="step-card">
+        <span class="step-number">6</span>
+        <h3>Modul Kadri</h3>
+
+        <h4>Opis in izzivi</h4>
+        <p>
+          Modul Kadri omogoča beleženje in spremljanje podatkov o zaposlenih, delovnem času, odsotnostih in potnih nalogih.
+          Izzivi so pogosto v razdrobljenih evidencah ter porabi časa za ročno pripravo podatkov.
+        </p>
+
+        <h4>Ključne funkcionalnosti</h4>
+        <ul>
+          <li>Beleženje podatkov o zaposlenih</li>
+          <li>Kreiranje potnih nalogov</li>
+          <li>Evidentiranje delovnega časa in odsotnosti</li>
+          <li>Ocenjevanje zaposlenih</li>
+          <li>Obračun vseh vrst zaslužkov</li>
+          <li>Zakonsko potrebni obrazci (odvisno od konfiguracije)</li>
+          <li>Izračun letnih dopustov</li>
+        </ul>
+
+        <div class="highlight-box">
+          <h4>Ključne prednosti</h4>
+          <ul>
+            <li>Boljši nadzor nad kadri in stroški dela</li>
+            <li>Lažje evidentiranje časa in stroškov</li>
+            <li>Preglednejše upravljanje dokumentacije</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7: Analitika + Power BI -->
+    <section id="modul-analitika">
+      <div class="step-card">
+        <span class="step-number">7</span>
+        <h3>Modul Analitika + Power BI</h3>
+
+        <h4>Opis in izzivi</h4>
+        <p>
+          Modul Analitika v PANTHEON-u omogoča spremljanje KPI-jev ter pripravo analiz in poročil na osnovi podatkov v sistemu.
+          Izziv je običajno v tem, da podjetja potrebujejo več perspektiv (več virov podatkov), vizualizacije, drill-down in deljenje poročil.
+        </p>
+
+        <div class="warning-box">
+          <h4>Zakaj v praksi pogosto dodamo še Power BI?</h4>
+          <p>
+            Power BI je praviloma bolj celovit in učinkovit, ko želite:
+            <b>napredne vizualizacije</b>, <b>interaktivne nadzorne plošče</b>, <b>povezovanje več podatkovnih virov</b>,
+            <b>samodežno osveževanje</b> in <b>enostavno deljenje</b> poročil z ekipo/vodstvom.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="feature-card">
+            <h4>PANTHEON Analitika – ključne funkcionalnosti</h4>
+            <ul>
+              <li>Priprava analiz in poročil</li>
+              <li>Spremljanje ključnih kazalnikov uspešnosti (KPI)</li>
+              <li>Povezava z drugimi moduli za celovitejši pregled</li>
+            </ul>
+            <h4>Ključne prednosti</h4>
+            <ul>
+              <li>Boljša preglednost nad poslovanjem</li>
+              <li>Podpora odločanju</li>
+              <li>Poročila prilagojena potrebam podjetja</li>
+            </ul>
+          </div>
+
+          <div class="feature-card">
+            <h4>Power BI – priporočeni naslednji korak</h4>
+            <p>
+              Če želite napredno poročanje “na klik”, KPI-je za vodstvo in deljenje dashboardov, preizkusite naš DEMO Power BI.
+            </p>
+            <p style="margin-top: 12px;">
+              <a class="btn btn-outline" href="https://www.stroka.si/powerbi-demo" target="_blank" rel="noopener">
+                Odpri DEMO Power BI
+              </a>
+            </p>
+            <div class="info-box" style="margin-top: 14px;">
+              <h4>Namig</h4>
+              <p>
+                Idealna kombinacija v praksi: <b>PANTHEON</b> kot vir zanesljivih transakcijskih podatkov +
+                <b>Power BI</b> kot “vizualni kokpit” za analitiko in odločanje.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8: Šifranti -->
+    <section id="modul-sifranti">
+      <div class="step-card">
+        <span class="step-number">8</span>
+        <h3>Modul Šifranti</h3>
+
+        <h4>Opis in izzivi</h4>
+        <p>
+          Modul Šifranti je osnova za konsistentne podatke v PANTHEON-u. Če šifranti niso urejeni, se napake hitro širijo:
+          v naročila, zaloge, proizvodnjo in finance.
+        </p>
+
+        <h4>Ključne funkcionalnosti</h4>
+        <ul>
+          <li>Enoten šifrant subjektov (kupci, dobavitelji, banke, skladišča, delavci)</li>
+          <li>Pogodbeni ceniki za kupce ali dobavitelje</li>
+          <li>Alfanumerični šifrant artiklov</li>
+          <li>Primarne in sekundarne klasifikacije</li>
+          <li>Kalkulacija nabavne in prodajne cene</li>
+          <li>Opisi, tehnološki opisi in slike (kjer je relevantno)</li>
+        </ul>
+
+        <div class="highlight-box">
+          <h4>Ključne prednosti</h4>
+          <ul>
+            <li>Poenotena in konsistentna struktura podatkov</li>
+            <li>Hitrejše iskanje in ažuriranje</li>
+            <li>Manj napak pri vnosu in več zanesljivosti procesov</li>
+          </ul>
+        </div>
+
+        <div class="info-box">
+          <h4>Praktično pravilo</h4>
+          <p>
+            Preden “optimiziramo procese”, najprej uredimo šifrante (subjekti + artikli + klasifikacije) – to je najhitrejši temelj za stabilnost sistema.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="container">
+      <h2>Želite PANTHEON preizkusiti v praksi?</h2>
+      <p style="font-size: 1.15em; margin: 18px 0;">
+        Odprite DEMO okolje, ponovite korake iz videov in preverite, kako bi potekal tok dokumentov v vašem podjetju.
+      </p>
+
+      <div class="cta-buttons" style="margin-top: 26px;">
+        <a href="https://www.stroka.si/PANTHEON-demo" class="btn btn-primary" target="_blank" rel="noopener">Odpri DEMO PANTHEON</a>
+        <a href="mailto:ccc@stroka.si" class="btn btn-secondary">Kontakt: ccc@stroka.si</a>
+      </div>
+
+      <div style="margin-top: 46px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.3);">
+        <h3 style="color: white; margin-bottom: 12px;">Potrebujete pomoč pri izbiri modulov ali optimizaciji procesov?</h3>
+        <p style="max-width: 900px; margin: 0 auto;">
+          Skupaj pogledamo vaš “tok od naročila do plačila” ter predlagamo modulno uvedbo in najbolj smiselne korake (vključno z analitiko in Power BI).
+        </p>
+        <div class="cta-buttons" style="margin-top: 18px;">
+          <a href="tel:+38628879780" class="btn btn-secondary">+386 (0)2 88 79 780</a>
+          <a href="https://www.stroka.si/powerbi-demo" class="btn btn-primary" target="_blank" rel="noopener">Odpri DEMO Power BI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <img
+      src="https://www.stroka.si/Portals/_default/logo_stroka_si_white.png?ver=2025-06-04-113611-483&timestamp=1749029751774"
+      alt="stroka.si Logo"
+      class="footer-logo"
+    />
+    <p style="margin: 18px 0;">
+      Skupina stroka.si – pomoč pri implementaciji, optimizaciji procesov in podpori ERP PANTHEON.
+    </p>
+    <p style="margin: 10px 0; color: #888;">Skupina stroka.si, Stroka produkt d.o.o.</p>
+    <p style="margin: 10px 0; color: #888;">ccc@stroka.si | www.stroka.si</p>
+    <p style="margin: 16px 0; color: #888; font-size: 0.85em;">© 2026 Stroka produkt d.o.o. Vse pravice pridržane.</p>
+  </div>
+</body>
+</html>
